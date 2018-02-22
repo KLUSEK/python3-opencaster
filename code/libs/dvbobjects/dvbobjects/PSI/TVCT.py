@@ -64,7 +64,8 @@ class channel_loop_item(DVBobject):
 		dl_bytes = string.join(
 			map(lambda x: x.pack(),
 			self.descriptors_loop),
-			"")
+			""
+		)
 
 		fmt = "!%dsLLHHBBHH%ds" % (len(self.short_name), len(dl_bytes))
 		return pack(fmt,
@@ -108,9 +109,10 @@ class service_location(DVBobject):
 	def pack(self):
 
 		#pack service_location
-		return pack("!BH3s",
+		return pack("!BHBBB",
 			self.stream_type,                 # 8bit  (stream_type)
 			0xE000 | (self.elementary_PID & 0x1FFF), # 16bit (elementary_PID) (3 + 13)
-			self.ISO_639_language_code        # 8*3 bit  (ISO_639_language_code)
+			0,                                # 8bit  (ISO_639_language_code)
+			0,                                # 8bit  (ISO_639_language_code)
+			0                                 # 8bit  (ISO_639_language_code)
 		)
-
