@@ -20,5 +20,5 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 from struct import pack, unpack, calcsize
-from DVBobject import DVBobject, CDR
+from dvbobjects import DVBobject, CDR
 import crc32
