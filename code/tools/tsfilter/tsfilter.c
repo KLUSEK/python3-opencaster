@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 	unsigned short pid;
 	unsigned int i;
 	unsigned char* packet_buffer;
+	unsigned int packet_buffer_offset;
 	unsigned char* current_packet;
 	unsigned int buffer_size;
 	unsigned char pid_table[MAX_PID];	/* valid PID table */	
@@ -90,11 +91,18 @@ int main(int argc, char *argv[])
 		
 	/* Start to process the file */	
 	byte_read = 1;
+	packet_buffer_offset = 0;
 	while(byte_read) {
 
 		/* read packets */
-                byte_read = read(fd_ts, packet_buffer, buffer_size);
-	    
+		byte_read = read(fd_ts, packet_buffer + packet_buffer_offset, buffer_size - packet_buffer_offset);
+		if (byte_read + packet_buffer_offset < TS_PACKET_SIZE) {
+			fprintf(stderr, "read %d bytes\n", byte_read);
+			packet_buffer_offset += byte_read;
+			continue;
+		}
+		packet_buffer_offset = 0;
+
 		/* filter packets on their pids */
 		for (i = 0; i < buffer_size; i+=TS_PACKET_SIZE) {
 			current_packet = packet_buffer+i;
