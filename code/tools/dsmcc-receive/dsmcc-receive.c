@@ -58,7 +58,7 @@ main(int argc, char *argv[])
 	directory = argv[1];
 	cachesize = atoi(argv[2]);
 	pid = atoi(argv[3]);
-	component_tag = atoi(argv[4]);
+	component_tag = strtol(argv[4], NULL, 16);
     }
     
     struct carousel a_carousel;
