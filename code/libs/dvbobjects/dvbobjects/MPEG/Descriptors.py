@@ -88,20 +88,20 @@ class association_tag_descriptor(Descriptor):
     	    return pack(fmt,    
 		    self.association_tag,
 		    self.use,
-		    self.selector_lenght,
+		    self.selector_length,
 		    self.transaction_id,
 		    self.timeout,
 		    self.private_data,		    
                     )		
 	else:
     	    fmt = "!HHB%ds%ds" % (
-		    len(self.selector_lenght), 
+		    len(self.selector_length), 
 		    len(self.privatedata)
 		    )	    
 	    return pack(fmt,
                     self.association_tag,
 		    self.use,
-		    self.selector_lenght,
+		    self.selector_length,
 		    self.selector_bytes,
 		    self.privatedata,
 		    )
