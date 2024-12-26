@@ -35,7 +35,7 @@ from dvbobjects.DVB.DataCarousel import TransactionId
 
 TIMEOUT			= 0xFFFFFFFF
 TABLE_ID		= 0x3C
-MAX_MODULE_SIZE		= 1024 * 64
+MAX_MODULE_SIZE		= 1024 * 128
 
 DEBUG 			= 0
 OPTIONS = "h"
