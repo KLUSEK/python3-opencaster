@@ -233,37 +233,27 @@ ait = application_information_section(
 
 out = open("./nit.sec", "wb")
 out.write(nit.pack())
-out.close
-out = open("./nit.sec", "wb") # python  flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 16 < ./nit.sec > ./nit.ts')
 
 out = open("./pat.sec", "wb")
 out.write(pat.pack())
-out.close
-out = open("./pat.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 0 < ./pat.sec > ./pat.ts')
 
 out = open("./sdt.sec", "wb")
 out.write(sdt.pack())
-out.close
-out = open("./sdt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 17 < ./sdt.sec > ./sdt.ts')
 
 out = open("./pmt.sec", "wb")
 out.write(pmt.pack())
-out.close
-out = open("./pmt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(pmt1_pid) + ' < ./pmt.sec > ./pmt.ts')
 
 out = open("./ait.sec", "wb")
 out.write(ait.pack())
-out.close
-out = open("./ait.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(ait1_pid) + ' < ./ait.sec > ./ait.ts')
 
 # remove the section files

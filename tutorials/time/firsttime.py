@@ -96,7 +96,5 @@ tot = time_offset_section(
 
 out = open("./tot.sec", "wb")
 out.write(tot.pack())
-out.close
-out = open("./tot.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 20 < ./tot.sec >> ./tdt.ts')

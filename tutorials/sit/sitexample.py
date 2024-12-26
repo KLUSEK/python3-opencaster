@@ -58,7 +58,5 @@ sit = selection_information_section(
 
 out = open("./firstsit.sec", "wb")
 out.write(sit.pack())
-out.close
-out = open("./firstsit.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 31 < ./firstsit.sec > ./firstsit.ts')

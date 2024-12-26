@@ -228,6 +228,6 @@ while (number != ""):
 
 	last_end_time = end_time
 	number = payloadData.readline()
-payloadData.close;
-out.close;
+payloadData.close();
+out.close();
 

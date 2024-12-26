@@ -159,28 +159,20 @@ pmt = program_map_section(
 
 out = open("./pat.sec", "wb")
 out.write(pat.pack())
-out.close
-out = open("./pat.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 0 < ./pat.sec > ./firstpat.ts')
 
 out = open("./pmt.sec", "wb")
 out.write(pmt.pack())
-out.close
-out = open("./pmt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(avalpa1_pmt_pid) + ' < ./pmt.sec > ./firstpmt.ts')
 
 out = open("./mgt.sec", "wb")
 out.write(mgt.pack())
-out.close
-out = open("./mgt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 8187 < ./mgt.sec > ./8187.ts')
 
 out = open("./tvct.sec", "wb")
 out.write(tvct.pack())
-out.close
-out = open("./tvct.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 8187 < ./tvct.sec >> ./8187.ts')

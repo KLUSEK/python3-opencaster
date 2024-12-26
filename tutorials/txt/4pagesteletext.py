@@ -1117,25 +1117,17 @@ teletextunitspage4 = EBUTeletextUnits(
 	
 out = open("./page1.txt", "wb")
 out.write(teletextunitspage1.pack())
-out.close
-out = open("./page1.txt", "wb") # python  flush bug
-out.close
+out.close()
 
 out = open("./page2.txt", "wb")
 out.write(teletextunitspage2.pack())
-out.close
-out = open("./page2.txt", "wb") # python  flush bug
-out.close
+out.close()
 
 out = open("./page3.txt", "wb")
 out.write(teletextunitspage3.pack())
-out.close
-out = open("./page3.txt", "wb") # python  flush bug
-out.close
+out.close()
 
 out = open("./page4.txt", "wb")
 out.write(teletextunitspage4.pack())
-out.close
-out = open("./page4.txt", "wb") # python  flush bug
-out.close
+out.close()
 

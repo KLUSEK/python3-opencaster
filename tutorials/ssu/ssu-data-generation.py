@@ -389,44 +389,32 @@ dsi.addGroup(g2)
 
 out = open("./nit.sec", "wb")
 out.write(nit.pack())
-out.close
-out = open("./nit.sec", "wb") # python  flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 16 < ./nit.sec > ./firstnit.ts')
 
 out = open("./pat.sec", "wb")
 out.write(pat.pack())
-out.close
-out = open("./pat.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 0 < ./pat.sec > ./firstpat.ts')
 
 out = open("./sdt.sec", "wb")
 out.write(sdt.pack())
-out.close
-out = open("./sdt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 17 < ./sdt.sec > ./firstsdt.ts')
 
 out = open("./pmt.sec", "wb")
 out.write(pmt.pack())
-out.close
-out = open("./pmt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(avalpa1_pmt_pid) + ' < ./pmt.sec > ./firstpmt.ts')
 
 out = open("./unt.sec", "wb")
 out.write(unt.pack())
-out.close
-out = open("./unt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(avalpa1_unt_pid) + ' < ./unt.sec > ./firstunt.ts')
 
 out = open("./tdt.sec", "wb")
 out.write(tdt.pack())
-out.close
-out = open("./tdt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 20 < ./tdt.sec > ./firstdt.ts')
 
 # 

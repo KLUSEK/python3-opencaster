@@ -246,43 +246,31 @@ pmt3 = program_map_section(
 
 out = open("./nit.sec", "wb")
 out.write(nit.pack())
-out.close
-out = open("./nit.sec", "wb") # python  flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 16 < ./nit.sec > ./mptsnit.ts')
 
 out = open("./pat.sec", "wb")
 out.write(pat.pack())
-out.close
-out = open("./pat.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 0 < ./pat.sec > ./mptspat.ts')
 
 out = open("./sdt.sec", "wb")
 out.write(sdt.pack())
-out.close
-out = open("./sdt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 17 < ./sdt.sec > ./mptssdt.ts')
 
 out = open("./pmt1.sec", "wb")
 out.write(pmt1.pack())
-out.close
-out = open("./pmt1.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(avalpa1_pmt_pid) + ' < ./pmt1.sec > ./mptspmt1.ts')
 
 out = open("./pmt2.sec", "wb")
 out.write(pmt2.pack())
-out.close
-out = open("./pmt2.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(avalpa2_pmt_pid) + ' < ./pmt2.sec > ./mptspmt2.ts')
 
 out = open("./pmt3.sec", "wb")
 out.write(pmt3.pack())
-out.close
-out = open("./pmt3.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts ' + str(avalpa3_pmt_pid) + ' < ./pmt3.sec > ./mptspmt3.ts')
 

@@ -49,13 +49,13 @@ event_ids = Event_ids (
 
 out = open(".tap", "wb")
 out.write(taps.pack())
-out.close
+out.close()
 
 out = open(".eid", "wb")
 out.write(event_ids.pack())
-out.close
+out.close()
 
 out = open(".ename", "wb")
 out.write(event_names.pack())
-out.close
+out.close()
 

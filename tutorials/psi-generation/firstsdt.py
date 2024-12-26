@@ -58,4 +58,4 @@ sdt = service_description_section(
 
 out = open("./firstsdt.sec", "wb")
 out.write(sdt.pack())
-out.close
+out.close()
