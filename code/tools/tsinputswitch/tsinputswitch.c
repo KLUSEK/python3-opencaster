@@ -21,7 +21,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/reboot.h>
+#ifndef __CYGWIN__
+  #include <sys/reboot.h>
+#else
+  #include <sys/cygwin.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

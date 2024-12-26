@@ -8,7 +8,7 @@ import sys
 
 _ext_modules = None
 
-if sys.platform in ['linux2', 'solaris2', 'win32']:
+if sys.platform in ['linux2', 'solaris2', 'win32', 'cygwin']:
     _ext_modules = [ Extension('dvbobjects.utils._crc32', [ 'sectioncrc.py.c'] ), ]
 
 setup(

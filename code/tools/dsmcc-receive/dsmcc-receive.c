@@ -20,8 +20,10 @@
 
 #include <stdio.h> 
 #include <stdio_ext.h> 
-#include <unistd.h> 
-#include <netinet/ether.h>
+#include <unistd.h>
+#ifndef __CYGWIN__
+  #include <netinet/ether.h>
+#endif
 #include <netinet/in.h>
 #include <stdio.h>
 #include <string.h>
