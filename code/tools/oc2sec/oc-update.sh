@@ -50,7 +50,7 @@ COMPRESS_MODE=$6
 fi
 if [ $# -gt 6 ]
 then
-PAD_ON=$
+PAD_ON=$7
 fi
 if [ $# -gt 7 ]
 then
