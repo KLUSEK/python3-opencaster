@@ -12,7 +12,7 @@
 #include <sys/socket.h>
 #include <net/if.h>
 
-#ifndef __CYGWIN__
+#ifdef __linux__
   #include <linux/if_tun.h>
 #else
   #include <net/if_tun.h>
