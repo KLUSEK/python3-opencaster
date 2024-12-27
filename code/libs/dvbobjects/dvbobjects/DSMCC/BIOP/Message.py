@@ -185,6 +185,9 @@ class DirectoryMessage(Message):
 
         self.bindings_count = len(self.bindings)
 
+        # Increasing this value shall give an ability to insert more files into DSMCC OC, eventually breaking compatibility with MHP
+        # https://www.etsi.org/deliver/etsi_ts/102700_102799/102727/01.01.01_60/ts_102727v010101p.pdf p.257
+        # Leaving the original value (512) untouched, but successfully tested internally increasing it to 1024 and pushing more than 600 files
         assert self.bindings_count < 512 # MHP
 
     def messageBody(self):
