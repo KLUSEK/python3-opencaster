@@ -2,10 +2,10 @@
 
 # This file is part of the dvbobjects library and contains the main HbbTV descriptors (see the list below)
 # 
-# Copyright  2000-2001, GMD, Sankt Augustin
+# Copyright © 2000-2001, GMD, Sankt Augustin
 # -- German National Research Center for Information Technology 
 #
-# Copyright  2010, mediatvcom, Claude Vanderm
+# Copyright © 2010, mediatvcom, Claude Vanderm
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

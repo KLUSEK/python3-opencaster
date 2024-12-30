@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # 
-# Copyright © 2000-2001, GMD, Sankt Augustin
+# Copyright Â© 2000-2001, GMD, Sankt Augustin
 # -- German National Research Center for Information Technology 
 #
 # This program is free software; you can redistribute it and/or modify

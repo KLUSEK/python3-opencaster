@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 #
-# Copyright (C) 2010 Robson Tovo <robson.tovo@gmail.com>,
+# Copyright © 2010 Robson Tovo <robson.tovo@gmail.com>,
 #                    Marco Casaroli <marco.casaroli@gmail.com>
 #					 LIFIA - Facultad de Informatica - Univ. Nacional de La Plata
 # This program is free software; you can redistribute it and/or modify

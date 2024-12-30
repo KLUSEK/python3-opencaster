@@ -2,7 +2,7 @@
 
 # This file is part of the dvbobjects library.
 # 
-# Copyright  2000-2001, GMD, Sankt Augustin
+# Copyright © 2000-2001, GMD, Sankt Augustin
 # -- German National Research Center for Information Technology 
 #
 # Copyright 2010, LIFIA - Facultad de Informatica - Univ. Nacional de La Plata

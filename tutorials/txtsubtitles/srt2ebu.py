@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # 
-# Copyright 2011, Lorenzo Pallara l.pallara@avalpa.com
+# Copyright © 2011, Lorenzo Pallara l.pallara@avalpa.com
 #
 
 # country codes

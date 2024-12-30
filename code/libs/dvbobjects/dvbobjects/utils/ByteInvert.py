@@ -2,7 +2,7 @@
 
 # This file is part of the dvbobjects library.
 # 
-# Copyright © 2009-2103 Lorenzo Pallara
+# Copyright Â© 2009-2013 Lorenzo Pallara
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
