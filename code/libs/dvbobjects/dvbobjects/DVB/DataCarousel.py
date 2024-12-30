@@ -44,7 +44,7 @@ class SuperGroup(DownloadServerInitiate):
         for group in self.groups:
             group.generate(output_dir)
 
-        if SRG_IOR <> None:
+        if SRG_IOR is not None:
             self.privateData = dvbobjects.DSMCC.BIOP.ServiceGatewayInfo(
                 srg_ior = SRG_IOR,
                 )
@@ -156,7 +156,7 @@ class Module(DVBobject):
         return output_path
 
     def getModuleInfo(self):
-        if self.assocTag <> None:
+        if self.assocTag is not None:
             moduleInfo = dvbobjects.DSMCC.BIOP.ModuleInfo(
                 assocTag = self.assocTag,
 		userInfo = self.descriptors,

@@ -102,7 +102,7 @@ def CheckArgs():
         if opt_name in ['-h', '--help']:
             Usage(0)
 
-    if len(args) <> 2:
+    if len(args) != 2:
         Usage()
 
     INPUT_DIR, OUTPUT_DIR = args
