@@ -20,7 +20,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 from dvbobjects.utils import *
-import Tap
+from . import Tap
 import string
 
 ######################################################################
@@ -35,7 +35,7 @@ class ModuleInfo(DVBobject):
 
     def __init__(self, **kwargs):
         # Initialize SuperClass
-        apply(DVBobject.__init__, (self,), kwargs)
+        DVBobject.__init__(*(self,), **kwargs)
         self.taps = [
             Tap.object_tap(
                 assocTag = self.assocTag,
@@ -45,12 +45,8 @@ class ModuleInfo(DVBobject):
     def pack(self):
 
         assert len(self.taps) >= 1      # MHP
-        taps_bytes = string.join(map(lambda t: t.pack(),
-                                     self.taps),
-                                 "")
-        user_info_bytes = string.join(map(lambda ui: ui.pack(),
-                                     self.userInfo),
-                                 "")
+        taps_bytes = b"".join([t.pack() for t in self.taps])
+        user_info_bytes = b"".join([ui.pack() for ui in self.userInfo])
 
         FMT =("!"
               "L"                       # ModuleTimeOut

@@ -37,15 +37,11 @@ class selection_information_section(Section):
         self.section_number = 0
         self.last_section_number = 0
     
-        ti_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.transmission_info_loop),
-            "")
+        ti_bytes = b"".join(
+            [x.pack() for x in self.transmission_info_loop])
 
-        sl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.service_loop),
-            "")
+        sl_bytes = b"".join(
+            [x.pack() for x in self.service_loop])
 
         fmt = "!H%ds%ds" % (len(ti_bytes), len(sl_bytes))
         return pack(fmt,
@@ -59,10 +55,8 @@ class service_loop_item(DVBobject):
 
     def pack(self):
     
-        sdl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.service_descriptor_loop),
-            "")
+        sdl_bytes = b"".join(
+            [x.pack() for x in self.service_descriptor_loop])
 
         fmt = "!HH%ds" % len(sdl_bytes)
         return pack(fmt,

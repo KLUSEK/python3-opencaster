@@ -272,10 +272,8 @@ class ip_mac_notification_info(DVBobject):
   def pack(self):
 	  
     # pack platform id data loop
-    pid_bytes = string.join(
-      map(lambda x: x.pack(),
-	self.platform_id_data_loop),
-      "")
+    pid_bytes = b"".join(
+      [x.pack() for x in self.platform_id_data_loop])
 
     platform_id_data_length = len(pid_bytes);
 
@@ -306,10 +304,8 @@ class platform_id_data(DVBobject):
 
   def pack(self):
 	  
-	pn_bytes = string.join(
-	  map(lambda x: x.pack(),
-	    self.platform_name_loop),
-          "")
+	pn_bytes = b"".join(
+	  [x.pack() for x in self.platform_name_loop])
 
 	platform_name_loop_length = len(pn_bytes)
 
@@ -332,10 +328,8 @@ class linkage_descriptor(Descriptor):
 	if (self.linkage_type == 0x0B):
         
 	  # pack platform id data loop
-	  pid_bytes = string.join(
-          map(lambda x: x.pack(),
-	    self.platform_id_data_loop),
-          "")
+	  pid_bytes = b"".join(
+          [x.pack() for x in self.platform_id_data_loop])
 
 	  platform_id_data_length = len(pid_bytes);
 

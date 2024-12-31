@@ -112,10 +112,8 @@ class graphics_constraints_descriptor(Descriptor):
     descriptor_tag = 0x14
     
     def bytes(self):
-	gc_bytes = string.join(
-	map(lambda byte, self=self: pack("!B", byte),
-		self.graphics_configuration_bytes),
-		"")
+	gc_bytes = b"".join(
+		[pack("!B", x) for x in self.graphics_configuration_bytes])
 		
 	fmt = "!B%ds" % (len(gc_bytes))
 	return pack(fmt,
@@ -142,7 +140,7 @@ class carousel_identifier_descriptor(Descriptor):
 
     def bytes(self):
 	if self.format_ID:
-        	fmt = "!LBBHHHBLBB%ds%ds" % (len(self.object_key_data) , len(self.private_data))
+        	fmt = "!LBBHHHBLBB%ds%ds" % (len(self.object_key_data), len(self.private_data))
         	return pack(fmt,
     			self.carousel_ID,
 	        	self.format_ID,

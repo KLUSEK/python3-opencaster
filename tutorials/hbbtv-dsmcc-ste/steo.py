@@ -44,7 +44,7 @@ event_names = Event_names (
 
 event_ids = Event_ids (
         eventids_count = event_count,
-        event_id_loop = [ 1,2,3 ], # id of the events
+        event_id_loop = [ 1, 2, 3 ], # id of the events
     )
 
 out = open(".tap", "wb")

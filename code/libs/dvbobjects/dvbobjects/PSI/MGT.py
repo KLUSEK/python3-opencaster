@@ -32,16 +32,12 @@ class master_guide_section(Section):
     def pack_section_body(self):
     
         # pack tables_loop
-        tl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.tables_loop),
-            "")
+        tl_bytes = b"".join(
+            [x.pack() for x in self.tables_loop])
 
         # pack descriptors_loop
-        dl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.descriptors_loop),
-            "")
+        dl_bytes = b"".join(
+            [x.pack() for x in self.descriptors_loop])
 
         self.table_id_extension = 0
         self.private_indicator = 1
@@ -61,10 +57,8 @@ class table_loop_item(DVBobject):
     def pack(self):
     
         # pack transport_descriptor_loop
-        dl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.descriptors_loop),
-            "")
+        dl_bytes = b"".join(
+            [x.pack() for x in self.descriptors_loop])
 
         fmt = "!HHBLH%ds" % len(dl_bytes)
         return pack(fmt,

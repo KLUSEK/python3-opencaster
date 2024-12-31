@@ -36,10 +36,8 @@ class service_description_section(Section):
         self.private_indicator = 1
     
         # pack service_stream_loop
-        sl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.service_loop),
-            "")
+        sl_bytes = b"".join(
+            [x.pack() for x in self.service_loop])
 
         fmt = "!HB%ds" % len(sl_bytes)
         return pack(fmt,
@@ -61,10 +59,8 @@ class service_description_other_ts_section(Section):
         self.private_indicator = 1
     
         # pack service_stream_loop
-        sl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.service_loop),
-            "")
+        sl_bytes = b"".join(
+            [x.pack() for x in self.service_loop])
 
         fmt = "!HB%ds" % len(sl_bytes)
         return pack(fmt,
@@ -79,10 +75,8 @@ class service_loop_item(DVBobject):
     def pack(self):
     
         # pack service_descriptor_loop
-        sdl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.service_descriptor_loop),
-            "")
+        sdl_bytes = b"".join(
+            [x.pack() for x in self.service_descriptor_loop])
 
         fmt = "!HBH%ds" % len(sdl_bytes)
         return pack(fmt,

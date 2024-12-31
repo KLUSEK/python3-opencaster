@@ -29,7 +29,7 @@ class TransactionId(DVBobject):
 
     def __init__(self, **kwargs):
         # Initialize SuperClass
-        apply(DVBobject.__init__, (self,), kwargs)
+        DVBobject.__init__(*(self,), **kwargs)
 
         # debugging
         self.HEX = "0x%08X" % self.__int__()
@@ -57,7 +57,7 @@ class DSMCCmessage(Section):
 
     def __init__(self, **kwargs):
         # Initialize SuperClass
-        apply(Section.__init__, (self,), kwargs)
+        Section.__init__(*(self,), **kwargs)
 
         # debugging
 
@@ -101,7 +101,7 @@ class DownloadServerInitiate(DSMCCmessage): # DSI
 
     def __init__(self, **kwargs):
         # Initialize SuperClass
-        apply(DSMCCmessage.__init__, (self,), kwargs)
+        DSMCCmessage.__init__(*(self,), **kwargs)
 
         # debugging
 
@@ -148,7 +148,7 @@ class DownloadInfoIndication(DSMCCmessage): # DII
 
     def __init__(self, **kwargs):
         # Initialize SuperClass
-        apply(DSMCCmessage.__init__, (self,), kwargs)
+        DSMCCmessage.__init__(*(self,), **kwargs)
 
         # debugging
 

@@ -36,10 +36,8 @@ class stream_event_section(Section):
 	self.last_table_id = self.table_id
 	
         # pack event_loop
-        stel_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.stream_event_descriptor_loop),
-            "")
+        stel_bytes = b"".join(
+            [x.pack() for x in self.stream_event_descriptor_loop])
 
         fmt = "!%ds" % len(stel_bytes)
         return pack(fmt,

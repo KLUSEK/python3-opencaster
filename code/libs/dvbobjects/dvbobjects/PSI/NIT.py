@@ -33,16 +33,12 @@ class network_information_section(Section):
     def pack_section_body(self):
     
         # pack network_descriptor_loop
-        ndl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.network_descriptor_loop),
-            "")
+        ndl_bytes = b"".join(
+            [x.pack() for x in self.network_descriptor_loop])
 
         # pack transport_stream_loop
-        tsl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.transport_stream_loop),
-            "")
+        tsl_bytes = b"".join(
+            [x.pack() for x in self.transport_stream_loop])
 
         self.table_id_extension = self.network_id
         self.private_indicator = 1
@@ -61,10 +57,8 @@ class transport_stream_loop_item(DVBobject):
     def pack(self):
     
         # pack transport_descriptor_loop
-        tdl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.transport_descriptor_loop),
-            "")
+        tdl_bytes = b"".join(
+            [x.pack() for x in self.transport_descriptor_loop])
 
         fmt = "!HHH%ds" % len(tdl_bytes)
         return pack(fmt,

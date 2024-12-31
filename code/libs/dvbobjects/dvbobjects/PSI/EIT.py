@@ -41,10 +41,8 @@ class event_information_section(Section):
 	self.last_table_id = self.table_id
 	
         # pack event_loop
-        el_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.event_loop),
-            "")
+        el_bytes = b"".join(
+            [x.pack() for x in self.event_loop])
 
         fmt = "!HHBB%ds" % len(el_bytes)
         return pack(fmt,
@@ -61,10 +59,8 @@ class event_loop_item(DVBobject):
     def pack(self):
     
         # pack event_descriptor_loop
-        edl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.event_descriptor_loop),
-            "")
+        edl_bytes = b"".join(
+            [x.pack() for x in self.event_descriptor_loop])
 
 	# convert to MJD
 	date = MJD_convert(self.start_year, self.start_month, self.start_day)

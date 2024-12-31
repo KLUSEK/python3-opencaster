@@ -45,10 +45,8 @@ class application_descriptor(Descriptor):
     application_profiles_length = 5
 
     def bytes(self):
-        tp_labels = string.join(
-            map(lambda label, self=self: pack("!B", label),
-                self.transport_protocol_labels),
-            "")
+        tp_labels = b"".join(
+            [pack("!B", x) for x in self.transport_protocol_labels])
 
         self.flags = (
             0x00
@@ -154,7 +152,7 @@ class dvb_html_application_descriptor(Descriptor):
 #TODO add applications_ids	
     
         fmt = "!BH%ds" % len(self.parameter)
-        return pack(fmt, 1 ,1 , self.parameter)
+        return pack(fmt, 1, 1, self.parameter)
 
 
 ######################################################################

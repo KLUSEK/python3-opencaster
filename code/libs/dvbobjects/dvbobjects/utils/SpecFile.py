@@ -60,7 +60,7 @@ class SuperGroupSpec(DVBobject):
             group.write(dsi, outputDir)
 
     def addGroup(self, **kwargs):
-        group = apply(GroupSpec, [], kwargs)
+        group = GroupSpec(*[], **kwargs)
         try:
             self.groups.append(group)
         except AttributeError:
@@ -68,7 +68,7 @@ class SuperGroupSpec(DVBobject):
 
     def addModule(self, **kwargs):
         curr = self.groups[-1]
-        apply(GroupSpec.addModule, (curr,), kwargs)
+        GroupSpec.addModule(*(curr,), **kwargs)
 
 ######################################################################
 class GroupSpec(DVBobject):
@@ -91,7 +91,7 @@ class GroupSpec(DVBobject):
 
         self.modules = []
 
-        while 1:
+        while True:
             line = diiSpecFile.readline()
             if not line:
                 break
@@ -112,7 +112,7 @@ class GroupSpec(DVBobject):
             ))
 
     def addModule(self, **kwargs):
-        mod = apply(ModuleSpec, (), kwargs)
+        mod = ModuleSpec(*(), **kwargs)
         try:
             self.modules.append(mod)
         except AttributeError:

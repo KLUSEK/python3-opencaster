@@ -36,7 +36,7 @@ class Message(DVBobject):
 
         # sanity check
         assert self.byte_order      == 0x00 # DVB
-        assert len(self.objectKind) == 0x04, `self.objectKind` # DVB
+        assert len(self.objectKind) == 0x04, repr(self.objectKind) # DVB
 
         MessageSubHeader_FMT = (
             "!"
@@ -118,7 +118,7 @@ class FileMessage(Message):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(Message.__init__, (self,), kwargs)
+        Message.__init__(*(self,), **kwargs)
 
         # Initialize standard attributes
         self.set(
@@ -157,9 +157,9 @@ class StreamEventMessage(Message):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(Message.__init__, (self,), kwargs)
+        Message.__init__(*(self,), **kwargs)
 	
-	info_t = pack("!BLLBBB" , 0, 0, 0, 0, 0, 1)
+	info_t = pack("!BLLBBB", 0, 0, 0, 0, 0, 1)
 	# Hard coded DSM::Stream::Info_T.pack() for do it now
 	event_names = open(self.PATH + "/.ename").read()
 	self.objectInfo =  info_t + event_names
@@ -181,7 +181,7 @@ class DirectoryMessage(Message):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(Message.__init__, (self,), kwargs)
+        Message.__init__(*(self,), **kwargs)
 
         self.bindings_count = len(self.bindings)
 
@@ -194,8 +194,7 @@ class DirectoryMessage(Message):
         separator = ""                  # for debugging
         bindings = "%s%s%s" % (
             separator,
-            string.join(map(lambda binding: binding.pack(),
-                            self.bindings),
+            b"".join([binding.pack() for binding in self.bindings],
                         separator),
             separator)
 

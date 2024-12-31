@@ -107,7 +107,7 @@ class stream_event_descriptor(Descriptor):
 
     descriptor_tag = 0x1a
     
-    reserved = 0x0L # TODO Check: Shouldn't this be 0xFFFFFFFEL?
+    reserved = 0x0 # TODO Check: Shouldn't this be 0xFFFFFFFEL?
     
     def bytes(self):
         self.text_length = len(self.private_data)

@@ -42,10 +42,8 @@ class rating_region_loop_item(DVBobject):
 	
 	self.rated_dimensions = len(self.rated_dimension_loop)
 	
-	data_bytes = string.join(
-		map(lambda x: x.pack(),
-		self.rated_dimension_loop),
-		"")
+	data_bytes = b"".join(
+		[x.pack() for x in self.rated_dimension_loop])
 
 	rating_description_bytes = self.rating_description_text.pack()
 
@@ -65,10 +63,8 @@ class content_advisory_descriptor(Descriptor):
 
     def bytes(self):
 	self.rating_region_count = len(self.rating_region_loop)
-	data_bytes = string.join(
-		    map(lambda x: x.pack(),
-		    self.rating_region_loop),
-		    "")
+	data_bytes = b"".join(
+		    [x.pack() for x in self.rating_region_loop])
 		
 	fmt = "!B%ds" % len(data_bytes)
 	return pack(fmt,

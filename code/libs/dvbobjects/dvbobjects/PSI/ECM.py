@@ -32,10 +32,8 @@ class entitlement_control_message_section(Section):
     def pack_section_body(self):
     
         # pack program_loop_item
-        pl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.ecm_loop),
-            "")
+        pl_bytes = b"".join(
+            [x.pack() for x in self.ecm_loop])
 
         self.table_id_extension = 0xFFFF
 

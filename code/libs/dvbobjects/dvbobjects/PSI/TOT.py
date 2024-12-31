@@ -33,10 +33,8 @@ class time_offset_section(DVBobject):
 	
 		date = MJD_convert(self.year, self.month, self.day)
 		# pack service_stream_loop
-		tl_bytes = string.join(
-			map(lambda x: x.pack(),
-			self.descriptor_loop),
-			"")
+		tl_bytes = b"".join(
+			[x.pack() for x in self.descriptor_loop])
 		
 		fmt = "!BHHBBBH%ds" % len(tl_bytes) 
 		data = pack(fmt,

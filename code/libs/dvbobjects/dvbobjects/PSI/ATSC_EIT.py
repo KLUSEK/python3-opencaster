@@ -39,10 +39,8 @@ class event_information_section(Section):
         self.num_events_in_section = len(self.event_loop)
 
         # pack event_loop
-        el_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.event_loop),
-            "")
+        el_bytes = b"".join(
+            [x.pack() for x in self.event_loop])
 
         fmt = "!BB%ds" % len(el_bytes)
         return pack(fmt,
@@ -58,10 +56,8 @@ class event_loop_item(DVBobject):
     
 
         # pack event_descriptor_loop
-        event_descriptors_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.descriptor_loop),
-            "")
+        event_descriptors_bytes = b"".join(
+            [x.pack() for x in self.descriptor_loop])
 
 	title_text_bytes = self.title_text.pack()
 

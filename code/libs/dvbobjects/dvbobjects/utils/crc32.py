@@ -8,5 +8,5 @@ try:
     import _crc32
     CRC_32 = _crc32.sectioncrc
 except ImportError:
-    print "### WRONG CRC32!!!"
+    print("### WRONG CRC32!!!")
     pass

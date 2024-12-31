@@ -40,11 +40,8 @@ class software_download_trigger_table(Section):
 
         self.table_id_extension = (self.maker_id << 8) | (self.model_id & 0xff)
 
-        content_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.contents),
-            ""
-        )
+        content_bytes = b"".join(
+            [x.pack() for x in self.contents])
 
         fmt = ("!"
             "H" # transport_stream_id: 16 bits
@@ -63,12 +60,10 @@ class software_download_trigger_table(Section):
 class sdtt_content_loop_item(DVBobject):
         
     def pack(self):
-        schedule_loop_bytes = string.join(
-            map(lambda x: x.pack(), self.schedule_loop_items), ""
-        )
-        descriptor_loop_bytes = string.join(
-            map(lambda x: x.pack(), self.descriptors), ""
-        )
+        schedule_loop_bytes = b"".join(
+            [x.pack() for x in self.schedule_loop_items])
+        descriptor_loop_bytes = b"".join(
+            [x.pack() for x in self.descriptors])
 
         fmt = ("!"
             "H" # group: 4 bits, target_version: 12
@@ -77,7 +72,7 @@ class sdtt_content_loop_item(DVBobject):
             "H" # schedule_descriptor_length: 12, schedule_timeshift_information: 4
             "%ds" # loop: start_time: 40, duration: 24
             "%ds" # loop: descriptors
-            % (len(schedule_loop_bytes),len(descriptor_loop_bytes)))
+            % (len(schedule_loop_bytes), len(descriptor_loop_bytes)))
         return pack(fmt,
             (self.group       << 12) | (self.target_version),
             (self.new_version <<  4) | (self.download_level << 2) | self.version_indicator,

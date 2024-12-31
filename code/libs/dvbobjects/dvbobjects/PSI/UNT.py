@@ -35,16 +35,12 @@ class update_notification_section(Section):
         self.table_id_extension = self.action_type << 8 | ((self.OUI >> 16) ^ ((self.OUI >> 8) & 0xFF) ^ (self.OUI & 0xFF))
         
         # pack common_descriptor_loop
-        common_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.common_descriptor_loop),
-            "")
+        common_bytes = b"".join(
+            [x.pack() for x in self.common_descriptor_loop])
 
         # pack compatibility_descriptor_loop
-        compatibility_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.compatibility_descriptor_loop),
-            "")
+        compatibility_bytes = b"".join(
+            [x.pack() for x in self.compatibility_descriptor_loop])
 
         fmt = "!HBBH%ds%ds" % (len(common_bytes), len(compatibility_bytes))
         return pack(fmt,
@@ -62,16 +58,12 @@ class unt_compatibility_descriptor_loop_item(DVBobject):
     def pack(self):
     
         # pack target_descriptor_loop
-        tdl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.target_descriptor_loop),
-            "")
+        tdl_bytes = b"".join(
+            [x.pack() for x in self.target_descriptor_loop])
             
         # pack operational descriptor_loop
-        odl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.operational_descriptor_loop),
-            "")
+        odl_bytes = b"".join(
+            [x.pack() for x in self.operational_descriptor_loop])
         
         fmt = "!H%dsHH%dsH%ds" % (len(self.compatibility_descriptor), len(tdl_bytes), len(odl_bytes))
         return pack(fmt,

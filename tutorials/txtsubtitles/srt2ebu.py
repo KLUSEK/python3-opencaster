@@ -27,15 +27,15 @@ magazine_number = 0x7
 page_number = 0x77
 fake_magazine_number = 0x7
 fake_page_number = 0x78
-print "subtitle page is 777"
-print "empty page used for timing is 778"
+print("subtitle page is 777")
+print("empty page used for timing is 778")
 
 out = open(INPUT_FILE + ".es", "wb");
 teletextunits = EBUTeletextUnits(
 	unit_loop = [
 		EBUTeletext(
 			data_unit_id = 0x03, # 0x03 subtitles, 0x05 impaired
-			field_parity = 01,
+			field_parity = 0o1,
 			line_offset = 0x8,
 			magazine = magazine_number,
 			row = 0x00, # 24 (0x17) lines per magazine, 0 is the page header
@@ -97,7 +97,7 @@ teletextunits = EBUTeletextUnits(
 	]
 )
 
-print "start parsing:"
+print("start parsing:")
 
 page_counter = 0
 last_end_time = 0
@@ -105,7 +105,7 @@ payloadData = open(INPUT_FILE + ".srt", "rb")
 number = payloadData.readline()
 while (number != ""):
 	
-	print "number:" + number.strip("\x0A")
+	print("number:" + number.strip("\x0A"))
 	# number is not necessary
 	
 	time = payloadData.readline()
@@ -120,8 +120,8 @@ while (number != ""):
 		end_minute = splittime[3]
 		end_second = splittime[4].split(",")[0]
 		end_millisecond = splittime[4].split(",")[1].strip()
-		print "start time:" + start_hour + ":" +  start_minute + ":" + start_second
-		print "end time:" + end_hour + ":" +  end_minute + ":" + end_second 
+		print("start time:" + start_hour + ":" +  start_minute + ":" + start_second)
+		print("end time:" + end_hour + ":" +  end_minute + ":" + end_second) 
 		start_time = ( int(start_hour) * 3600 ) + ( int(start_minute) * 60 ) + int(start_second)
 		end_time = ( int(end_hour) * 3600 ) + ( int(end_minute) * 60 ) + int(end_second)
 		if ( int(start_millisecond) > 500 ):
@@ -133,8 +133,8 @@ while (number != ""):
 		else:
 			end_time = end_time * 2
 		
-		print "last time half seconds:" + str(last_end_time)
-		print "start time half seconds:" + str(start_time)
+		print("last time half seconds:" + str(last_end_time))
+		print("start time half seconds:" + str(start_time))
 		#1 page is 690 bytes -> 4 ts packets, we round to half second so: 188*4*8*2 -> 12032 bps
 		#it is necessary to send stuffing pages up to start time
 		for i in range( (start_time - 1 ) - last_end_time ) :
@@ -158,7 +158,7 @@ while (number != ""):
 				teletextunits.unit_loop[10] = EBUTeletext( data_unit_id = 0xFF )
 			out.write(teletextunits.pack())
 			page_counter += 1
-			print "txt time:" + str(page_counter)
+			print("txt time:" + str(page_counter))
 	
 	# now send 2 text lines
 	textline = payloadData.readline()
@@ -174,7 +174,7 @@ while (number != ""):
 		text = ""
 		if (i == 0 or i == 1):
 			text = textline.strip("\x0A")[:35]
-			print "insert text:" + text
+			print("insert text:" + text)
 			j = 0
 			while (len(text) < 35):
 				if (j == 0):
@@ -204,14 +204,14 @@ while (number != ""):
 					)
 			i = 2
 		else:
-			print "drop text:" + textline.strip("\x0A")
+			print("drop text:" + textline.strip("\x0A"))
 		textline = payloadData.readline()
 	out.write(teletextunits.pack());
 	page_counter += 1
-	print "txt time:" + str(page_counter)
+	print("txt time:" + str(page_counter))
 	
 	# now it is necessary to send stuffing pages up to end time minus 1
-	print "end time half seconds:" + str(end_time)
+	print("end time half seconds:" + str(end_time))
 	for i in range( end_time - start_time ) :
 		teletextunits.unit_loop[0].magazine = fake_magazine_number
 		teletextunits.unit_loop[0].page = fake_page_number
@@ -223,7 +223,7 @@ while (number != ""):
 		if (page_counter + 1 <= end_time):
 			out.write(teletextunits.pack());
 			page_counter += 1
-			print "txt time:" + str(page_counter)
+			print("txt time:" + str(page_counter))
 	
 
 	last_end_time = end_time

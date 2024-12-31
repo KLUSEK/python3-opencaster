@@ -26,7 +26,7 @@ from dvbobjects.DSMCC.BIOP import Tap
 class IOR(DVBobject):
 
     def __init__(self, **kwargs):
-        apply(DVBobject.__init__, (self,), kwargs)
+        DVBobject.__init__(*(self,), **kwargs)
 
         # Hard coded; TBD...
         objectLocation = BIOP_ObjectLocation(
@@ -54,7 +54,7 @@ class IOR(DVBobject):
 
         taggedProfiles_count = 1        # MHP / TBD
 
-        assert len(self.type_id) == 4, `self.type_id`
+        assert len(self.type_id) == 4, repr(self.type_id)
 
         profile_bytes = self.profile.pack()
 
@@ -86,7 +86,7 @@ class BIOPProfileBody(DVBobject):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(DVBobject.__init__, (self,), kwargs)
+        DVBobject.__init__(*(self,), **kwargs)
 
 
     def pack(self):

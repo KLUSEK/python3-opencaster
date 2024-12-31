@@ -49,7 +49,7 @@ class ModuleBuilder:
 		filename = "%s/%04d.mod" % (OUTPUT_DIR, self.module_id)
 		self.name = filename # needed for debug
 		if DEBUG:
-			print "NEW MODULE: %s" % filename
+			print("NEW MODULE: %s" % filename)
 		self.__file = open(filename, "wb")
 		self.size = 0
 
@@ -67,7 +67,7 @@ class ModuleBuilder:
 	def write(self, bytes):
 		msgSize = len(bytes)
 		if DEBUG:
-			print "ADD (mod %d, size %d+%d=%d)" % ( self.module_id, self.size, msgSize, self.size+msgSize)
+			print("ADD (mod %d, size %d+%d=%d)" % ( self.module_id, self.size, msgSize, self.size+msgSize))
 		self.__file.write(bytes)
 		self.size = self.size + msgSize
 
@@ -240,7 +240,8 @@ class FSNode(DVBobject): # superclass for FSDirectory, FSSteam and FSFile.
 
 	def _checkBinding(self):
 		try:
-			raise "Already Bound", self._binding
+			print ("Already Bound")
+			raise self._binding
 		except AttributeError:
 			pass
 			
@@ -362,7 +363,7 @@ class FSDir(FSNode, ObjectCarouselBuilder):# A Directory in a File System destin
 		try:
 			ls = os.listdir(self.PATH)
 		except:
-			print self.PATH
+			print(self.PATH)
 			raise
 	
 		ls.sort()
@@ -379,24 +380,24 @@ class FSDir(FSNode, ObjectCarouselBuilder):# A Directory in a File System destin
 				else:
 					obj.shipMessage(theObjectCarouselBuilder, 0)
 				if DEBUG:
-					print obj.message()
-					print
+					print(obj.message())
+					print()
 			elif os.path.isdir(path):
 				if os.path.splitext(filename)[1] in EVENT_EXT:
 					self.visitKEY = self.visitKEY + 1
 					obj = FSStreamEvent(path, self.visitKEY)
 					obj.shipMessage(theObjectCarouselBuilder)
 					if DEBUG:
-						print obj.message()
-						print
+						print(obj.message())
+						print()
 				else:
 					self.visitKEY = self.visitKEY + 1
 					obj = FSDir(path, self.visitKEY)
 					obj.visit(theObjectCarouselBuilder)
 					self.visitKEY = obj.visitKEY
 					if DEBUG:
-						print obj.message()
-						print
+						print(obj.message())
+						print()
 			else:
 				continue
 		
@@ -405,8 +406,8 @@ class FSDir(FSNode, ObjectCarouselBuilder):# A Directory in a File System destin
 		# THIS directory (i.e. self) is complete, so...
 		self.shipMessage(theObjectCarouselBuilder)
 		if DEBUG:
-			print self.message()
-			print
+			print(self.message())
+			print()
 		
 	
 	def shipMessage(self, theObjectCarouselBuilder):
@@ -424,7 +425,7 @@ if __name__ == '__main__':
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], OPTIONS, LONG_OPTIONS)
 	except getopt.error:
-		print ("Usage: %s"
+		print(("Usage: %s"
 			" <InputDirectory>"
 			" <OutputModulesDirectory>"
 			" download_id"
@@ -433,7 +434,7 @@ if __name__ == '__main__':
 			" version" 
 			" [block_size update_flag compress_mode]"
 			) % (
-		sys.argv[0])
+		sys.argv[0]))
 		sys.exit(1)
 	
 	INPUT_DIR, OUTPUT_DIR, CAROUSEL_ID, DOWNLOAD_ID, ASSOC_TAG, MODULE_VERSION, BLOCK_SIZE, UPDATE_FLAG, COMPRESS_MODE = args
@@ -449,5 +450,5 @@ if __name__ == '__main__':
 	theObjectCarouselBuilder.genSpec()
 	
 	if DEBUG:
-		print root.binding().IOR
+		print(root.binding().IOR)
 		pprint.pprint(theObjectCarouselBuilder.TOC)

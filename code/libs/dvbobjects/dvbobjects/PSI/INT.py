@@ -34,16 +34,12 @@ class ip_mac_notification_section(Section):
         self.platform_id_hash = ( (self.platform_id>>16) & 0xff ) ^ ( (self.platform_id>>8) & 0xff ) ^ ( self.platform_id & 0xff )
     
         # pack platform descriptor loop
-        pdl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.platform_descriptor_loop),
-            "")
+        pdl_bytes = b"".join(
+            [x.pack() for x in self.platform_descriptor_loop])
 
         # pack associaton_loop
-        al_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.association_loop),
-            "")
+        al_bytes = b"".join(
+            [x.pack() for x in self.association_loop])
 
 	pdl_bytes_length = len(pdl_bytes)
         self.table_id_extension = self.action_type << 8 | self.platform_id_hash
@@ -64,16 +60,12 @@ class association_loop_item(DVBobject):
   
   def pack(self):
         # pack target descriptor loop
-        tdl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.target_descriptor_loop),
-            "")
+        tdl_bytes = b"".join(
+            [x.pack() for x in self.target_descriptor_loop])
 
         # pack operational descriptor loop
-        odl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.operational_descriptor_loop),
-            "")
+        odl_bytes = b"".join(
+            [x.pack() for x in self.operational_descriptor_loop])
 
 	tdl_bytes_length = len(tdl_bytes)
 	odl_bytes_length = len(odl_bytes)

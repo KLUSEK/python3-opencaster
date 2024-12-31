@@ -60,10 +60,8 @@ class content_descriptor(Descriptor):
     descriptor_tag = 0x54
 
     def bytes(self):
-	data_bytes = string.join(
-		map(lambda x: x.pack(),
-		self.content_user_loop),
-		"")
+	data_bytes = b"".join(
+		[x.pack() for x in self.content_user_loop])
 
 	fmt = "!%ds" % len(data_bytes)
 	return pack(fmt,
@@ -105,10 +103,8 @@ class teletext_descriptor(Descriptor):
     descriptor_tag = 0x56
 
     def bytes(self):
-	data_bytes = string.join(
-		    map(lambda x: x.pack(),
-		    self.teletext_descriptor_loop),
-		    "")
+	data_bytes = b"".join(
+		    [x.pack() for x in self.teletext_descriptor_loop])
 		    
 	fmt = "!%ds" % len(data_bytes)
 	return pack(fmt,
@@ -143,10 +139,8 @@ class vbi_data_descriptor(Descriptor):
     descriptor_tag = 0x45
 
     def bytes(self):
-	data_bytes = string.join(
-		    map(lambda x: x.pack(),
-		    self.vbi_data_descriptor_loop),
-		    "")
+	data_bytes = b"".join(
+		    [x.pack() for x in self.vbi_data_descriptor_loop])
 		    
 	fmt = "!BB%ds" % len(data_bytes)
 	return pack(fmt,
@@ -185,14 +179,12 @@ class data_broadcast_id_descriptor(Descriptor):
     def bytes(self):
 	if (self.data_broadcast_ID == 0x000A): # DVB-SSU
 	
-	    oui_data_bytes = string.join(
-		map(lambda x: x.pack(),
-		self.OUI_info_loop),
-		"")
+	    oui_data_bytes = b"".join(
+		[x.pack() for x in self.OUI_info_loop])
 	
 	    oui_data_length = len(oui_data_bytes);
 
-    	    FMT = "!HB%ds%ds" % (oui_data_length,len(self.private_data_bytes))
+    	    FMT = "!HB%ds%ds" % (oui_data_length, len(self.private_data_bytes))
     	    return pack(FMT,         
                     self.data_broadcast_ID,
 		    oui_data_length,
@@ -235,10 +227,8 @@ class local_time_offset_descriptor(Descriptor):
 	descriptor_tag = 0x58
 
 	def bytes(self):
-		lt_bytes = string.join(
-	    map(lambda x: x.pack(),	
-                self.local_time_offset_loop),
-            "")								    
+		lt_bytes = b"".join(
+	    [x.pack() for x in self.local_time_offset_loop])								    
 		FMT = "!%ds" % len(lt_bytes)
 		return pack(FMT,
 			lt_bytes
@@ -360,10 +350,8 @@ class service_list_descriptor(Descriptor):
     descriptor_tag = 0x41
 
     def bytes(self):
-        dvb_service_bytes = string.join(
-	    map(lambda x: x.pack(),	
-                self.dvb_service_descriptor_loop),
-            "")								    
+        dvb_service_bytes = b"".join(
+	    [x.pack() for x in self.dvb_service_descriptor_loop])								    
 
         FMT = "!%ds" % len(dvb_service_bytes)
         return pack(FMT,
@@ -396,10 +384,8 @@ class logical_channel_descriptor(Descriptor):
     descriptor_tag = 0x83
 
     def bytes(self):
-        lcn_service_bytes = string.join(
-	    map(lambda x: x.pack(),	
-                self.lcn_service_descriptor_loop),
-            "")								    
+        lcn_service_bytes = b"".join(
+	    [x.pack() for x in self.lcn_service_descriptor_loop])								    
 
         FMT = "!%ds" % len(lcn_service_bytes)
         return pack(FMT,
@@ -412,9 +398,8 @@ class logical_channel_descriptor_v2(Descriptor):
    descriptor_tag = 0x87
 
    def bytes(self):
-       lcn_service_bytes = string.join(
-       map(lambda x: x.pack(),                  self.lcn_service_descriptor_loop),
-           "")                                  
+       lcn_service_bytes = b"".join(
+       [x.pack() for x in self.lcn_service_descriptor_loop])                                  
        FMT = "!BB%ds%dsB%ds" % (len(self.channel_list_name), len(self.country_code), len(lcn_service_bytes))
        return pack(FMT,
                self.channel_list_id,
@@ -543,10 +528,8 @@ class subtitling_descriptor(Descriptor):
     descriptor_tag = 0x59
 
     def bytes(self):
-	data_bytes = string.join(
-		    map(lambda x: x.pack(),
-		    self.subtitling_data_descriptor_loop),
-		    "")
+	data_bytes = b"".join(
+		    [x.pack() for x in self.subtitling_data_descriptor_loop])
 		    
 	fmt = "!%ds" % len(data_bytes)
 	return pack(fmt,
@@ -754,10 +737,8 @@ class ip_mac_notification_info(DVBobject):
   def pack(self):
 	  
     # pack platform id data loop
-    pid_bytes = string.join(
-      map(lambda x: x.pack(),
-	self.platform_id_data_loop),
-      "")
+    pid_bytes = b"".join(
+      [x.pack() for x in self.platform_id_data_loop])
 
     platform_id_data_length = len(pid_bytes);
 
@@ -788,10 +769,8 @@ class platform_id_data(DVBobject):
 
   def pack(self):
 	  
-	pn_bytes = string.join(
-	  map(lambda x: x.pack(),
-	    self.platform_name_loop),
-          "")
+	pn_bytes = b"".join(
+	  [x.pack() for x in self.platform_name_loop])
 
 	platform_name_loop_length = len(pn_bytes)
 
@@ -839,10 +818,8 @@ class compatibility_descriptor_loop_item(DVBobject):
 	
 	number_descriptors = len(self.compatibility_descriptor_subloop)
 	
-	compatibility_descriptor_subloop_bytes = string.join(
-	  map(lambda x: x.pack(),
-	    self.compatibility_descriptor_subloop),
-          "")
+	compatibility_descriptor_subloop_bytes = b"".join(
+	  [x.pack() for x in self.compatibility_descriptor_subloop])
 
 	fmt = "!BBBBBBHHB%ds" % len(compatibility_descriptor_subloop_bytes)
 
@@ -866,10 +843,8 @@ class compatibility_descriptor(DVBobject):
   
  	number_descriptors = len(self.compatibility_descriptor_loop)
  	
-	compatibility_descriptor_loop_bytes = string.join(
-	  map(lambda x: x.pack(),
-	    self.compatibility_descriptor_loop),
-          "")
+	compatibility_descriptor_loop_bytes = b"".join(
+	  [x.pack() for x in self.compatibility_descriptor_loop])
           
 	fmt = "!H%ds" % len(compatibility_descriptor_loop_bytes)
 	
@@ -888,10 +863,8 @@ class linkage_descriptor(Descriptor):
 	if (self.linkage_type == 0x0B):
         
 	  # pack platform id data loop
-	  pid_bytes = string.join(
-          map(lambda x: x.pack(),
-	    self.platform_id_data_loop),
-          "")
+	  pid_bytes = b"".join(
+          [x.pack() for x in self.platform_id_data_loop])
 
 	  platform_id_data_length = len(pid_bytes);
 
@@ -913,10 +886,8 @@ class linkage_descriptor(Descriptor):
 	elif (self.linkage_type == 0x09):
 
 	  # pack oui data loop
-	  oui_data_bytes = string.join(
-          map(lambda x: x.pack(),
-	    self.OUI_loop),
-          "")
+	  oui_data_bytes = b"".join(
+          [x.pack() for x in self.OUI_loop])
 
 	  oui_data_length = len(oui_data_bytes);
 
@@ -1016,10 +987,8 @@ class content_identifier_descriptor(Descriptor):
     descriptor_tag = 0x76
 
     def bytes(self):
-        crid_bytes = string.join(
-	    map(lambda x: x.pack(),	
-                self.crid_descriptor_loop),
-            "")								    
+        crid_bytes = b"".join(
+	    [x.pack() for x in self.crid_descriptor_loop])								    
 
         FMT = "!%ds" % len(crid_bytes)
         return pack(FMT,
@@ -1101,10 +1070,8 @@ class extended_event_descriptor(Descriptor):
     descriptor_tag = 0x4E
     
     def bytes(self):
-	item_bytes = string.join(
-	    map(lambda x: x.pack(),	
-                self.extended_event_loop),
-            "")	        
+	item_bytes = b"".join(
+	    [x.pack() for x in self.extended_event_loop])	        
 	assert len(self.ISO639_language_code) == 3
         FMT = "!B%dsB%dsB%ds" % (len(self.ISO639_language_code), len(item_bytes), len(self.text))
         return pack(FMT,
@@ -1198,7 +1165,7 @@ class supplementary_audio_descriptor(Descriptor):
 	
 	descriptor_tag_extension = 0x06;
 	
-	fmt = "!BB%ds%ds" % (len(self.ISO_639_language_code),len(self.private_data_bytes))
+	fmt = "!BB%ds%ds" % (len(self.ISO_639_language_code), len(self.private_data_bytes))
 	
 	return pack(fmt,
 		descriptor_tag_extension,

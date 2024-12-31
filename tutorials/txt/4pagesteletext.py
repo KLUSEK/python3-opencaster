@@ -78,7 +78,7 @@ teletextunitspage1 = EBUTeletextUnits(
 		unit_loop = [
 			EBUTeletext(
 				data_unit_id = 0x02, # 0x02 non-subtitle, 0x03 subtitles, 0xFF stuffing
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x7,
 				magazine = 0x01,
 				row = 0x00, # 24 (0x17) lines per magazine, 0 is the page header
@@ -97,7 +97,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x8,
 				magazine = 0x01,
 				row = 0x01,
@@ -106,7 +106,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x9,
 				magazine = 0x01,
 				row = 0x02,
@@ -115,7 +115,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xA,
 				magazine = 0x01,
 				row = 0x03, 
@@ -124,7 +124,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xB,
 				magazine = 0x01,
 				row = 0x04,
@@ -133,7 +133,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xC,
 				magazine = 0x01,
 				row = 0x05,
@@ -142,7 +142,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xD,
 				magazine = 0x01,
 				row = 0x06, 
@@ -151,7 +151,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xE,
 				magazine = 0x01,
 				row = 0x07,
@@ -160,7 +160,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xF,
 				magazine = 0x01,
 				row = 0x08,
@@ -169,7 +169,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x10,
 				magazine = 0x01,
 				row = 0x09,
@@ -178,7 +178,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x13,
 				magazine = 0x01,
 				row = 0x0A, 
@@ -187,7 +187,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x14,
 				magazine = 0x01,
 				row = 0x0B,
@@ -196,7 +196,7 @@ teletextunitspage1 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x15,
 				magazine = 0x01,
 				row = 0x0C,
@@ -363,7 +363,7 @@ teletextunitspage2 = EBUTeletextUnits(
 		unit_loop = [
 			EBUTeletext(
 				data_unit_id = 0x02, # 0x02 non-subtitle, 0x03 subtitles, 0xFF stuffing
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x7,
 				magazine = 0x02,
 				row = 0x00, # 24 (0x17) lines per magazine, 0 is the page header
@@ -382,7 +382,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x8,
 				magazine = 0x02,
 				row = 0x01,
@@ -391,7 +391,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x9,
 				magazine = 0x02,
 				row = 0x02,
@@ -400,7 +400,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xA,
 				magazine = 0x02,
 				row = 0x03, 
@@ -409,7 +409,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xB,
 				magazine = 0x02,
 				row = 0x04,
@@ -418,7 +418,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xC,
 				magazine = 0x02,
 				row = 0x05,
@@ -427,7 +427,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xD,
 				magazine = 0x02,
 				row = 0x06, 
@@ -436,7 +436,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xE,
 				magazine = 0x02,
 				row = 0x07,
@@ -445,7 +445,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xF,
 				magazine = 0x02,
 				row = 0x08,
@@ -454,7 +454,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x10,
 				magazine = 0x02,
 				row = 0x09,
@@ -463,7 +463,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x13,
 				magazine = 0x02,
 				row = 0x0A, 
@@ -472,7 +472,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x14,
 				magazine = 0x02,
 				row = 0x0B,
@@ -481,7 +481,7 @@ teletextunitspage2 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x15,
 				magazine = 0x02,
 				row = 0x0C,
@@ -613,7 +613,7 @@ teletextunitspage3 = EBUTeletextUnits(
 		unit_loop = [
 			EBUTeletext(
 				data_unit_id = 0x02, # 0x02 non-subtitle, 0x03 subtitles, 0xFF stuffing
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x7,
 				magazine = 0x03,
 				row = 0x00, # 24 (0x17) lines per magazine, 0 is the page header
@@ -632,7 +632,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x8,
 				magazine = 0x03,
 				row = 0x01,
@@ -641,7 +641,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x9,
 				magazine = 0x03,
 				row = 0x02,
@@ -650,7 +650,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xA,
 				magazine = 0x03,
 				row = 0x03, 
@@ -659,7 +659,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xB,
 				magazine = 0x03,
 				row = 0x04,
@@ -668,7 +668,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xC,
 				magazine = 0x03,
 				row = 0x05,
@@ -677,7 +677,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xD,
 				magazine = 0x03,
 				row = 0x06, 
@@ -686,7 +686,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xE,
 				magazine = 0x03,
 				row = 0x07,
@@ -695,7 +695,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xF,
 				magazine = 0x03,
 				row = 0x08,
@@ -704,7 +704,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x10,
 				magazine = 0x03,
 				row = 0x09,
@@ -713,7 +713,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x13,
 				magazine = 0x03,
 				row = 0x0A, 
@@ -722,7 +722,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x14,
 				magazine = 0x03,
 				row = 0x0B,
@@ -731,7 +731,7 @@ teletextunitspage3 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x15,
 				magazine = 0x03,
 				row = 0x0C,
@@ -866,7 +866,7 @@ teletextunitspage4 = EBUTeletextUnits(
 		unit_loop = [
 			EBUTeletext(
 				data_unit_id = 0x02, # 0x02 non-subtitle, 0x03 subtitles, 0xFF stuffing
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x7,
 				magazine = 0x04,
 				row = 0x00, # 24 (0x17) lines per magazine, 0 is the page header
@@ -885,7 +885,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x8,
 				magazine = 0x04,
 				row = 0x01,
@@ -894,7 +894,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x9,
 				magazine = 0x04,
 				row = 0x02,
@@ -903,7 +903,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xA,
 				magazine = 0x04,
 				row = 0x03, 
@@ -912,7 +912,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xB,
 				magazine = 0x04,
 				row = 0x04,
@@ -921,7 +921,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xC,
 				magazine = 0x04,
 				row = 0x05,
@@ -930,7 +930,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xD,
 				magazine = 0x04,
 				row = 0x06, 
@@ -939,7 +939,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xE,
 				magazine = 0x04,
 				row = 0x07,
@@ -948,7 +948,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0xF,
 				magazine = 0x04,
 				row = 0x08,
@@ -957,7 +957,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x10,
 				magazine = 0x04,
 				row = 0x09,
@@ -966,7 +966,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x13,
 				magazine = 0x04,
 				row = 0x0A, 
@@ -975,7 +975,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x14,
 				magazine = 0x04,
 				row = 0x0B,
@@ -984,7 +984,7 @@ teletextunitspage4 = EBUTeletextUnits(
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
-				field_parity = 01,
+				field_parity = 0o1,
 				line_offset = 0x15,
 				magazine = 0x04,
 				row = 0x0C,

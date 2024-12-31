@@ -74,7 +74,7 @@ def BuildCarousel(INPUT_DIR, OUTPUT_DIR):
 	    
     dsi.generate(OUTPUT_DIR, spec.srg_ior)
     if spec.srg_ior == None:
-        print dsi
+        print(dsi)
 
 ######################################################################
 OPTIONS = "h"
@@ -83,11 +83,11 @@ LONG_OPTIONS = [
     ]
 
 def Usage(return_code = 1):
-    print ("Usage: %s"
+    print(("Usage: %s"
            " [option...]"
            " <InputModuleDirectory>"
            " <OutputSectionsDirectory>") % (
-        sys.argv[0])
+        sys.argv[0]))
     sys.exit(return_code)
 
 def CheckArgs():

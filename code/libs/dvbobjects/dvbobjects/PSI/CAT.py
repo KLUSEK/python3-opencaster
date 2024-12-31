@@ -32,10 +32,8 @@ class conditional_access_section(Section):
     def pack_section_body(self):
     
         # pack ca_descriptor_loop
-        pl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.ca_descriptor_loop),
-            "")
+        pl_bytes = b"".join(
+            [x.pack() for x in self.ca_descriptor_loop])
 
         self.table_id_extension = 0xFFFF
 

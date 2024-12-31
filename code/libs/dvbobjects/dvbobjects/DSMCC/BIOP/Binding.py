@@ -32,7 +32,7 @@ class Binding(DVBobject):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(DVBobject.__init__, (self,), kwargs)
+        DVBobject.__init__(*(self,), **kwargs)
 
         assert self.bindingType in (    # DVB
             BINDING_TYPE_NOBJECT,
@@ -75,9 +75,9 @@ class Binding(DVBobject):
         loc = self.IOR.profile.objectLocation
         mod = loc.moduleId
         key = loc.objectKey
-        return `(self.nameId,
+        return repr((self.nameId,
                  (mod, key),
-                 )`
+                 ))
 
 ######################################################################
 class ObjectFileBinding(Binding):
@@ -88,7 +88,7 @@ class ObjectFileBinding(Binding):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(Binding.__init__, (self,), kwargs)
+        Binding.__init__(*(self,), **kwargs)
 
        	self.objectInfo = pack("!LL", 0, self.contentSize)
         
@@ -102,7 +102,7 @@ class ObjectStreamEventBinding(Binding):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(Binding.__init__, (self,), kwargs)
+        Binding.__init__(*(self,), **kwargs)
 
 ######################################################################
 class ContextBinding(Binding):
@@ -114,5 +114,5 @@ class ContextBinding(Binding):
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
-        apply(Binding.__init__, (self,), kwargs)
+        Binding.__init__(*(self,), **kwargs)
 

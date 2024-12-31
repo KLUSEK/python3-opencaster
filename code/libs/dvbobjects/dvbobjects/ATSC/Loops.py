@@ -43,10 +43,8 @@ class string_loop_item(DVBobject):
     def pack(self):
 	assert len(self.ISO639_language_code) == 3
 	
-	data_bytes = string.join(
-		map(lambda x: x.pack(),
-		self.segment_loop),
-		"")
+	data_bytes = b"".join(
+		[x.pack() for x in self.segment_loop])
 
 	self.number_segments = len(self.segment_loop)
 	
@@ -65,10 +63,8 @@ class multiple_string_structure(DVBobject):
     def pack(self):
 	
 	
-	data_bytes = string.join(
-		map(lambda x: x.pack(),
-		self.string_loop),
-		"")
+	data_bytes = b"".join(
+		[x.pack() for x in self.string_loop])
 
 	self.number_strings = len(self.string_loop)
 	

@@ -247,7 +247,7 @@ ait = application_information_section(
 							visibility = 3, # 3 the applications is visible to the user, 1 the application is visible only to other applications
 							application_priority = 1, # 1 is lowset, it is used when more than 1 applications is executing
 							#transport_protocol_labels = [1],
-							transport_protocol_labels = [1,3], # If more than one protocol is signalled then each protocol is an alternative delivery mechanism. The ordering indicates 
+							transport_protocol_labels = [1, 3], # If more than one protocol is signalled then each protocol is an alternative delivery mechanism. The ordering indicates 
 													 # the broadcaster's view of which transport connection will provide the best user experience (first is best)
 					),
 					application_name_descriptor(application_name = appli_name),

@@ -21,4 +21,4 @@
 
 from struct import pack, unpack, calcsize
 from dvbobjects import DVBobject, CDR
-import crc32
+from . import crc32

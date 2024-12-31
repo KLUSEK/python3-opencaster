@@ -34,15 +34,11 @@ class terrestrial_virtual_channel_section(Section):
 		self.table_id_extension = self.transport_stream_id
 	
 		# pack event_loop
-		cl_bytes = string.join(
-			map(lambda x: x.pack(),
-			self.channels_loop),
-		"")
+		cl_bytes = b"".join(
+			[x.pack() for x in self.channels_loop])
 		
-		adl_bytes = string.join(
-			map(lambda x: x.pack(),
-			self.additional_descriptors_loop),
-		"")
+		adl_bytes = b"".join(
+			[x.pack() for x in self.additional_descriptors_loop])
 
 		fmt = "!BB%dsH%ds" % (len(cl_bytes), len(adl_bytes))
 		return pack(fmt,
@@ -61,11 +57,8 @@ class channel_loop_item(DVBobject):
 		assert len(self.short_name) == 14 #bytes -> 7*16 bit, 7 utf-16 chars
 	
 	# pack event_descriptor_loop
-		dl_bytes = string.join(
-			map(lambda x: x.pack(),
-			self.descriptors_loop),
-			""
-		)
+		dl_bytes = b"".join(
+			[x.pack() for x in self.descriptors_loop])
 
 		fmt = "!%dsLLHHBBHH%ds" % (len(self.short_name), len(dl_bytes))
 		return pack(fmt,
@@ -87,11 +80,8 @@ class service_location_descriptor(DVBobject):
 	def pack(self):
 
 		#pack service_location_loop
-		sl_bytes = string.join(
-			map(lambda x: x.pack(),
-			self.service_location_loop),
-			""
-		)
+		sl_bytes = b"".join(
+			[x.pack() for x in self.service_location_loop])
 
 		fmt = "!BBHB%ds" % (len(sl_bytes))
 		return pack(fmt,

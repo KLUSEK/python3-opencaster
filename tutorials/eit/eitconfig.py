@@ -220,7 +220,7 @@ eit_follow = event_information_section(
 	    event_loop_item(
 		event_id = 2, 
 		start_year = 108, # since 1900
-		start_month = 06, 
+		start_month = 0o6, 
 		start_day = 10,
 		start_hours = 0x23,
 		start_minutes = 0x30,

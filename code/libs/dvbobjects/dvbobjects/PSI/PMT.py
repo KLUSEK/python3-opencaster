@@ -35,16 +35,12 @@ class program_map_section(Section):
     def pack_section_body(self):
     
         # pack program_info_descriptor_loop
-        pidl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.program_info_descriptor_loop),
-            "")
+        pidl_bytes = b"".join(
+            [x.pack() for x in self.program_info_descriptor_loop])
 
         # pack stream_loop
-        pl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.stream_loop),
-            "")
+        pl_bytes = b"".join(
+            [x.pack() for x in self.stream_loop])
 
         self.table_id_extension = self.program_number
 	self.private_indicator = 0
@@ -63,10 +59,8 @@ class stream_loop_item(DVBobject):
     def pack(self):
     
         # pack elementary_stream_info_descriptor_loop
-        esidl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.element_info_descriptor_loop),
-            "")
+        esidl_bytes = b"".join(
+            [x.pack() for x in self.element_info_descriptor_loop])
 
         fmt = "!BHH%ds" % len(esidl_bytes)
         return pack(fmt,

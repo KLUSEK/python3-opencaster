@@ -68,12 +68,12 @@ class DVBobject:
     def __init__(self, **kwargs):
         """Initialize instance attributes from keyword arguments.
         """
-        apply(self.set, (), kwargs)
+        self.set(*(), **kwargs)
 
     def set(self, **kwargs):
         """Add (more) instance attributes from keyword arguments.
         """
-        for k, v in kwargs.items():
+        for k, v in list(kwargs.items()):
             setattr(self, k, v)
 
     def __repr__(self):
@@ -92,16 +92,16 @@ class DVBobject:
         i = 0
         for byte in bytes:
             if i % BYTES_PER_LINE == 0:
-                if i: print             # start on a fresh line...
-                print "%04x " % i,
-            print "%02X" % ord(byte),
+                if i: print()             # start on a fresh line...
+                print("%04x " % i, end=' ')
+            print("%02X" % ord(byte), end=' ')
             i = i+1
-        print                           # dump is done => NL
+        print()                           # dump is done => NL
         
     def test(self):
         """Used for debugging."""
         if not self.__dict__:
             self.sample()
         self.dump()
-        print self
+        print(self)
 

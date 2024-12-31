@@ -32,10 +32,8 @@ class program_association_section(Section):
     def pack_section_body(self):
     
         # pack program_loop_item
-        pl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.program_loop),
-            "")
+        pl_bytes = b"".join(
+            [x.pack() for x in self.program_loop])
 
         self.table_id_extension = self.transport_stream_id # ???
 	self.private_indicator = 0

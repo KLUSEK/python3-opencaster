@@ -153,10 +153,8 @@ class EBUTeletextUnits(DVBobject):
 	def pack(self):
 	
 		# pack unit_loop
-		pl_bytes = string.join(
-			map(lambda x: x.pack(),
-			self.unit_loop),
-			"")
+		pl_bytes = b"".join(
+			[x.pack() for x in self.unit_loop])
 		fmt = "!%ds" % (len(pl_bytes))
 		return pack(fmt, 
 			pl_bytes

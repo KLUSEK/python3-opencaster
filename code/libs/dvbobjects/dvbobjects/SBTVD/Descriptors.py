@@ -35,10 +35,8 @@ class terrestrial_delivery_system_descriptor(Descriptor):
     descriptor_tag = 0xfa
 
     def bytes(self):
-        frequency_bytes = string.join(
-                map(lambda x: x.pack(), 
-                self.frequencies),
-                "")
+        frequency_bytes = b"".join(
+                [x.pack() for x in self.frequencies])
             
         fmt = "!H%ds" % len(frequency_bytes)
         return pack(fmt, ((self.area_code & 0xFFF) << 4) | ((self.guard_interval & 0x3) << 2) | (self.transmission_mode & 0x3), frequency_bytes)
@@ -50,7 +48,7 @@ class partial_reception_descriptor(Descriptor):
     descriptor_tag = 0xfb
 
     def bytes(self):
-	sid_pack = string.join(map (lambda x: pack("!H", x), self.service_ids), "")
+	sid_pack = b"".join([pack("!H", x) for x in self.service_ids])
 
 	fmt = "!%ds" % (len(sid_pack))
         return pack(fmt, sid_pack)
@@ -68,10 +66,8 @@ class system_management_descriptor(Descriptor):
             (self.additional_broadcasting_identification)
         )
 
-        additional_id_info_pack = string.join(
-            map (lambda x: pack("!B", x), self.additional_identification_bytes),
-            ""
-        )
+        additional_id_info_pack = b"".join(
+            [pack("!B", x) for x in self.additional_identification_bytes])
         fmt = "!H%ds" % len(additional_id_info_pack)
 
         return pack(fmt, sys_man_id, additional_id_info_pack)
@@ -98,12 +94,8 @@ class transmission_type_loop_item(DVBobject):
 
     def pack(self):
         num_of_service = len(self.service_id_loop)
-        service_id_loop_cat = string.join(
-            map(
-                lambda x: x.pack(),
-                self.service_id_loop
-            ), ""
-        )
+        service_id_loop_cat = b"".join(
+            [x.pack() for x in self.service_id_loop])
     
         fmt = "!BB%ds" % len(service_id_loop_cat)
         return pack(fmt,
@@ -120,12 +112,8 @@ class transport_stream_information_descriptor(Descriptor):
 
         name_len = len(self.ts_name)
         ts_type_count = len(self.transmission_type_loop)
-        transmission_type_loop_cat = string.join(
-            map(
-                lambda x: x.pack(),
-                self.transmission_type_loop
-            ), ""
-        )
+        transmission_type_loop_cat = b"".join(
+            [x.pack() for x in self.transmission_type_loop])
 
         fmt = "!BB%ds%ds" % (name_len, len(transmission_type_loop_cat))
         return pack(fmt,
@@ -154,7 +142,8 @@ class ts_loop_item(DVBobject):
     #tx_type_info
     # svc_loop = []
     def pack(self):
-        svc_bytes = "".join(map(lambda x: chr(x>>8 & 0xFF) + chr(x&0xFF), self.svc_loop))
+        svc_bytes = "".join([chr(x >> 8 & 0xFF) + chr(x & 0xFF)
+                            for x in self.svc_loop])
         fmt = "!BB%ds" % len(svc_bytes)
         return pack(fmt, self.tx_type_info, len(self.svc_loop), svc_bytes)
 
@@ -164,7 +153,7 @@ class ts_info_descriptor(Descriptor):
     # tsname
     #ts_loop = []
     def pack(self):
-        ts_loop_bytes = "".join(map(lambda x: x.pack(), self.ts_loop))
+        ts_loop_bytes = "".join([x.pack() for x in self.ts_loop])
         fmt = "!BBBB%ds%ds" % (len(self.tsname), len(ts_loop_bytes))
 #	print len(ts_loop_bytes)
         return pack(fmt, self.descriptor_tag, len(self.tsname) + len(ts_loop_bytes) + 2, self.rc_key, len(self.tsname)<<2 | len(self.ts_loop) & 3, self.tsname, ts_loop_bytes)

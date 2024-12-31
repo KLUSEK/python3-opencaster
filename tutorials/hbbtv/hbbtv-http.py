@@ -174,7 +174,7 @@ ait = application_information_section(
         application_type = 0x0010,
         common_descriptor_loop = [
 		external_application_authorisation_descriptor(
-			application_identifiers = [[organisationId_1,applicationId_1] , [organisationId_2,applicationId_2]],
+			application_identifiers = [[organisationId_1, applicationId_1], [organisationId_2, applicationId_2]],
 			application_priority =     [  			5			          ,		 		1			      ]
 			# This descriptor informs that 2 applications are available on the program by specifying the applications identifiers (couple of organization_Id and application_Id parameters) and their related priorities (5 for the first and 1 for the second).
 			# Actualy our service contains only one application so this descriptor is not relevent and is just here to show you how to use this descriptor.

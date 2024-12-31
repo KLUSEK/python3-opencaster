@@ -38,9 +38,7 @@ class GroupInfoIndication(DVBobject):
             self.groupInfos.append(group.getGroupInfo())
 
     def pack(self):
-        infos = string.join(map(lambda i: i.pack(),
-                                self.groupInfos),
-                            "")
+        infos = b"".join([i.pack() for i in self.groupInfos])
         FMT = ("!"
                "H"                      # NumberOfGroups
                "%ds"                    # group infos
@@ -59,9 +57,7 @@ class GroupInfoIndication(DVBobject):
 class GroupInfo(DVBobject):
 
     def pack(self):
-        self.groupInfo = string.join(map(lambda d: d.pack(),
-                                         self.descriptors),
-                                     "")
+        self.groupInfo = b"".join([d.pack() for d in self.descriptors])
 
         FMT = ("!"
                "L"                      # groupId
@@ -94,9 +90,7 @@ class ModuleInfoIndication(DVBobject):
             self.moduleInfos.append(module.getModuleInfo())
 
     def pack(self):
-        infos = string.join(map(lambda i: i.pack(),
-                                self.moduleInfos),
-                            "")
+        infos = b"".join([i.pack() for i in self.moduleInfos])
         FMT = ("!"
                "H"                      # NumberOfModules
                "%ds"                    # module infos
@@ -116,10 +110,8 @@ class ModuleInfo(DVBobject):
 	elif self.moduleInfo == "" and len(self.descriptors) == 0:
             moduleInfoBytes = ""	    
         else:
-            moduleInfoBytes = string.join(
-                map(lambda d: d.pack(),
-                    self.descriptors),
-                "")
+            moduleInfoBytes = b"".join(
+                [d.pack() for d in self.descriptors])
 
         FMT = ("!"
                "H"                      # moduleId

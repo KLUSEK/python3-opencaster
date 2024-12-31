@@ -36,16 +36,12 @@ class application_information_section(Section):
         self.private_indicator = 1
 
         # pack common_descriptor_loop
-        cdl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.common_descriptor_loop),
-            "")
+        cdl_bytes = b"".join(
+            [x.pack() for x in self.common_descriptor_loop])
 
         # pack applicaton_loop
-        apl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.application_loop),
-            "")
+        apl_bytes = b"".join(
+            [x.pack() for x in self.application_loop])
 
         self.table_id_extension = self.application_type # ???
 
@@ -63,10 +59,8 @@ class application_loop_item(DVBobject):
     def pack(self):
     
         # pack application_descriptors_loop
-        adl_bytes = string.join(
-            map(lambda x: x.pack(),
-                self.application_descriptors_loop),
-            "")
+        adl_bytes = b"".join(
+            [x.pack() for x in self.application_descriptors_loop])
 
         fmt = "!LHBH%ds" % len(adl_bytes)
         return pack(fmt,

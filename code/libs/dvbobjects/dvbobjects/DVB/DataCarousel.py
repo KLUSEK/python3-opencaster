@@ -26,7 +26,7 @@ from dvbobjects.utils import *
 from dvbobjects.DSMCC.Message import *
 import dvbobjects.DSMCC.BIOP
 
-from Loops import *
+from .Loops import *
 
 ######################################################################
 class SuperGroup(DownloadServerInitiate):
@@ -111,7 +111,7 @@ class Module(DVBobject):
         tmp = ((((self.moduleSize - 1) / blockSize) / 256) * 256) - 1
 
         input = open(self.INPUT, "rb")
-        while 1:
+        while True:
             data = input.read(blockSize)
             if not data:
                 break
