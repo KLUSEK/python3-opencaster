@@ -37,7 +37,7 @@ class Event_names(DVBobject):
                 len(name),
                 name,
                 )
-    return result
+        return result
     
 ###############################
 class Event_ids(DVBobject):
@@ -47,7 +47,7 @@ class Event_ids(DVBobject):
         result = pack("!B", self.eventids_count)
         for id in self.event_id_loop:
             result = result + pack("!H", id)
-    return result
+        return result
     
 ###############################
 class Taps(DVBobject):
@@ -57,7 +57,7 @@ class Taps(DVBobject):
         result = pack("!B", self.taps_count)
         for tap in self.tap_loop:
             result = result + tap.pack()
-    return result
+        return result
 ###############################
     
 

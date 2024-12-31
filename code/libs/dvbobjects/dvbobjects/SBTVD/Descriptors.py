@@ -139,7 +139,7 @@ class video_decode_control_descriptor(Descriptor):
 ######################################################################
 
 class ts_loop_item(DVBobject):
-    #tx_type_info
+    # tx_type_info
     # svc_loop = []
     def pack(self):
         svc_bytes = "".join([chr(x >> 8 & 0xFF) + chr(x & 0xFF)
@@ -151,10 +151,10 @@ class ts_info_descriptor(Descriptor):
     descriptor_tag = 0xcd
     # rc_key
     # tsname
-    #ts_loop = []
+    # ts_loop = []
     def pack(self):
         ts_loop_bytes = "".join([x.pack() for x in self.ts_loop])
         fmt = "!BBBB%ds%ds" % (len(self.tsname), len(ts_loop_bytes))
-#        print len(ts_loop_bytes)
+    # print len(ts_loop_bytes)
         return pack(fmt, self.descriptor_tag, len(self.tsname) + len(ts_loop_bytes) + 2, self.rc_key, len(self.tsname)<<2 | len(self.ts_loop) & 3, self.tsname, ts_loop_bytes)
         

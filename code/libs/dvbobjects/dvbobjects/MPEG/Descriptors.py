@@ -140,25 +140,25 @@ class carousel_identifier_descriptor(Descriptor):
                 fmt = "!LBBHHHBLBB%ds%ds" % (len(self.object_key_data), len(self.private_data))
                 return pack(fmt,
                             self.carousel_ID,
-                        self.format_ID,
-                        self.module_version,
-                        self.module_ID,
-                        self.block_size,
-                        self.module_size,
-                        self.compression_method,
-                        self.original_size,
-                        self.timeout,
-                        len(self.object_key_data),
-                        self.object_key_data,
-                        self.private_data,
-                        )
+                            self.format_ID,
+                            self.module_version,
+                            self.module_ID,
+                            self.block_size,
+                            self.module_size,
+                            self.compression_method,
+                            self.original_size,
+                            self.timeout,
+                            len(self.object_key_data),
+                            self.object_key_data,
+                            self.private_data,
+                            )
         else :
                 fmt = "!LB%ds" % (len(self.private_data))
                 return pack(fmt,
-                        self.carousel_ID,
-                        self.format_ID,
-                        self.private_data,
-                        )
+                            self.carousel_ID,
+                            self.format_ID,
+                            self.private_data,
+                            )
                         
 ######################################################################                                                        
 class ca_descriptor(Descriptor):

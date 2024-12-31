@@ -319,7 +319,7 @@ class transport_stream_sat_descriptor(Descriptor):
                     self.orbital_position,
                     (self.west_east_flag << 7) | (self.polarization << 5) | self.modulation,
                     (self.symbol_rate << 4)| self.FEC_inner,
-                 )
+                    )
 
 #######################################################################
 class transport_stream_cable_descriptor(Descriptor):
@@ -1074,14 +1074,14 @@ class extended_event_descriptor(Descriptor):
         assert len(self.ISO639_language_code) == 3
         FMT = "!B%dsB%dsB%ds" % (len(self.ISO639_language_code), len(item_bytes), len(self.text))
         return pack(FMT,
-                        (self.descriptor_number & 0xF) << 4 |
-                        (self.last_descriptor_number & 0xF),
-                        self.ISO639_language_code,
+                    (self.descriptor_number & 0xF) << 4 |
+                    (self.last_descriptor_number & 0xF),
+                    self.ISO639_language_code,
                     len(item_bytes),
-                        item_bytes,
-                        len(self.text),
-                        self.text,
-                        )
+                    item_bytes,
+                    len(self.text),
+                    self.text,
+                    )
      
 ######################################################################
 class ac3_descriptor(Descriptor):
