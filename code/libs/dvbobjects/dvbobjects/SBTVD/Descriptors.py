@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 #
 # Copyright © 2010 Robson Tovo <robson.tovo@gmail.com>,
-#                    Marco Casaroli <marco.casaroli@gmail.com>
-#					 LIFIA - Facultad de Informatica - Univ. Nacional de La Plata
+#                  Marco Casaroli <marco.casaroli@gmail.com>
+#                  LIFIA - Facultad de Informatica - Univ. Nacional de La Plata
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
@@ -48,9 +48,9 @@ class partial_reception_descriptor(Descriptor):
     descriptor_tag = 0xfb
 
     def bytes(self):
-	sid_pack = b"".join([pack("!H", x) for x in self.service_ids])
+        sid_pack = b"".join([pack("!H", x) for x in self.service_ids])
 
-	fmt = "!%ds" % (len(sid_pack))
+        fmt = "!%ds" % (len(sid_pack))
         return pack(fmt, sid_pack)
 
 ######################################################################
@@ -155,6 +155,6 @@ class ts_info_descriptor(Descriptor):
     def pack(self):
         ts_loop_bytes = "".join([x.pack() for x in self.ts_loop])
         fmt = "!BBBB%ds%ds" % (len(self.tsname), len(ts_loop_bytes))
-#	print len(ts_loop_bytes)
+#        print len(ts_loop_bytes)
         return pack(fmt, self.descriptor_tag, len(self.tsname) + len(ts_loop_bytes) + 2, self.rc_key, len(self.tsname)<<2 | len(self.ts_loop) & 3, self.tsname, ts_loop_bytes)
-	
+        

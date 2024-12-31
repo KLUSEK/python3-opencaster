@@ -43,11 +43,11 @@ class program_map_section(Section):
             [x.pack() for x in self.stream_loop])
 
         self.table_id_extension = self.program_number
-	self.private_indicator = 0
+        self.private_indicator = 0
 
         fmt = "!HH%ds%ds" % (len(pidl_bytes), len(pl_bytes))
         return pack(fmt,
-	    0xE000 | (self.PCR_PID & 0x1FFF),
+            0xE000 | (self.PCR_PID & 0x1FFF),
             0xF000 | (len(pidl_bytes) & 0x0FFF),
             pidl_bytes,
             pl_bytes,

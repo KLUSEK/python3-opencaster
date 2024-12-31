@@ -35,7 +35,7 @@ class event_information_section(Section):
 
         self.table_id_extension = self.source_id
         self.protocol_version = 0
-	
+
         self.num_events_in_section = len(self.event_loop)
 
         # pack event_loop
@@ -44,10 +44,10 @@ class event_information_section(Section):
 
         fmt = "!BB%ds" % len(el_bytes)
         return pack(fmt,
-	    self.protocol_version,
-	    self.num_events_in_section,
-            el_bytes,
-            )
+                    self.protocol_version,
+                    self.num_events_in_section,
+                    el_bytes,
+                    )
 
 ######################################################################
 class event_loop_item(DVBobject):
@@ -59,16 +59,16 @@ class event_loop_item(DVBobject):
         event_descriptors_bytes = b"".join(
             [x.pack() for x in self.descriptor_loop])
 
-	title_text_bytes = self.title_text.pack()
+        title_text_bytes = self.title_text.pack()
 
         fmt = "!HLBHB%dsH%ds" % (len(title_text_bytes), len(event_descriptors_bytes))
         return pack(fmt,
                     (0x3 << 14) | (self.event_id & 0x3FFF),
-		    self.start_time,
-		    (0x3 << 6) | ((self.ETM_location & 0x3) << 4) | ((self.length_in_seconds >> 16) & 0xF),
-		    (self.length_in_seconds & 0xFFFF),
-		    len(title_text_bytes),
-		    title_text_bytes,
-		    (0xF << 12) | (len(event_descriptors_bytes) & 0x0FFF),
-		    event_descriptors_bytes,
-		    )
+                    self.start_time,
+                    (0x3 << 6) | ((self.ETM_location & 0x3) << 4) | ((self.length_in_seconds >> 16) & 0xF),
+                    (self.length_in_seconds & 0xFFFF),
+                    len(title_text_bytes),
+                    title_text_bytes,
+                    (0xF << 12) | (len(event_descriptors_bytes) & 0x0FFF),
+                    event_descriptors_bytes,
+                    )

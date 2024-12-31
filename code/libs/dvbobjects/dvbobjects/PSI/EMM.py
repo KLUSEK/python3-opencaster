@@ -49,6 +49,6 @@ class emm_loop_item(DVBobject):
     
         # pack program_loop_item
         fmt = "!H"
-	return pack(fmt,
-	    self.test,
-	)
+        return pack(fmt,
+            self.test,
+        )

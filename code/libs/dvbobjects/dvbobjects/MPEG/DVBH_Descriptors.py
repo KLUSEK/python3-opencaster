@@ -241,7 +241,7 @@ class time_slice_fec_identifier_descriptor(Descriptor):
 
     def bytes(self):
 
-    	time_slice_fec_id = 0x00;
+        time_slice_fec_id = 0x00;
 
         fmt = "!BBB"
 
@@ -255,22 +255,22 @@ class time_slice_fec_identifier_descriptor(Descriptor):
 class platform_id_data2(DVBobject):
   
   def pack(self):
-	fmt = "!BBBBB"
+        fmt = "!BBBBB"
 
-	return pack(fmt,
-		    (self.platform_id >> 16) & 0xFF,
-		    (self.platform_id >> 8) & 0xFF,
-		    self.platform_id  & 0xFF,
-		    self.action_type & 0xFF,
-		    (0x03 << 6) & 0xC0 | (0x00 << 5) & 0x20 | 0x01 & 0x1F
-		    )
+        return pack(fmt,
+                    (self.platform_id >> 16) & 0xFF,
+                    (self.platform_id >> 8) & 0xFF,
+                    self.platform_id  & 0xFF,
+                    self.action_type & 0xFF,
+                    (0x03 << 6) & 0xC0 | (0x00 << 5) & 0x20 | 0x01 & 0x1F
+                    )
     
 
 # FIXME: move this class to another file, it's no descriptor
 class ip_mac_notification_info(DVBobject):
 
   def pack(self):
-	  
+          
     # pack platform id data loop
     pid_bytes = b"".join(
       [x.pack() for x in self.platform_id_data_loop])
@@ -280,44 +280,44 @@ class ip_mac_notification_info(DVBobject):
     fmt = "!B%ds%ds" % (platform_id_data_length, len(self.private_data_bytes))
 
     return pack(fmt,
-		platform_id_data_length,
-		pid_bytes,
-		self.private_data_bytes
-		)
+                platform_id_data_length,
+                pid_bytes,
+                self.private_data_bytes
+                )
 
 # FIXME: move this class to another file, it's no descriptor
 class platform_name(DVBobject):
   
   def pack(self):
-	platform_name_length = len(self.text_char_bytes)
+        platform_name_length = len(self.text_char_bytes)
 
-	fmt = "!3sB%ds" % platform_name_length
+        fmt = "!3sB%ds" % platform_name_length
 
-	return pack(fmt,
-		    self.ISO_639_language_code,
-		    platform_name_length,
-		    self.text_char_bytes
-		    )
+        return pack(fmt,
+                    self.ISO_639_language_code,
+                    platform_name_length,
+                    self.text_char_bytes
+                    )
 
 # FIXME: move this class to another file, it's no descriptor
 class platform_id_data(DVBobject):
 
   def pack(self):
-	  
-	pn_bytes = b"".join(
-	  [x.pack() for x in self.platform_name_loop])
+          
+        pn_bytes = b"".join(
+          [x.pack() for x in self.platform_name_loop])
 
-	platform_name_loop_length = len(pn_bytes)
+        platform_name_loop_length = len(pn_bytes)
 
-	fmt = "!BBBB%ds" % platform_name_loop_length
+        fmt = "!BBBB%ds" % platform_name_loop_length
 
-	return pack(fmt,
-		    (self.platform_id >> 16) & 0xFF,
-		    (self.platform_id >> 8) & 0xFF,
-		    self.platform_id  & 0xFF,
-		    platform_name_loop_length,
-		    pn_bytes
-		    )
+        return pack(fmt,
+                    (self.platform_id >> 16) & 0xFF,
+                    (self.platform_id >> 8) & 0xFF,
+                    self.platform_id  & 0xFF,
+                    platform_name_loop_length,
+                    pn_bytes
+                    )
   
 class linkage_descriptor(Descriptor):
     
@@ -325,44 +325,44 @@ class linkage_descriptor(Descriptor):
 
     def bytes(self):
 
-	if (self.linkage_type == 0x0B):
+        if (self.linkage_type == 0x0B):
         
-	  # pack platform id data loop
-	  pid_bytes = b"".join(
+          # pack platform id data loop
+          pid_bytes = b"".join(
           [x.pack() for x in self.platform_id_data_loop])
 
-	  platform_id_data_length = len(pid_bytes);
+          platform_id_data_length = len(pid_bytes);
 
-	  fmt = "!BBBBBBBB%ds%ds" % (platform_id_data_length, len(self.private_data_bytes))
+          fmt = "!BBBBBBBB%ds%ds" % (platform_id_data_length, len(self.private_data_bytes))
 
-	  return pack(fmt,
-		    (self.transport_stream_id >> 8) & 0xFF,
-		    self.transport_stream_id & 0xFF,
-		    (self.original_network_id >> 8) & 0xFF,
-		    self.original_network_id & 0xFF,
-		    (self.service_id >> 8) & 0xFF,
-		    self.service_id & 0xFF,
-		    self.linkage_type,
-		    platform_id_data_length,
-		    pid_bytes,
-		    self.private_data_bytes
-		    )
-	else:
-	  fmt = "!BBBBBBB%ds"
+          return pack(fmt,
+                    (self.transport_stream_id >> 8) & 0xFF,
+                    self.transport_stream_id & 0xFF,
+                    (self.original_network_id >> 8) & 0xFF,
+                    self.original_network_id & 0xFF,
+                    (self.service_id >> 8) & 0xFF,
+                    self.service_id & 0xFF,
+                    self.linkage_type,
+                    platform_id_data_length,
+                    pid_bytes,
+                    self.private_data_bytes
+                    )
+        else:
+          fmt = "!BBBBBBB%ds"
 
-	  # we care only for linkage_type = 0x0B, other linkage descriptors
-	  # have to be implemented according to ETSI EN 300 468 standard
+          # we care only for linkage_type = 0x0B, other linkage descriptors
+          # have to be implemented according to ETSI EN 300 468 standard
 
-	  return pack(fmt,
-		    (self.transport_stream_id >> 8) & 0xFF,
-		    self.transport_stream_id & 0xFF,
-		    (self.original_network_id >> 8) & 0xFF,
-		    self.original_network_id & 0xFF,
-		    (self.service_id >> 8) & 0xFF,
-		    self.service_id & 0xFF,
-		    self.linkage_type,
-		    private_data_bytes
-		    )
+          return pack(fmt,
+                    (self.transport_stream_id >> 8) & 0xFF,
+                    self.transport_stream_id & 0xFF,
+                    (self.original_network_id >> 8) & 0xFF,
+                    self.original_network_id & 0xFF,
+                    (self.service_id >> 8) & 0xFF,
+                    self.service_id & 0xFF,
+                    self.linkage_type,
+                    private_data_bytes
+                    )
 
 class terrestrial_delivery_system_descriptor(Descriptor):
 
@@ -372,9 +372,9 @@ class terrestrial_delivery_system_descriptor(Descriptor):
         fmt = "!LBBBL"
         return pack(fmt,
                     self.center_frequency & 0xFFFFFFFF,
-		    (self.bandwidth << 5) & 0xE0 | (self.priority << 4) & 0x10 | (self.timeslice_ind << 3) & 0x08 |
-		    (self.mpe_fec_ind << 2) & 0x04 | 0x03,
-		    (self.constellation << 6) | (self.hierarchy_information << 3)| (self.code_rate_HP_stream),
-		    (self.code_rate_LP_stream << 5) | (self.guard_interval << 3) | (self.transmission_mode << 1) | (self.other_frequency_flag),
-		    0xffffffff,
+                    (self.bandwidth << 5) & 0xE0 | (self.priority << 4) & 0x10 | (self.timeslice_ind << 3) & 0x08 |
+                    (self.mpe_fec_ind << 2) & 0x04 | 0x03,
+                    (self.constellation << 6) | (self.hierarchy_information << 3)| (self.code_rate_HP_stream),
+                    (self.code_rate_LP_stream << 5) | (self.guard_interval << 3) | (self.transmission_mode << 1) | (self.other_frequency_flag),
+                    0xffffffff,
                     )

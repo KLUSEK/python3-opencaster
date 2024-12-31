@@ -107,8 +107,8 @@ class ModuleInfo(DVBobject):
     def pack(self):
         if self.moduleInfo:
             moduleInfoBytes = self.moduleInfo.pack()
-	elif self.moduleInfo == "" and len(self.descriptors) == 0:
-            moduleInfoBytes = ""	    
+        elif self.moduleInfo == "" and len(self.descriptors) == 0:
+            moduleInfoBytes = ""        
         else:
             moduleInfoBytes = b"".join(
                 [d.pack() for d in self.descriptors])
@@ -151,13 +151,13 @@ class compressed_descriptor(Descriptor):
 
         compression_method = 0x08
 
-	sizeFile = "%s.size" % self.name
-	items = string.split(open(sizeFile).readline())
-	original_size = eval(items[0])
-	# print("module size %d" % original_size)
+        sizeFile = "%s.size" % self.name
+        items = string.split(open(sizeFile).readline())
+        original_size = eval(items[0])
+        # print("module size %d" % original_size)
         fmt ="!BL" 
         return pack(fmt,
-	            compression_method,
+                    compression_method,
                     original_size,
                     )
 ###################################################################

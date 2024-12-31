@@ -41,13 +41,13 @@ class Message(DVBobject):
         MessageSubHeader_FMT = (
             "!"
             "B"
-	    "L"                      # objectKey
+            "L"                      # objectKey
             "L"
-	    "%ds"                      # objectKind
+            "%ds"                      # objectKind
             "H"
-	    "%ds"                      # objectInfo
+            "%ds"                      # objectInfo
             "B"
-	    "%ds"                      # serviceContextList
+            "%ds"                      # serviceContextList
             ) % (
             len(self.objectKind),
             len(self.objectInfo),
@@ -56,14 +56,14 @@ class Message(DVBobject):
         
         MessageSubHeader = pack(
             MessageSubHeader_FMT,
-	    4,
-	    self.objectKey,
+            4,
+            self.objectKey,
             len(self.objectKind),         
-	    self.objectKind,
+            self.objectKind,
             len(self.objectInfo),         
-	    self.objectInfo,
-	    len(self.serviceContextList),
-	    self.serviceContextList,
+            self.objectInfo,
+            len(self.serviceContextList),
+            self.serviceContextList,
             )
         
         messageBody = self.messageBody()
@@ -158,18 +158,18 @@ class StreamEventMessage(Message):
 
         # Initialize SuperClass
         Message.__init__(*(self,), **kwargs)
-	
-	info_t = pack("!BLLBBB", 0, 0, 0, 0, 0, 1)
-	# Hard coded DSM::Stream::Info_T.pack() for do it now
-	event_names = open(self.PATH + "/.ename").read()
-	self.objectInfo =  info_t + event_names
+        
+        info_t = pack("!BLLBBB", 0, 0, 0, 0, 0, 1)
+        # Hard coded DSM::Stream::Info_T.pack() for do it now
+        event_names = open(self.PATH + "/.ename").read()
+        self.objectInfo =  info_t + event_names
 
     def messageBody(self):
 
         # stream event do it now: BIOP.program_use_tap (id undefined) + eventIds
-	taps = open(self.PATH + "/.tap").read()
-	event_ids = open(self.PATH + "/.eid").read()
-	return taps + event_ids
+        taps = open(self.PATH + "/.tap").read()
+        event_ids = open(self.PATH + "/.eid").read()
+        return taps + event_ids
 
 
 ######################################################################

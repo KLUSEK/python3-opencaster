@@ -49,13 +49,13 @@ class ecm_loop_item(DVBobject):
     
         # pack program_loop_item
         fmt = "!HHHHHHHH"
-	return pack(fmt,
-	    self.cw1_1,
-	    self.cw1_2,
-	    self.cw1_3,
-	    self.cw1_4,
-	    self.cw2_1,
-	    self.cw2_2,
-	    self.cw2_3,
-	    self.cw2_4,
-	)
+        return pack(fmt,
+            self.cw1_1,
+            self.cw1_2,
+            self.cw1_3,
+            self.cw1_4,
+            self.cw2_1,
+            self.cw2_2,
+            self.cw2_3,
+            self.cw2_4,
+        )

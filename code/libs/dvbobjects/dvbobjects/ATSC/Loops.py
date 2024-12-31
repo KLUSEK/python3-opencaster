@@ -25,14 +25,14 @@ from dvbobjects.utils import *
 class segment_loop_item(DVBobject):
 
     def pack(self):
-	
-	fmt = "!BBB%ds" % len(self.compressed_string)
-	return pack(fmt,
-		self.compression_type,
-		self.mode,
-		len(self.compressed_string),
-		self.compressed_string,
-		)
+    
+        fmt = "!BBB%ds" % len(self.compressed_string)
+        return pack(fmt,
+                    self.compression_type,
+                    self.mode,
+                    len(self.compressed_string),
+                    self.compressed_string,
+                    )
 
 
 
@@ -41,19 +41,19 @@ class segment_loop_item(DVBobject):
 class string_loop_item(DVBobject):
 
     def pack(self):
-	assert len(self.ISO639_language_code) == 3
-	
-	data_bytes = b"".join(
-		[x.pack() for x in self.segment_loop])
+        assert len(self.ISO639_language_code) == 3
+    
+        data_bytes = b"".join(
+            [x.pack() for x in self.segment_loop])
 
-	self.number_segments = len(self.segment_loop)
-	
-	fmt = "!%dsB%ds" % (len(self.ISO639_language_code), len(data_bytes))
-	return pack(fmt,
-		self.ISO639_language_code,
-		self.number_segments,
-		data_bytes
-		)
+        self.number_segments = len(self.segment_loop)
+    
+        fmt = "!%dsB%ds" % (len(self.ISO639_language_code), len(data_bytes))
+        return pack(fmt,
+                    self.ISO639_language_code,
+                    self.number_segments,
+                    data_bytes
+                    )
 
 
 ######################################################################
@@ -61,16 +61,16 @@ class string_loop_item(DVBobject):
 class multiple_string_structure(DVBobject):
 
     def pack(self):
-	
-	
-	data_bytes = b"".join(
-		[x.pack() for x in self.string_loop])
+    
+    
+        data_bytes = b"".join(
+            [x.pack() for x in self.string_loop])
 
-	self.number_strings = len(self.string_loop)
-	
-	fmt = "!B%ds" % len(data_bytes)
-	return pack(fmt,
-		self.number_strings,
-		data_bytes,
-		)
-	
+        self.number_strings = len(self.string_loop)
+    
+        fmt = "!B%ds" % len(data_bytes)
+        return pack(fmt,
+                    self.number_strings,
+                    data_bytes,
+                    )
+    

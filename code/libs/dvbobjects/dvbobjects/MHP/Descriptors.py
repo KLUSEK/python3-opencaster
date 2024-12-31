@@ -103,7 +103,7 @@ class transport_ic_protocol_descriptor(Descriptor):
     def bytes(self):
 
         URL_extension_count = 0
-	
+        
         for url in self.URL_extensions:
             URL_extension_count = URL_extension_count + 1
 
@@ -111,9 +111,9 @@ class transport_ic_protocol_descriptor(Descriptor):
         result = pack(fmt,
                     self.protocol_id,
                     self.transport_protocol_label,
-		    len(self.URL_base),
-		    self.URL_base,
-		    URL_extension_count
+                    len(self.URL_base),
+                    self.URL_base,
+                    URL_extension_count
                     )
     
         for url in self.URL_extensions:
@@ -122,8 +122,8 @@ class transport_ic_protocol_descriptor(Descriptor):
                 len(url),
                 url,
                 )
-		
-	return result    
+                
+        return result    
 
 
 ######################################################################
@@ -149,7 +149,7 @@ class dvb_html_application_descriptor(Descriptor):
 
     def bytes(self):
 
-#TODO add applications_ids	
+#TODO add applications_ids        
     
         fmt = "!BH%ds" % len(self.parameter)
         return pack(fmt, 1, 1, self.parameter)

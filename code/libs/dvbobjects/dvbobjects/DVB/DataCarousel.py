@@ -32,10 +32,10 @@ from .Loops import *
 class SuperGroup(DownloadServerInitiate):
     
     def __init__(self, PATH, transactionId, version):
-	self.groups =  []
-	self.PATH = PATH
-	self.transactionId = transactionId
-	self.version_number = version
+        self.groups =  []
+        self.PATH = PATH
+        self.transactionId = transactionId
+        self.version_number = version
             
     def addGroup(self, group):
         self.groups.append(group)
@@ -59,13 +59,13 @@ class SuperGroup(DownloadServerInitiate):
 class Group(DownloadInfoIndication):
     
     def __init__(self, PATH, transactionId, version, downloadId, blockSize):
-	self.modules = []
-	self.descriptors = []
-	self.PATH = PATH
-	self.downloadId = downloadId
-	self.transactionId = transactionId
-	self.version_number = version
-	self.blockSize = blockSize
+        self.modules = []
+        self.descriptors = []
+        self.PATH = PATH
+        self.downloadId = downloadId
+        self.transactionId = transactionId
+        self.version_number = version
+        self.blockSize = blockSize
 
     def addModule(self, mod):
         self.modules.append(mod)
@@ -159,7 +159,7 @@ class Module(DVBobject):
         if self.assocTag is not None:
             moduleInfo = dvbobjects.DSMCC.BIOP.ModuleInfo(
                 assocTag = self.assocTag,
-		userInfo = self.descriptors,
+                userInfo = self.descriptors,
                 )
         else:
             moduleInfo = ""
