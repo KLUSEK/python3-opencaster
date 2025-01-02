@@ -31,7 +31,7 @@ from dvbobjects.MPEG.Descriptors import *
 sit = selection_information_section(
 	transmission_info_loop = [
 		bouquet_name_descriptor(
-			bouquet_name = "Avalpa",
+			bouquet_name = b"Avalpa",
 		),
 	],
 	service_loop = [
@@ -41,8 +41,8 @@ sit = selection_information_section(
 			service_descriptor_loop = [
 				service_descriptor(
 					service_type = 1, # digital television service
-					service_provider_name = "Avalpa",
-					service_name = "Avalpa 1",
+					service_provider_name = b"Avalpa",
+					service_name = b"Avalpa 1",
 				),
 			],
 		)

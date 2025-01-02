@@ -50,7 +50,7 @@ dsmccB_carousel_id = 1
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "Avalpa",), 
+	    network_descriptor(network_name = b"Avalpa",), 
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -114,8 +114,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa 1",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa 1",
 		    ),    
 		],
 	    ),	
@@ -226,12 +226,12 @@ ait = application_information_section(
 			        application_priority = 1, # 1 is lowset, it is used when more than 1 applications is executing
 			        transport_protocol_labels = [1], # carousel Id
 			),
-			application_name_descriptor(application_name = "Text input example"),
-			dvb_j_application_descriptor(parameters = ["file:///sample8"]), # parameter passed to the xlet
+			application_name_descriptor(application_name = b"Text input example"),
+			dvb_j_application_descriptor(parameters = [b"file:///sample8"]), # parameter passed to the xlet
 			dvb_j_application_location_descriptor(
-				base_directory = "/", # base directory, if set to "/hello" the xlet will act as "/hello" is its root directory
-				class_path_extension = "", # an additiona classpath inside the carousel can be specified
-				initial_class = "Wizard",  # the starting class implementing Xlet interface
+				base_directory = b"/", # base directory, if set to "/hello" the xlet will act as "/hello" is its root directory
+				class_path_extension = b"", # an additiona classpath inside the carousel can be specified
+				initial_class = b"Wizard",  # the starting class implementing Xlet interface
 			),
         	]
         	),

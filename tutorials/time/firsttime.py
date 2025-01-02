@@ -38,9 +38,7 @@ tdt = time_date_section(
 )
 out = open("./tdt.sec", "wb")
 out.write(tdt.pack())
-out.close
-out = open("./tdt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/local/bin/sec2ts 20 < ./tdt.sec > ./tdt.ts')
 
 current_local_time = time.localtime()
@@ -75,7 +73,7 @@ tot = time_offset_section(
     		local_time_offset_descriptor (
     			local_time_offset_loop = [
     				local_time_offset_loop_item (
-    					ISO_639_language_code = "ITA",
+    					ISO_639_language_code = b"ITA",
     					country_region_id = 0, # italy has only 1 region
     					local_time_offset_polarity = current_offset_polarity, 
     					local_time_offset_hour = current_offset,

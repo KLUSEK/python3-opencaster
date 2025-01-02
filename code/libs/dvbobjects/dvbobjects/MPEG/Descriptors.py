@@ -95,13 +95,13 @@ class association_tag_descriptor(Descriptor):
                         )                
         else:
             fmt = "!HHB%ds%ds" % (len(self.selector_length), len(self.privatedata))            
-        return pack(fmt,
-                    self.association_tag,
-                    self.use,
-                    self.selector_length,
-                    self.selector_bytes,
-                    self.privatedata,
-                    )
+            return pack(fmt,
+                        self.association_tag,
+                        self.use,
+                        self.selector_length,
+                        self.selector_bytes,
+                        self.privatedata,
+                        )
 
 ######################################################################
 class graphics_constraints_descriptor(Descriptor):

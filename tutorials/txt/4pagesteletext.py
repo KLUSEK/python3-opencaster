@@ -93,7 +93,7 @@ teletextunitspage1 = EBUTeletextUnits(
 				inhibit_display = 0,
 				magazine_serial = 1,
 				country_code = 0x03,
-				chars = "    Avalpa-TXT  10 04 2009 15 00"
+				chars = b"    Avalpa-TXT  10 04 2009 15 00"
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -101,8 +101,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x01,
 				row = 0x01,
-				chars = " Avalpa1            " + 
-					" Avalpa1            " ,
+				chars = b" Avalpa1            " + 
+					b" Avalpa1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -110,8 +110,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x01,
 				row = 0x02,
-				chars = " Avalpa2            " + 
-					" Avalpa2            " ,
+				chars = b" Avalpa2            " + 
+					b" Avalpa2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -119,8 +119,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x01,
 				row = 0x03, 
-				chars = " Avalpa3            " + 
-					" Avalpa3            " ,
+				chars = b" Avalpa3            " + 
+					b" Avalpa3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -128,8 +128,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x01,
 				row = 0x04,
-				chars = " Avalpa4            " + 
-					" Avalpa4            " ,
+				chars = b" Avalpa4            " + 
+					b" Avalpa4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -137,8 +137,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x01,
 				row = 0x05,
-				chars = " Avalpa5            " + 
-					" Avalpa5            " ,
+				chars = b" Avalpa5            " + 
+					b" Avalpa5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -146,8 +146,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x01,
 				row = 0x06, 
-				chars = " Avalpa6            " + 
-					" Avalpa6            " ,
+				chars = b" Avalpa6            " + 
+					b" Avalpa6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -155,8 +155,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x01,
 				row = 0x07,
-				chars = " Avalpa7            " + 
-					" Avalpa7            " ,
+				chars = b" Avalpa7            " + 
+					b" Avalpa7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -164,8 +164,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x01,
 				row = 0x08,
-				chars = " Avalpa8            " + 
-					" Avalpa8            " ,
+				chars = b" Avalpa8            " + 
+					b" Avalpa8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -173,8 +173,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x01,
 				row = 0x09,
-				chars = " Avalpa9            " + 
-					" Avalpa9            " ,
+				chars = b" Avalpa9            " + 
+					b" Avalpa9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -182,8 +182,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x01,
 				row = 0x0A, 
-				chars = " Avalpa10           " + 
-					" Avalpa10           " ,
+				chars = b" Avalpa10           " + 
+					b" Avalpa10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -191,8 +191,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x01,
 				row = 0x0B,
-				chars = " Avalpa11           " + 
-					" Avalpa11           " ,
+				chars = b" Avalpa11           " + 
+					b" Avalpa11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -200,8 +200,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x15,
 				magazine = 0x01,
 				row = 0x0C,
-				chars = " Avalpa12           " + 
-					" Avalpa12           " ,
+				chars = b" Avalpa12           " + 
+					b" Avalpa12           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0xFF, 
@@ -216,8 +216,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x01,
 				row = 0x0D,
-				chars = " avalpa1            " + 
-					" avalpa1            " ,
+				chars = b" avalpa1            " + 
+					b" avalpa1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -225,8 +225,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x01,
 				row = 0x0E,
-				chars = " avalpa2            " + 
-					" avalpa2            " ,
+				chars = b" avalpa2            " + 
+					b" avalpa2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -234,8 +234,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x01,
 				row = 0x0F,
-				chars = " avalpa3            " + 
-					" avalpa3            " ,
+				chars = b" avalpa3            " + 
+					b" avalpa3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -243,8 +243,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x01,
 				row = 0x10, 
-				chars = " avalpa4            " + 
-					" avalpa4            " ,
+				chars = b" avalpa4            " + 
+					b" avalpa4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -252,8 +252,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x01,
 				row = 0x11,
-				chars = " avalpa5            " + 
-					" avalpa5            " ,
+				chars = b" avalpa5            " + 
+					b" avalpa5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -261,8 +261,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x01,
 				row = 0x12,
-				chars = " avalpa6            " + 
-					" avalpa6            " ,
+				chars = b" avalpa6            " + 
+					b" avalpa6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -270,8 +270,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x01,
 				row = 0x13, 
-				chars = " avalpa7            " + 
-					" avalpa7            " ,
+				chars = b" avalpa7            " + 
+					b" avalpa7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -279,8 +279,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x01,
 				row = 0x14,
-				chars = " avalpa8            " + 
-					" avalpa8            " ,
+				chars = b" avalpa8            " + 
+					b" avalpa8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -288,8 +288,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x01,
 				row = 0x15,
-				chars = " avalpa9            " + 
-					" avalpa9            " ,
+				chars = b" avalpa9            " + 
+					b" avalpa9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -297,8 +297,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x01,
 				row = 0x16,
-				chars = " avalpa10           " + 
-					" avalpa10           " ,
+				chars = b" avalpa10           " + 
+					b" avalpa10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -306,8 +306,8 @@ teletextunitspage1 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x01,
 				row = 0x17,
-				chars = " avalpa11           " + 
-					" avalpa11           " ,
+				chars = b" avalpa11           " + 
+					b" avalpa11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -378,7 +378,7 @@ teletextunitspage2 = EBUTeletextUnits(
 				inhibit_display = 0,
 				magazine_serial = 1,
 				country_code = 0x03,
-				chars = "    Avalpa-TXT  10 04 2009 15 00"
+				chars = b"    Avalpa-TXT  10 04 2009 15 00"
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -386,8 +386,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x02,
 				row = 0x01,
-				chars = " A_202_1            " + 
-					" A_202_1            " ,
+				chars = b" A_202_1            " + 
+					b" A_202_1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -395,8 +395,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x02,
 				row = 0x02,
-				chars = " A_202_2            " + 
-					" A_202_2            " ,
+				chars = b" A_202_2            " + 
+					b" A_202_2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -404,8 +404,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x02,
 				row = 0x03, 
-				chars = " A_202_3            " + 
-					" A_202_3            " ,
+				chars = b" A_202_3            " + 
+					b" A_202_3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -413,8 +413,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x02,
 				row = 0x04,
-				chars = " A_202_4            " + 
-					" A_202_4            " ,
+				chars = b" A_202_4            " + 
+					b" A_202_4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -422,8 +422,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x02,
 				row = 0x05,
-				chars = " A_202_5            " + 
-					" A_202_5            " ,
+				chars = b" A_202_5            " + 
+					b" A_202_5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -431,8 +431,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x02,
 				row = 0x06, 
-				chars = " A_202_6            " + 
-					" A_202_6            " ,
+				chars = b" A_202_6            " + 
+					b" A_202_6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -440,8 +440,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x02,
 				row = 0x07,
-				chars = " A_202_7            " + 
-					" A_202_7            " ,
+				chars = b" A_202_7            " + 
+					b" A_202_7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -449,8 +449,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x02,
 				row = 0x08,
-				chars = " A_202_8            " + 
-					" A_202_8            " ,
+				chars = b" A_202_8            " + 
+					b" A_202_8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -458,8 +458,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x02,
 				row = 0x09,
-				chars = " A_202_9            " + 
-					" A_202_9            " ,
+				chars = b" A_202_9            " + 
+					b" A_202_9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -467,8 +467,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x02,
 				row = 0x0A, 
-				chars = " A_202_10           " + 
-					" A_202_10           " ,
+				chars = b" A_202_10           " + 
+					b" A_202_10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -476,8 +476,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x02,
 				row = 0x0B,
-				chars = " A_202_11           " + 
-					" A_202_11           " ,
+				chars = b" A_202_11           " + 
+					b" A_202_11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -485,8 +485,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x15,
 				magazine = 0x02,
 				row = 0x0C,
-				chars = " A_202_12           " + 
-					" A_202_12           " ,
+				chars = b" A_202_12           " + 
+					b" A_202_12           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0xFF, 
@@ -501,8 +501,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x02,
 				row = 0x0D,
-				chars = " a_202_1            " + 
-					" a_202_1            " ,
+				chars = b" a_202_1            " + 
+					b" a_202_1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -510,8 +510,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x02,
 				row = 0x0E,
-				chars = " a_202_2            " + 
-					" a_202_2            " ,
+				chars = b" a_202_2            " + 
+					b" a_202_2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -519,8 +519,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x02,
 				row = 0x0F,
-				chars = " a_202_3            " + 
-					" a_202_3            " ,
+				chars = b" a_202_3            " + 
+					b" a_202_3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -528,8 +528,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x02,
 				row = 0x10, 
-				chars = " a_202_4            " + 
-					" a_202_4            " ,
+				chars = b" a_202_4            " + 
+					b" a_202_4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -537,8 +537,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x02,
 				row = 0x11,
-				chars = " a_202_5            " + 
-					" a_202_5            " ,
+				chars = b" a_202_5            " + 
+					b" a_202_5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -546,8 +546,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x02,
 				row = 0x12,
-				chars = " a_202_6            " + 
-					" a_202_6            " ,
+				chars = b" a_202_6            " + 
+					b" a_202_6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -555,8 +555,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x02,
 				row = 0x13, 
-				chars = " a_202_7            " + 
-					" a_202_7            " ,
+				chars = b" a_202_7            " + 
+					b" a_202_7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -564,8 +564,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x02,
 				row = 0x14,
-				chars = " a_202_8            " + 
-					" a_202_8            " ,
+				chars = b" a_202_8            " + 
+					b" a_202_8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -573,8 +573,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x02,
 				row = 0x15,
-				chars = " a_202_9            " + 
-					" a_202_9            " ,
+				chars = b" a_202_9            " + 
+					b" a_202_9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -582,8 +582,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x02,
 				row = 0x16,
-				chars = " a_202_10           " + 
-					" a_202_10           " ,
+				chars = b" a_202_10           " + 
+					b" a_202_10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -591,8 +591,8 @@ teletextunitspage2 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x02,
 				row = 0x17,
-				chars = " a_202_11           " + 
-					" a_202_11           " ,
+				chars = b" a_202_11           " + 
+					b" a_202_11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0xFF, 
@@ -628,7 +628,7 @@ teletextunitspage3 = EBUTeletextUnits(
 				inhibit_display = 0,
 				magazine_serial = 1,
 				country_code = 0x03,
-				chars = "    Avalpa-TXT  10 04 2009 15 00"
+				chars = b"    Avalpa-TXT  10 04 2009 15 00"
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -636,8 +636,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x03,
 				row = 0x01,
-				chars = " A_302_1            " + 
-					" A_302_1            " ,
+				chars = b" A_302_1            " + 
+					b" A_302_1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -645,8 +645,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x03,
 				row = 0x02,
-				chars = " A_302_2            " + 
-					" A_302_2            " ,
+				chars = b" A_302_2            " + 
+					b" A_302_2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -654,8 +654,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x03,
 				row = 0x03, 
-				chars = " A_302_3            " + 
-					" A_302_3            " ,
+				chars = b" A_302_3            " + 
+					b" A_302_3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -663,8 +663,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x03,
 				row = 0x04,
-				chars = " A_302_4            " + 
-					" A_302_4            " ,
+				chars = b" A_302_4            " + 
+					b" A_302_4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -672,8 +672,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x03,
 				row = 0x05,
-				chars = " A_302_5            " + 
-					" A_302_5            " ,
+				chars = b" A_302_5            " + 
+					b" A_302_5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -681,8 +681,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x03,
 				row = 0x06, 
-				chars = " A_302_6            " + 
-					" A_302_6            " ,
+				chars = b" A_302_6            " + 
+					b" A_302_6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -690,8 +690,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x03,
 				row = 0x07,
-				chars = " A_302_7            " + 
-					" A_302_7            " ,
+				chars = b" A_302_7            " + 
+					b" A_302_7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -699,8 +699,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x03,
 				row = 0x08,
-				chars = " A_302_8            " + 
-					" A_302_8            " ,
+				chars = b" A_302_8            " + 
+					b" A_302_8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -708,8 +708,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x03,
 				row = 0x09,
-				chars = " A_302_9            " + 
-					" A_302_9            " ,
+				chars = b" A_302_9            " + 
+					b" A_302_9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -717,8 +717,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x03,
 				row = 0x0A, 
-				chars = " A_302_10           " + 
-					" A_302_10           " ,
+				chars = b" A_302_10           " + 
+					b" A_302_10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -726,8 +726,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x03,
 				row = 0x0B,
-				chars = " A_302_11           " + 
-					" A_302_11           " ,
+				chars = b" A_302_11           " + 
+					b" A_302_11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -735,8 +735,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x15,
 				magazine = 0x03,
 				row = 0x0C,
-				chars = " A_302_12           " + 
-					" A_302_12           " ,
+				chars = b" A_302_12           " + 
+					b" A_302_12           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0xFF, 
@@ -751,8 +751,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x03,
 				row = 0x0D,
-				chars = " a_302_1            " + 
-					" a_302_1            " ,
+				chars = b" a_302_1            " + 
+					b" a_302_1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -760,8 +760,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x03,
 				row = 0x0E,
-				chars = " a_302_2            " + 
-					" a_302_2            " ,
+				chars = b" a_302_2            " + 
+					b" a_302_2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -769,8 +769,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x03,
 				row = 0x0F,
-				chars = " a_302_3            " + 
-					" a_302_3            " ,
+				chars = b" a_302_3            " + 
+					b" a_302_3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -778,8 +778,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x03,
 				row = 0x10, 
-				chars = " a_302_4            " + 
-					" a_302_4            " ,
+				chars = b" a_302_4            " + 
+					b" a_302_4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -787,8 +787,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x03,
 				row = 0x11,
-				chars = " a_302_5            " + 
-					" a_302_5            " ,
+				chars = b" a_302_5            " + 
+					b" a_302_5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -796,8 +796,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x03,
 				row = 0x12,
-				chars = " a_302_6            " + 
-					" a_302_6            " ,
+				chars = b" a_302_6            " + 
+					b" a_302_6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -805,8 +805,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x03,
 				row = 0x13, 
-				chars = " a_302_7            " + 
-					" a_302_7            " ,
+				chars = b" a_302_7            " + 
+					b" a_302_7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -814,8 +814,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x03,
 				row = 0x14,
-				chars = " a_302_8            " + 
-					" a_302_8            " ,
+				chars = b" a_302_8            " + 
+					b" a_302_8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -823,8 +823,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x03,
 				row = 0x15,
-				chars = " a_302_9            " + 
-					" a_302_9            " ,
+				chars = b" a_302_9            " + 
+					b" a_302_9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -832,8 +832,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x03,
 				row = 0x16,
-				chars = " a_302_10           " + 
-					" a_302_10           " ,
+				chars = b" a_302_10           " + 
+					b" a_302_10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -841,8 +841,8 @@ teletextunitspage3 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x03,
 				row = 0x17,
-				chars = " a_302_11           " + 
-					" a_302_11           " ,
+				chars = b" a_302_11           " + 
+					b" a_302_11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0xFF, 
@@ -881,7 +881,7 @@ teletextunitspage4 = EBUTeletextUnits(
 				inhibit_display = 0,
 				magazine_serial = 1,
 				country_code = 0x03,
-				chars = "    Avalpa-TXT  10 04 2009 15 00"
+				chars = b"    Avalpa-TXT  10 04 2009 15 00"
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -889,8 +889,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x04,
 				row = 0x01,
-				chars = " A_404_1            " + 
-					" A_404_1            " ,
+				chars = b" A_404_1            " + 
+					b" A_404_1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -898,8 +898,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x04,
 				row = 0x02,
-				chars = " A_404_2            " + 
-					" A_404_2            " ,
+				chars = b" A_404_2            " + 
+					b" A_404_2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -907,8 +907,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x04,
 				row = 0x03, 
-				chars = " A_404_3            " + 
-					" A_404_3            " ,
+				chars = b" A_404_3            " + 
+					b" A_404_3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -916,8 +916,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x04,
 				row = 0x04,
-				chars = " A_404_4            " + 
-					" A_404_4            " ,
+				chars = b" A_404_4            " + 
+					b" A_404_4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -925,8 +925,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x04,
 				row = 0x05,
-				chars = " A_404_5            " + 
-					" A_404_5            " ,
+				chars = b" A_404_5            " + 
+					b" A_404_5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -934,8 +934,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x04,
 				row = 0x06, 
-				chars = " A_404_6            " + 
-					" A_404_6            " ,
+				chars = b" A_404_6            " + 
+					b" A_404_6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -943,8 +943,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x04,
 				row = 0x07,
-				chars = " A_404_7            " + 
-					" A_404_7            " ,
+				chars = b" A_404_7            " + 
+					b" A_404_7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -952,8 +952,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x04,
 				row = 0x08,
-				chars = " A_404_8            " + 
-					" A_404_8            " ,
+				chars = b" A_404_8            " + 
+					b" A_404_8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -961,8 +961,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x04,
 				row = 0x09,
-				chars = " A_404_9            " + 
-					" A_404_9            " ,
+				chars = b" A_404_9            " + 
+					b" A_404_9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -970,8 +970,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x04,
 				row = 0x0A, 
-				chars = " A_404_10           " + 
-					" A_404_10           " ,
+				chars = b" A_404_10           " + 
+					b" A_404_10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -979,8 +979,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x04,
 				row = 0x0B,
-				chars = " A_404_11           " + 
-					" A_404_11           " ,
+				chars = b" A_404_11           " + 
+					b" A_404_11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -988,8 +988,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x15,
 				magazine = 0x04,
 				row = 0x0C,
-				chars = " A_404_12           " + 
-					" A_404_12           " ,
+				chars = b" A_404_12           " + 
+					b" A_404_12           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0xFF, 
@@ -1004,8 +1004,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x8,
 				magazine = 0x04,
 				row = 0x0D,
-				chars = " a_404_1            " + 
-					" a_404_1            " ,
+				chars = b" a_404_1            " + 
+					b" a_404_1            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -1013,8 +1013,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x9,
 				magazine = 0x04,
 				row = 0x0E,
-				chars = " a_404_2            " + 
-					" a_404_2            " ,
+				chars = b" a_404_2            " + 
+					b" a_404_2            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -1022,8 +1022,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xA,
 				magazine = 0x04,
 				row = 0x0F,
-				chars = " a_404_3            " + 
-					" a_404_3            " ,
+				chars = b" a_404_3            " + 
+					b" a_404_3            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -1031,8 +1031,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xB,
 				magazine = 0x04,
 				row = 0x10, 
-				chars = " a_404_4            " + 
-					" a_404_4            " ,
+				chars = b" a_404_4            " + 
+					b" a_404_4            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -1040,8 +1040,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xC,
 				magazine = 0x04,
 				row = 0x11,
-				chars = " a_404_5            " + 
-					" a_404_5            " ,
+				chars = b" a_404_5            " + 
+					b" a_404_5            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -1049,8 +1049,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xD,
 				magazine = 0x04,
 				row = 0x12,
-				chars = " a_404_6            " + 
-					" a_404_6            " ,
+				chars = b" a_404_6            " + 
+					b" a_404_6            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -1058,8 +1058,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xE,
 				magazine = 0x04,
 				row = 0x13, 
-				chars = " a_404_7            " + 
-					" a_404_7            " ,
+				chars = b" a_404_7            " + 
+					b" a_404_7            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02, 
@@ -1067,8 +1067,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0xF,
 				magazine = 0x04,
 				row = 0x14,
-				chars = " a_404_8            " + 
-					" a_404_8            " ,
+				chars = b" a_404_8            " + 
+					b" a_404_8            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -1076,8 +1076,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x10,
 				magazine = 0x04,
 				row = 0x15,
-				chars = " a_404_9            " + 
-					" a_404_9            " ,
+				chars = b" a_404_9            " + 
+					b" a_404_9            " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -1085,8 +1085,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x13,
 				magazine = 0x04,
 				row = 0x16,
-				chars = " a_404_10           " + 
-					" a_404_10           " ,
+				chars = b" a_404_10           " + 
+					b" a_404_10           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0x02,
@@ -1094,8 +1094,8 @@ teletextunitspage4 = EBUTeletextUnits(
 				line_offset = 0x14,
 				magazine = 0x04,
 				row = 0x17,
-				chars = " a_404_11           " + 
-					" a_404_11           " ,
+				chars = b" a_404_11           " + 
+					b" a_404_11           " ,
 			),
 			EBUTeletext(
 				data_unit_id = 0xFF, 

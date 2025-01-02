@@ -136,8 +136,8 @@ class BIOP_ObjectLocation(DVBobject):
             "H"                         # moduleId
             "B"                         # major version
             "B"                         # minor version
-            "B"                       	# objectKey length
-	    "L"				# objectKey
+            "B"                         # objectKey length
+            "L"                         # objectKey
             )  
 
         return pack(

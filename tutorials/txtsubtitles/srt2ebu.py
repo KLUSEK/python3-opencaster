@@ -50,7 +50,7 @@ teletextunits = EBUTeletextUnits(
 			inhibit_display = 0,
 			magazine_serial = 1,
 			country_code = 0x03,
-			chars = "777                             ",
+			chars = b"777                             ",
 		),
 		EBUTeletext(
 			data_unit_id = 0xFF, 
@@ -143,7 +143,7 @@ while (number != ""):
 				# now it is necessary to send an empty page to blank the previous one
 				teletextunits.unit_loop[0].magazine = magazine_number
 				teletextunits.unit_loop[0].page = page_number
-				teletextunits.unit_loop[0].chars = "777                             "
+				teletextunits.unit_loop[0].chars = b"777                             "
 				teletextunits.unit_loop[0].subtitle = 1
 				teletextunits.unit_loop[0].interrupted_sequence = 1
 				teletextunits.unit_loop[9] = EBUTeletext( data_unit_id = 0xFF )
@@ -153,7 +153,7 @@ while (number != ""):
 				teletextunits.unit_loop[0].page = fake_page_number
 				teletextunits.unit_loop[0].subtitle = 0
 				teletextunits.unit_loop[0].interrupted_sequence = 0
-				teletextunits.unit_loop[0].chars = "778                             "
+				teletextunits.unit_loop[0].chars = b"778                             "
 				teletextunits.unit_loop[9] = EBUTeletext( data_unit_id = 0xFF )
 				teletextunits.unit_loop[10] = EBUTeletext( data_unit_id = 0xFF )
 			out.write(teletextunits.pack())
@@ -165,23 +165,23 @@ while (number != ""):
 	i = 0
 	teletextunits.unit_loop[0].magazine = magazine_number
 	teletextunits.unit_loop[0].page = page_number
-	teletextunits.unit_loop[0].chars = "777                             "
+	teletextunits.unit_loop[0].chars = b"777                             "
 	teletextunits.unit_loop[0].subtitle = 1
 	teletextunits.unit_loop[0].interrupted_sequence = 1
 	teletextunits.unit_loop[9] = EBUTeletext( data_unit_id = 0xFF )
 	teletextunits.unit_loop[10] = EBUTeletext( data_unit_id = 0xFF )
 	while (textline != "\x0A" and textline != ""):
-		text = ""
+		text = b""
 		if (i == 0 or i == 1):
 			text = textline.strip("\x0A")[:35]
 			print("insert text:" + text)
 			j = 0
 			while (len(text) < 35):
 				if (j == 0):
-					text = text + " "
+					text = text + b" "
 					j = 1
 				else:
-					text = " " +  text
+					text = b" " +  text
 					j = 0
 		if (i == 0):
 			teletextunits.unit_loop[9] = EBUTeletext(
@@ -217,7 +217,7 @@ while (number != ""):
 		teletextunits.unit_loop[0].page = fake_page_number
 		teletextunits.unit_loop[0].subtitle = 0
 		teletextunits.unit_loop[0].interrupted_sequence = 0
-		teletextunits.unit_loop[0].chars = "778                             "
+		teletextunits.unit_loop[0].chars = b"778                             "
 		teletextunits.unit_loop[9] = EBUTeletext( data_unit_id = 0xFF )
 		teletextunits.unit_loop[10] = EBUTeletext( data_unit_id = 0xFF )
 		if (page_counter + 1 <= end_time):

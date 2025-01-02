@@ -48,7 +48,7 @@ avalpa1_pmt_pid = 1031
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "Avalpa",), 
+	    network_descriptor(network_name = b"Avalpa",),
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -112,8 +112,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa 1",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa 1",
 		    ),    
 		],
 	    ),	
@@ -197,9 +197,9 @@ eit = event_information_section(
 		free_CA_mode = 0, # 0 means service is not scrambled, 1 means at least a stream is scrambled
 		event_descriptor_loop = [
 		    short_event_descriptor (
-			ISO639_language_code = "ITA", 
-			event_name = "epg event name",
-			text = "this is an epg event text example",
+			ISO639_language_code = b"ITA",
+			event_name = b"epg event name",
+			text = b"this is an epg event text example",
 		    ),
 		],
 	    ),	    	
@@ -232,9 +232,9 @@ eit_follow = event_information_section(
 		free_CA_mode = 0, # 0 means service is not scrambled, 1 means at least a stream is scrambled
 		event_descriptor_loop = [
 		    short_event_descriptor (
-			ISO639_language_code = "ITA", 
-			event_name = "epg event name 2",
-			text = "this is the following text example", 
+			ISO639_language_code = b"ITA",
+			event_name = b"epg event name 2",
+			text = b"this is the following text example",
 		    )    
 		],
 	    ),

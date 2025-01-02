@@ -39,7 +39,7 @@ event_count = 3 # number of events
 
 event_names = Event_names (
         eventnames_count = event_count,
-        event_name_loop = [ "Event1", "Event2", "Event3"],  # name of the events
+        event_name_loop = [ b"Event1", b"Event2", b"Event3"],  # name of the events
     )
 
 event_ids = Event_ids (
@@ -49,13 +49,13 @@ event_ids = Event_ids (
 
 out = open(".tap", "wb")
 out.write(taps.pack())
-out.close
+out.close()
 
 out = open(".eid", "wb")
 out.write(event_ids.pack())
-out.close
+out.close()
 
 out = open(".ename", "wb")
 out.write(event_names.pack())
-out.close
+out.close()
 

@@ -25,7 +25,7 @@ from dvbobjects.MHP.Descriptors import content_type_descriptor
 ######################################################################
 class Message(DVBobject):
 
-    magic = "BIOP"                      # ISO
+    magic = b"BIOP"                     # ISO
     biop_version_major = 0x01           # ISO
     biop_version_minor = 0x00           # ISO
     byte_order = 0x00                   # DVB
@@ -215,7 +215,7 @@ class DirectoryMessage(Message):
 ######################################################################
 class ServiceGatewayMessage(DirectoryMessage):
 
-    objectKind = CDR("srg")             # DVB
+    objectKind = CDR("srg")            # DVB
 
 ######################################################################
 class ServiceGatewayInfo(DVBobject):

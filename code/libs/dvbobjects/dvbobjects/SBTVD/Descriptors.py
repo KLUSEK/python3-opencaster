@@ -142,7 +142,7 @@ class ts_loop_item(DVBobject):
     # tx_type_info
     # svc_loop = []
     def pack(self):
-        svc_bytes = "".join([chr(x >> 8 & 0xFF) + chr(x & 0xFF)
+        svc_bytes = b"".join([chr(x >> 8 & 0xFF) + chr(x & 0xFF)
                             for x in self.svc_loop])
         fmt = "!BB%ds" % len(svc_bytes)
         return pack(fmt, self.tx_type_info, len(self.svc_loop), svc_bytes)
@@ -153,7 +153,7 @@ class ts_info_descriptor(Descriptor):
     # tsname
     # ts_loop = []
     def pack(self):
-        ts_loop_bytes = "".join([x.pack() for x in self.ts_loop])
+        ts_loop_bytes = b"".join([x.pack() for x in self.ts_loop])
         fmt = "!BBBB%ds%ds" % (len(self.tsname), len(ts_loop_bytes))
     # print len(ts_loop_bytes)
         return pack(fmt, self.descriptor_tag, len(self.tsname) + len(ts_loop_bytes) + 2, self.rc_key, len(self.tsname)<<2 | len(self.ts_loop) & 3, self.tsname, ts_loop_bytes)

@@ -39,7 +39,7 @@ event_count = 3 # number of events
 
 event_names = Event_names (
         eventnames_count = event_count,
-        event_name_loop = [ "event 1", "event 2", "event 3"],  # name of the events
+        event_name_loop = [ b"event 1", b"event 2", b"event 3"],  # name of the events
     )
 
 event_ids = Event_ids (

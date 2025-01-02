@@ -50,7 +50,7 @@ avalpa3_pmt_pid = 1033
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "Avalpa",), 
+	    network_descriptor(network_name = b"Avalpa",),
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -130,8 +130,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa 1",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa 1",
 		    ),    
 		],
 	    ),	
@@ -144,8 +144,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa 2",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa 2",
 		    ),    
 		],
 	    ),	
@@ -158,8 +158,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa 3",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa 3",
 		    ),    
 		],
 	    ),	

@@ -40,8 +40,8 @@ dsmcc_association_tag = 0xB
 dsmcc_carousel_id = 1
 
 # parameters reported into ths AIT to signalize a broadcast application.
-appli_name = "broadcast application test 1"
-appli_path = "index.html"
+appli_name = b"broadcast application test 1"
+appli_path = b"index.html"
 organisationId_1 = 10  # this is a demo value
 applicationId_1 = 1001 # this is a demo value. This number corresponds to a HbbTV trusted application
 
@@ -56,7 +56,7 @@ ait1_pid = 2001
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "OpenHbb",), 
+	    network_descriptor(network_name = b"OpenHbb",), 
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -114,8 +114,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "mediatvcom",
-			service_name = "openHbb",
+			service_provider_name = b"mediatvcom",
+			service_name = b"openHbb",
 		    ),    
 		],
 	    ),	

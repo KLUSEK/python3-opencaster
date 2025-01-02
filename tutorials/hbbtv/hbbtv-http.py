@@ -41,9 +41,9 @@ ste1_pid = 2002
 
 
 # parameters reported into the AIT to signalize a broadband application.
-appli_name = "my hbbtv application" #application name
-appli_root = "http://my_application_root_path/myHbbTV-app/" #URL base of transport_protocol_descriptor
-appli_path = "index.html"  #initial_path_bytes of simple application descriptor. So the application path will be "http://my_application_root_path/myHbbTV-app/index.html"
+appli_name = b"my hbbtv application" #application name
+appli_root = b"http://my_application_root_path/myHbbTV-app/" #URL base of transport_protocol_descriptor
+appli_path = b"index.html"  #initial_path_bytes of simple application descriptor. So the application path will be "http://my_application_root_path/myHbbTV-app/index.html"
 organisationId_1 = 10  # this is a demo value, dvb.org should assign an unique value
 applicationId_1 = 1001 # this is a demo value. This number corresponds to a trusted application. 
 organisationId_2 = 11
@@ -60,7 +60,7 @@ audio1_pid = 2068
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "OpenHbb",), 
+	    network_descriptor(network_name = b"OpenHbb",),
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -155,8 +155,8 @@ sdt = service_description_section(
 				service_descriptor_loop = [
 					service_descriptor(
 						service_type = 1, # digital television service
-						service_provider_name = "mediatvcom",
-						service_name = "openHbb",
+						service_provider_name = b"mediatvcom",
+						service_name = b"openHbb",
 					),    
 				],
 			),	
@@ -215,7 +215,7 @@ ait = application_information_section(
 				),
 				application_name_descriptor(
 					application_name = appli_name,
-					 ISO_639_language_code = "FRA"
+					 ISO_639_language_code = b"FRA"
 				),
 				simple_application_location_descriptor(initial_path_bytes = appli_path),		
 			]

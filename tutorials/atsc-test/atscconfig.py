@@ -143,7 +143,7 @@ pmt = program_map_section(
 			elementary_PID = 2068,
 			element_info_descriptor_loop = [
 				registration_descriptor(
-					format_identifier="AC-3",
+					format_identifier=b"AC-3",
 				),
 			]
 		),

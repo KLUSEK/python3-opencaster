@@ -70,7 +70,7 @@ comp_desc1 = compatibility_descriptor(
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "Avalpa",), 
+	    network_descriptor(network_name = b"Avalpa",),
 	    linkage_descriptor(
 			transport_stream_id = avalpa_transport_stream_id,
 			original_network_id = avalpa_original_transport_stream_id,
@@ -147,8 +147,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 0x0C, # data broadcast service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa data",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa data",
 		    ),    
 		],
 	    ),	
@@ -293,61 +293,61 @@ g1.set(
     	    INPUT="ocdir1/RootRelook2100",
     	    moduleId = 0x0001,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2101",
     	    moduleId = 0x0002,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2102",
     	    moduleId = 0x0003,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2103",
     	    moduleId = 0x0004,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2104",
     	    moduleId = 0x0005,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2105",
     	    moduleId = 0x0006,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2106",
     	    moduleId = 0x0007,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2107",
     	    moduleId = 0x0008,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2108",
     	    moduleId = 0x0009,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
          Module(
     	    INPUT="ocdir1/RootRelook2109",
     	    moduleId = 0x000A,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="a bin")],
+    	    descriptors = [name_descriptor(name=b"a bin")],
 	),
     ],
     )
@@ -360,13 +360,13 @@ g2 = Group(
     version	  = 1,
     )
 g2.set(
-	compatibilityDescriptor = "hello", 
+	compatibilityDescriptor = b"hello", 
 	modules = [
          Module(
     	    INPUT="big-file.raw",
     	    moduleId = 0x0010,
     	    moduleVersion = 0x00,
-    	    descriptors = [name_descriptor(name="another bin")],
+    	    descriptors = [name_descriptor(name=b"another bin")],
     	    ),
     ],
     )

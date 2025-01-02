@@ -46,7 +46,7 @@ avalpa1_pmt_pid = 1031
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "Avalpa",), 
+	    network_descriptor(network_name = b"Avalpa",), 
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -110,8 +110,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa 1",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa 1",
 		    ),    
 		],
 	    ),	
@@ -150,7 +150,7 @@ pmt = program_map_section(
 				teletext_descriptor (
 					teletext_descriptor_loop = [
 						teletext_descriptor_loop_item(
-							ISO639_language_code = "ITA",
+							ISO639_language_code = b"ITA",
 							type = 2, # 1 teletext # 2 teletext subtitle page
 							magazine_number = 0x07,
 							page_number = 0x77,

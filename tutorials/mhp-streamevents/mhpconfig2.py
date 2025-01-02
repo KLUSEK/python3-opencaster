@@ -54,7 +54,7 @@ dsmccC_carousel_id = 2
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "Avalpa",), 
+	    network_descriptor(network_name = b"Avalpa",),
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -118,8 +118,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "Avalpa",
-			service_name = "Avalpa 1",
+			service_provider_name = b"Avalpa",
+			service_name = b"Avalpa 1",
 		    ),    
 		],
 	    ),	
@@ -265,12 +265,12 @@ ait = application_information_section(
 			        application_priority = 1, # 1 is lowset, it is used when more than 1 applications is executing
 			        transport_protocol_labels = [1], # carousel Id
 			),
-			application_name_descriptor(application_name = "Text input example"),
-			dvb_j_application_descriptor(parameters = ["file:///sample8"]), # parameter passed to the xlet
+			application_name_descriptor(application_name = b"Text input example"),
+			dvb_j_application_descriptor(parameters = [b"file:///sample8"]), # parameter passed to the xlet
 			dvb_j_application_location_descriptor(
-				base_directory = "/", # base directory, if set to "/hello" the xlet will act as "/hello" is its root directory
+				base_directory = b"/", # base directory, if set to "/hello" the xlet will act as "/hello" is its root directory
 				class_path_extension = "", # an additiona classpath inside the carousel can be specified
-				initial_class = "tv.cineca.apps.yambo.Wizard",  # the starting class implementing Xlet interface
+				initial_class = b"tv.cineca.apps.yambo.Wizard",  # the starting class implementing Xlet interface
 			),
         	]
         	),
@@ -299,12 +299,12 @@ ait = application_information_section(
 			        application_priority = 1, # 1 is lowset, it is used when more than 1 applications is executing
 			        transport_protocol_labels = [2], # carousel Id
 			),
-			application_name_descriptor(application_name = "Test Stream Event"),
+			application_name_descriptor(application_name = b"Test Stream Event"),
 			dvb_j_application_descriptor(parameters = []), # no parameters passed
 			dvb_j_application_location_descriptor(
-				base_directory = "/", # base directory, if set to "/hello" the xlet will act as "/hello" is its root directory
+				base_directory = b"/", # base directory, if set to "/hello" the xlet will act as "/hello" is its root directory
 				class_path_extension = "", # an additiona classpath inside the carousel can be specified
-				initial_class = "Testste",  # the starting class implementing Xlet interface
+				initial_class = b"Testste",  # the starting class implementing Xlet interface
 			),
         	]
         	),
@@ -324,7 +324,7 @@ ste = stream_event_section(
         stream_event_descriptor_loop = [
             stream_event_do_it_now_descriptor(
 	        event_id = 1, 
-		private_data = "event 1 private data",
+		private_data = b"event 1 private data",
 	    ),
 	],
         version_number = 1,

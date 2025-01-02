@@ -56,8 +56,8 @@ class data_broadcast_descriptor(Descriptor):
     def sample(self):
         self.set(
             component_tag = 0x11,
-            selector_bytes = "012345",
-            text_chars = "abcde",
+            selector_bytes = b"012345",
+            text_chars = b"abcde",
             )
 
 
@@ -99,7 +99,7 @@ class object_carousel_info(DVBobject):
 
     def sample(self):
         self.set(
-            object_names = ["aaa", "bbbbbb"]
+            object_names = [b"aaa", b"bbbbbb"]
             )
 
 ######################################################################

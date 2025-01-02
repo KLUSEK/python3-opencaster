@@ -52,7 +52,7 @@ class DSMCCmessage(Section):
     dsmccType = 0x03                    # DSMCC U-N Message
     adaptationLength = 0x00             # ???
 
-    compatibilityDescriptor = ""        # DVB
+    compatibilityDescriptor = ""       # DVB
     privateData = None
 
     def __init__(self, **kwargs):

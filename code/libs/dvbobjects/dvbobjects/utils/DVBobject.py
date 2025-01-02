@@ -63,7 +63,7 @@ class DVBobject:
     # Default attribute value.
     # Subclasses can do that, too!
     #
-    ISO_639_language_code = "deu"
+    ISO_639_language_code = b"deu"
 
     def __init__(self, **kwargs):
         """Initialize instance attributes from keyword arguments.

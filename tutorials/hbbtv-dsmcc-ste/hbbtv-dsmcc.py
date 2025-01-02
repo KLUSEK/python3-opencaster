@@ -41,8 +41,8 @@ dsmcc_association_tag = 0xB
 dsmcc_carousel_id = 11
 
 # parameters reported into ths AIT to signalize a broadcast application.
-appli_name = "HBBTV-TEST"
-appli_path = "index.html"
+appli_name = b"HBBTV-TEST"
+appli_path = b"index.html"
 organisationId_1 = 1  # this is a demo value
 applicationId_1 = 1011 # this is a demo value. This number corresponds to a HbbTV trusted application
 
@@ -59,7 +59,7 @@ version = 23
 nit = network_information_section(
 	network_id = 1,
         network_descriptor_loop = [
-	    network_descriptor(network_name = "HBBTV-NETWORK",),
+	    network_descriptor(network_name = b"HBBTV-NETWORK",),
             ],
 	transport_stream_loop = [
 	    transport_stream_loop_item(
@@ -117,8 +117,8 @@ sdt = service_description_section(
 		service_descriptor_loop = [
 		    service_descriptor(
 			service_type = 1, # digital television service
-			service_provider_name = "hbbtvprovidername",
-			service_name = "HBBTVServiceName",
+			service_provider_name = b"hbbtvprovidername",
+			service_name = b"HBBTVServiceName",
 		    ),    
 		],
 	    ),	
@@ -228,7 +228,7 @@ ait = application_information_section(
 				application_descriptors_loop = [
 					transport_protocol_descriptor(
 							protocol_id = 0x0003, # the application is broadcasted on a DSMCC
-							URL_base = "http://URL_to_hbbtv_app/", # fail over URL the application is broadcasted on a DSMCC
+							URL_base = b"http://URL_to_hbbtv_app/", # fail over URL the application is broadcasted on a DSMCC
 							transport_protocol_label = 3, # the application is broadcasted on a DSMCC
 							URL_extensions = [], # carousel common tag and association tag
 					),
@@ -266,7 +266,7 @@ ste = stream_event_section(
         stream_event_descriptor_loop = [
             stream_event_do_it_now_descriptor(
 	        event_id = 1, 
-		private_data = "stream event test text for Event1",
+		private_data = b"stream event test text for Event1",
 	    ),
 	],
         version_number = version,
@@ -281,45 +281,33 @@ ste = stream_event_section(
 
 out = open("./nit.sec", "wb")
 out.write(nit.pack())
-out.close
-out = open("./nit.sec", "wb") # python  flush bug
-out.close
+out.close()
 os.system('/usr/bin/sec2ts 16 < ./nit.sec > ./nit.ts')
 
 out = open("./pat.sec", "wb")
 out.write(pat.pack())
-out.close
-out = open("./pat.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/bin/sec2ts 0 < ./pat.sec > ./pat.ts')
 
 out = open("./sdt.sec", "wb")
 out.write(sdt.pack())
-out.close
-out = open("./sdt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/bin/sec2ts 17 < ./sdt.sec > ./sdt.ts')
 
 out = open("./pmt.sec", "wb")
 out.write(pmt.pack())
-out.close
-out = open("./pmt.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/bin/sec2ts ' + str(pmt1_pid) + ' < ./pmt.sec > ./pmt.ts')
 
 out = open("./ait.sec", "wb")
 out.write(ait.pack())
-out.close
-out = open("./ait.sec", "wb") # python   flush bug
-out.close
+out.close()
 os.system('/usr/bin/sec2ts ' + str(ait1_pid) + ' < ./ait.sec > ./ait.ts')
 
 
 out = open("./ste.sec", "wb")
 out.write(ste.pack())
-out.close
-out = open("./ste.sec", "wb") # python  flush bug
-out.close
+out.close()
 os.system('/usr/bin/sec2ts ' + str(ste1_pid) + ' < ./ste.sec > ./ste.ts')
 
 # remove the section files
