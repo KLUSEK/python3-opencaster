@@ -228,7 +228,7 @@ int main(int argc, char *argv[]) {
 				error_reported = 0;
 				/* 
 				 * I know, I know, tempral reference sometimes there is not, 
-				 * complain with yout encoder or write field/frame interlaced/progressive management ;-) 
+				 * complain with your encoder or write field/frame interlaced/progressive management ;-) 
 				 *
 				 */
 				frame_size = ES_HEADER_SIZE;
