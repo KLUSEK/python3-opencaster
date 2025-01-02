@@ -10,9 +10,20 @@ This package is a collection of softwares for Linux system to play out and multi
 
 ### About this fork
 Fork done by Konrad Dąbek for internal purposes. This is still a work in progress! Goals:
-- Merge own patches & cherry-picked patches created by the community
-- Enable possibility to build partially under Windows (Cygwin), with some limitations (e.g. no network stack), I've made that successfully back in 2020, but never authored this in the form of commit. Some tools are working fine under Windows through Cygwin, e.g. sec2ts, ts2sec, building DSM-CC OC/DC, DVB-SSU
-- [TODO] Move to Python3
+ - Merge own patches & cherry-picked patches created by the community
+ - Enable possibility to build partially under Windows (Cygwin), with some limitations (e.g. no network stack), I've made that successfully back in 2020, but never authored this in the form of commit. Some tools are working fine under Windows through Cygwin, e.g. sec2ts, ts2sec, building DSM-CC OC/DC, DVB-SSU
+ - Move to Python3
+
+Please be aware that as of 2025, OpenCaster hasn't received any updates for more than 12 years, with last changes originating from 2013.
+In the meantime a lot of things have changed in the DVB world.
+My (Konrad Dąbek) personal beliefs are that in 2025 OpenCaster should be used only if there's no open source alternative is present (e.g. DSMCC, DVB-SSU, TTX, Subtitling, MHP/HbbTV), at least until original authors or their successors will take over the development.
+For most of other purposes you should seek for modern alternatives.
+For tables management, monitoring, debugging, lab and demo purposes please consider to check [TSDuck](https://tsduck.io/)
+For generation of MPEG TS with A/V please consider to check [FFmpeg](https://www.ffmpeg.org/) (FFmpeg is far from being perfect in DVB-SI tables generation, so teaming it up with TSDuck is a wise idea)
+
+I'm (Konrad Dąbek) providing no support for this fork, I cannot give any guarantee that it will reflect robustness of Pyhton 2 version.
+There are no plans to introduce any fixes, updates or improvements except of continuation of attempts to make it work with Python 3 and Cygwin, at least partially.
+Before reporting any issue please check behaviour on the original Python 2 release.
 
 ### Use-cases
  - MHP, MHEG5, HbbTv and others interactive tv standards object carousel broadcast
@@ -36,24 +47,24 @@ Avalpa Broadcast Server manual is available here: [AvalpaBroadcastServerUserManu
 OpenCaster has been tested with Rohde & Schwarz DVM100L, Rohde & Schwarz DVM 400, DekTec StreamXpert and a countless number of set top boxes, digital receivers and television sets.
 
 ### Technical features
-- PSI generation (PAT, PMT, NIT, SDT, TDT, AIT, TOT...)
-- EPG/EIT generation
-- Object and data carousel generation and receivement (MHP, MHEG5, HbbTv, DVB-SSU, DSMCC...)
-- third party software AC-3, MPEG2 audio, MPEG2 video and H264 video encoders support
-- Audio Description generation support
-- IP encapsulation (MPE)
-- Teletext generation
-- CBR transport stream muxing
-- PCR stamping
-- Null packet replacement
-- PID filtering
-- PID remapping
-- Null packet insertion
-- Video buffer verifier
-- PCR timing verifier
-- PES headers analyzer
-- MPEG2 video and MPEG2/AC-3 audio ES header analyzer
-- M2TS file generation from TS file
+ - PSI generation (PAT, PMT, NIT, SDT, TDT, AIT, TOT...)
+ - EPG/EIT generation
+ - Object and data carousel generation and receivement (MHP, MHEG5, HbbTv, DVB-SSU, DSMCC...)
+ - third party software AC-3, MPEG2 audio, MPEG2 video and H264 video encoders support
+ - Audio Description generation support
+ - IP encapsulation (MPE)
+ - Teletext generation
+ - CBR transport stream muxing
+ - PCR stamping
+ - Null packet replacement
+ - PID filtering
+ - PID remapping
+ - Null packet insertion
+ - Video buffer verifier
+ - PCR timing verifier
+ - PES headers analyzer
+ - MPEG2 video and MPEG2/AC-3 audio ES header analyzer
+ - M2TS file generation from TS file
 
 ### Demo
 A demonstration transport stream is available at this address: [https://web.archive.org/web/20221006041331/http://www.avalpa.com/the-key-values/15-free-software/59-opencaster-demo-roll](https://web.archive.org/web/20221006041331/http://www.avalpa.com/the-key-values/15-free-software/59-opencaster-demo-roll) (OC3.demo.ts might be hard to be downloaded from WebArchive, original website is down, author of this fork has got the TS, but decided against uploading it to GitHub to avoid bloating the repo).
@@ -133,8 +144,8 @@ Channel | Frequency [MHz]
 69 | 858
 
 #### MPEG Audio Layer 2 suggested bit rates:
-- 56 kbps -> 1 pes packet -> 1 ts packet
-- 112 kbps -> 1 pes packet -> 2 ts packets 
-- 160 kbps -> 1 pes packet -> 3 ts packets
-- 224 kbps -> 1 pes packet -> 4 ts packets
+ - 56 kbps -> 1 pes packet -> 1 ts packet
+ - 112 kbps -> 1 pes packet -> 2 ts packets 
+ - 160 kbps -> 1 pes packet -> 3 ts packets
+ - 224 kbps -> 1 pes packet -> 4 ts packets
 All the others fall in the middle and are not a wise choice.
