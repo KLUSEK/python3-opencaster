@@ -32,6 +32,8 @@ setup(
         'dvbobjects.SBTVD',
         'dvbobjects.utils',
     ],
-
+    install_requires=[
+        'crcmod',
+    ],
     ext_modules=_ext_modules
 )
