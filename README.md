@@ -15,13 +15,15 @@ Fork done by Konrad Dąbek for internal purposes. This is still a work in progre
  - Move to Python3
 
 Please be aware that as of 2025, OpenCaster hasn't received any updates for more than 12 years, with last changes originating from 2013.  
-In the meantime a lot of things have changed in the DVB world.  
+In the meantime a lot of things have changed in the DVB world...  
+  
 My (Konrad Dąbek) personal beliefs are that in 2025 OpenCaster should be used only if there's no open source alternative is present (e.g. DSMCC, DVB-SSU, TTX, Subtitling, MHP/HbbTV), at least until original authors or their successors will take over the development.  
 For most of other purposes you should seek for modern alternatives.  
+  
 For tables management, monitoring, debugging, lab and demo purposes please consider to check [TSDuck](https://tsduck.io/)  
 For generation of MPEG TS with A/V please consider to check [FFmpeg](https://www.ffmpeg.org/) (FFmpeg is far from being perfect in DVB-SI tables generation, so teaming it up with TSDuck is a wise idea)  
   
-I'm (Konrad Dąbek) providing no support for this fork, I cannot give any guarantee that it will reflect robustness of Pyhton 2 version.  
+I'm (Konrad Dąbek) providing no support for this fork, I cannot give any guarantee that it will reflect robustness of Python 2 version.  
 There are no plans to introduce any fixes, updates or improvements except of continuation of attempts to make it work with Python 3 and Cygwin, at least partially.  
 Before reporting any issue please check behaviour on the original Python 2 release.  
 
