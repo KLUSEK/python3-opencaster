@@ -3,6 +3,7 @@
 ### Original authors
  - Lorenzo Pallara
  - Andrea Venturi
+
 (domain `avalpa.com` is down, so e-mail addresses have been removed)
 
 ### Introduction
@@ -148,4 +149,5 @@ Channel | Frequency [MHz]
  - 112 kbps -> 1 pes packet -> 2 ts packets 
  - 160 kbps -> 1 pes packet -> 3 ts packets
  - 224 kbps -> 1 pes packet -> 4 ts packets
+
 All the others fall in the middle and are not a wise choice.
