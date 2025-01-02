@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2000-2001, GMD, Sankt Augustin
-# -- German National Research Center for Information Technology 
+# -- German National Research Center for Information Technology
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@ from dvbobjects.utils import *
 from dvbobjects.MPEG.Section import Section
 
 ######################################################################
+
+
 class TransactionId(DVBobject):
 
     originator = 0x02                   # DVB
@@ -32,21 +34,23 @@ class TransactionId(DVBobject):
         DVBobject.__init__(*(self,), **kwargs)
 
         # debugging
-        self.HEX = "0x%08X" % self.__int__()
+        self.HEX = b"0x%08X" % self.__int__()
         self.originator = self.originator
 
     def __int__(self):
         return (
-            self.originator << 30
-            | (self.version << 16)
-            | (self.identification << 1)
-	    | (self.updateFlag & 0x1)
-            )
+            self.originator << 30 |
+            (self.version << 16) |
+            (self.identification << 1) |
+            (self.updateFlag & 0x1)
+        )
 
 ######################################################################
+
+
 class DSMCCmessage(Section):
 
-    private_indicator = 0 
+    private_indicator = 0
 
     protocolDiscriminator = 0x11        # DSMCC
     dsmccType = 0x03                    # DSMCC U-N Message
@@ -63,7 +67,7 @@ class DSMCCmessage(Section):
 
     def pack_section_body(self):
         messageBody = self.pack_message_body()
-        messageLength = len(messageBody) # +- something
+        messageLength = len(messageBody)  # +- something
         FMT = ("!"                      # Network Byte Order
                "B"                      # protocolDiscriminator
                "B"                      # dsmccType
@@ -87,7 +91,9 @@ class DSMCCmessage(Section):
                     )
 
 ######################################################################
-class DownloadServerInitiate(DSMCCmessage): # DSI
+
+
+class DownloadServerInitiate(DSMCCmessage):  # DSI
 
     # MPEG Section attributes
     version_number = 0
@@ -97,7 +103,7 @@ class DownloadServerInitiate(DSMCCmessage): # DSI
     table_id = 0x3B                     # DSMCC
     messageId = 0x1006                  # DSMCC
 
-    serverId = "\xFF" * 20              # DVB / MHP
+    serverId = b"\xFF" * 20              # DVB / MHP
 
     def __init__(self, **kwargs):
         # Initialize SuperClass
@@ -117,8 +123,7 @@ class DownloadServerInitiate(DSMCCmessage): # DSI
             len(self.serverId),
             len(self.compatibilityDescriptor),
             len(privateDataBytes),
-            )
-
+        )
 
         return pack(
             FMT,
@@ -127,11 +132,11 @@ class DownloadServerInitiate(DSMCCmessage): # DSI
             self.compatibilityDescriptor,
             len(privateDataBytes),
             privateDataBytes,
-            )
-               
-        
+        )
+
+
 ######################################################################
-class DownloadInfoIndication(DSMCCmessage): # DII
+class DownloadInfoIndication(DSMCCmessage):  # DII
 
     # MPEG Section attributes
     version_number = 0
@@ -155,7 +160,7 @@ class DownloadInfoIndication(DSMCCmessage): # DII
     def pack_message_body(self):
         self.table_id_extension = (0x0000FFFF & int(self.transactionId))
 
-        if self.privateData == None:
+        if self.privateData is None:
             privateDataBytes = ""
 
         miiBytes = self.moduleInfoIndication.pack()
@@ -174,8 +179,8 @@ class DownloadInfoIndication(DSMCCmessage): # DII
             len(self.compatibilityDescriptor),
             len(miiBytes),
             len(privateDataBytes),
-            )
-        
+        )
+
         return pack(fmt,
                     self.downloadId,
                     self.blockSize,
@@ -189,9 +194,11 @@ class DownloadInfoIndication(DSMCCmessage): # DII
                     len(privateDataBytes),
                     privateDataBytes,
                     )
- 
+
 ######################################################################
-class DownloadDataBlock(DSMCCmessage): # DDB
+
+
+class DownloadDataBlock(DSMCCmessage):  # DDB
 
     table_id = 0x3C                     # DSMCC
     messageId = 0x1003                  # DSMCC
@@ -206,7 +213,7 @@ class DownloadDataBlock(DSMCCmessage): # DDB
 
         self.transactionId = self.downloadId
 
-        fmt ="!HBBH%ds" % len(self.data_block)
+        fmt = "!HBBH%ds" % len(self.data_block)
         return pack(fmt,
                     self.moduleId,
                     self.moduleVersion,
@@ -214,4 +221,3 @@ class DownloadDataBlock(DSMCCmessage): # DDB
                     self.blockNumber,
                     self.data_block
                     )
- 

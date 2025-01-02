@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2008-2013, Lorenzo Pallara l.pallara@avalpa.com
 #
 # This program is free software; you can redistribute it and/or modify
@@ -23,14 +23,16 @@ from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 
 ######################################################################
+
+
 class entitlement_management_message_section(Section):
 
     table_id = 0x8F
-    
+
     section_max_size = 1024
 
     def pack_section_body(self):
-    
+
         # pack program_loop_item
         pl_bytes = b"".join(
             [x.pack() for x in self.emm_loop])
@@ -39,16 +41,18 @@ class entitlement_management_message_section(Section):
 
         fmt = "!%ds" % (len(pl_bytes))
         return pack(fmt,
-            pl_bytes
-            )
+                    pl_bytes
+                    )
 
 ######################################################################
+
+
 class emm_loop_item(DVBobject):
 
     def pack(self):
-    
+
         # pack program_loop_item
         fmt = "!H"
         return pack(fmt,
-            self.test,
-        )
+                    self.test,
+                    )

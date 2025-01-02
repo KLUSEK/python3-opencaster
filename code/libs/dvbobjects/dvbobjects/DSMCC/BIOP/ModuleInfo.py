@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2000-2001, GMD, Sankt Augustin
-# -- German National Research Center for Information Technology 
+# -- German National Research Center for Information Technology
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,12 +24,14 @@ from . import Tap
 import string
 
 ######################################################################
+
+
 class ModuleInfo(DVBobject):
 
     ModuleTimeOut = 0xFFFFFFFF
-    BlockTimeOut  = 0xFFFFFFFF
-#   MinBlockTime  = 0x000061a8
-    MinBlockTime  = 0x00000001
+    BlockTimeOut = 0xFFFFFFFF
+#   MinBlockTime = 0x000061a8
+    MinBlockTime = 0x00000001
 
     userInfo = ""
 
@@ -38,9 +40,9 @@ class ModuleInfo(DVBobject):
         DVBobject.__init__(*(self,), **kwargs)
         self.taps = [
             Tap.object_tap(
-                assocTag = self.assocTag,
-                )
-            ]
+                assocTag=self.assocTag,
+            )
+        ]
 
     def pack(self):
 
@@ -48,26 +50,25 @@ class ModuleInfo(DVBobject):
         taps_bytes = b"".join([t.pack() for t in self.taps])
         user_info_bytes = b"".join([ui.pack() for ui in self.userInfo])
 
-        FMT =("!"
-              "L"                       # ModuleTimeOut
-              "L"                       # BlockTimeOut
-              "L"                       # MinBlockTime
-              "B"                       # taps_count
-              "%ds"                     # taps
-              "B"
-	      "%ds"                    # userInfo
-              ) % (
+        FMT = ("!"
+               "L"                       # ModuleTimeOut
+               "L"                       # BlockTimeOut
+               "L"                       # MinBlockTime
+               "B"                       # taps_count
+               "%ds"                     # taps
+               "B"
+               "%ds"                    # userInfo
+               ) % (
             len(taps_bytes),
             len(user_info_bytes),
-            )
+        )
 
         return pack(FMT,
                     self.ModuleTimeOut,
                     self.BlockTimeOut,
                     self.MinBlockTime,
                     len(self.taps),
-                        taps_bytes,
-                        len(user_info_bytes),
+                    taps_bytes,
+                    len(user_info_bytes),
                     user_info_bytes,
                     )
-

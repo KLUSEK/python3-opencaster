@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2005-2013 Lorenzo Pallara l.pallara@avalpa.com
 #
 # This program is free software; you can redistribute it and/or modify
@@ -20,10 +20,11 @@
 
 from math import floor
 
+
 def MJD_convert(year, month, day):
 
-	if (month == 1) or (month == 2):
-	    l = 1
-	else:
-	    l = 0
-	return 14956 + day + (floor((year - l) * 365.25)) + (floor((month + 1 + l * 12) * 30.6001))
+    if (month == 1) or (month == 2):
+        l = 1
+    else:
+        l = 0
+    return 14956 + day + (floor((year - l) * 365.25)) + (floor((month + 1 + l * 12) * 30.6001))

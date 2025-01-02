@@ -22,17 +22,19 @@ from dvbobjects.utils import *
 from dvbobjects.DVB.Descriptors import *
 
 ######################################################################
+
+
 class ip_mac_notification_section(Section):
 
     table_id = 0x4c
-    
+
     section_max_size = 4096
 
     def pack_section_body(self):
 
         self.action_type = 0x01
-        self.platform_id_hash = ( (self.platform_id>>16) & 0xff ) ^ ( (self.platform_id>>8) & 0xff ) ^ ( self.platform_id & 0xff )
-    
+        self.platform_id_hash = ((self.platform_id >> 16) & 0xff) ^ ((self.platform_id >> 8) & 0xff) ^ (self.platform_id & 0xff)
+
         # pack platform descriptor loop
         pdl_bytes = b"".join(
             [x.pack() for x in self.platform_descriptor_loop])
@@ -46,19 +48,20 @@ class ip_mac_notification_section(Section):
 
         fmt = "!BBBBBB%ds%ds" % (len(pdl_bytes), len(al_bytes))
         return pack(fmt,
-            (self.platform_id >> 16) & 0xFF,
-            (self.platform_id >> 8) & 0xFF,
-            self.platform_id & 0xFF,
-            self.processing_order,
-            0xF0 << 8 | (pdl_bytes_length >> 8) & 0x0F,
-            pdl_bytes_length & 0xFF,
-            pdl_bytes,
-            al_bytes
-            )
+                    (self.platform_id >> 16) & 0xFF,
+                    (self.platform_id >> 8) & 0xFF,
+                    self.platform_id & 0xFF,
+                    self.processing_order,
+                    0xF0 << 8 | (pdl_bytes_length >> 8) & 0x0F,
+                    pdl_bytes_length & 0xFF,
+                    pdl_bytes,
+                    al_bytes
+                    )
+
 
 class association_loop_item(DVBobject):
-  
-  def pack(self):
+
+    def pack(self):
         # pack target descriptor loop
         tdl_bytes = b"".join(
             [x.pack() for x in self.target_descriptor_loop])
@@ -69,15 +72,14 @@ class association_loop_item(DVBobject):
 
         tdl_bytes_length = len(tdl_bytes)
         odl_bytes_length = len(odl_bytes)
-        
+
         fmt = "!BB%dsBB%ds" % (tdl_bytes_length, odl_bytes_length)
-        
+
         return pack(fmt,
-                0xF0 << 8 | (tdl_bytes_length >> 8) & 0x0F,
-                tdl_bytes_length & 0xFF,
-                tdl_bytes,
-                0xF0 << 8 | (odl_bytes_length >> 8) & 0x0F,
-                odl_bytes_length & 0xFF,
-                odl_bytes
-                )
-                
+                    0xF0 << 8 | (tdl_bytes_length >> 8) & 0x0F,
+                    tdl_bytes_length & 0xFF,
+                    tdl_bytes,
+                    0xF0 << 8 | (odl_bytes_length >> 8) & 0x0F,
+                    odl_bytes_length & 0xFF,
+                    odl_bytes
+                    )

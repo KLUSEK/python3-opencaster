@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2000-2001, GMD, Sankt Augustin
-# -- German National Research Center for Information Technology 
+# -- German National Research Center for Information Technology
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,10 +21,12 @@
 
 from dvbobjects.utils import *
 
-BINDING_TYPE_NOBJECT  = 0x01
+BINDING_TYPE_NOBJECT = 0x01
 BINDING_TYPE_NCONTEXT = 0x02
 
 ######################################################################
+
+
 class Binding(DVBobject):
 
     nameComponents_count = 1            # DVB
@@ -50,25 +52,25 @@ class Binding(DVBobject):
             "B"                         # bindingType
             "%ds"                       # IOP::IOR()
             "H%ds"                      # objectInfo
-            ) % (
+        ) % (
             len(self.nameId),
             len(self.nameKind),
             len(ior),
             len(self.objectInfo),
-            )
+        )
 
         return pack(
             FMT,
             self.nameComponents_count,
-            len(self.nameId), 
-	    self.nameId,
-            len(self.nameKind), 
-	    self.nameKind,
+            len(self.nameId),
+            self.nameId,
+            len(self.nameKind),
+            self.nameKind,
             self.bindingType,
             ior,
-            len(self.objectInfo), 
-	    self.objectInfo,
-            )
+            len(self.objectInfo),
+            self.objectInfo,
+        )
 
     def __repr__(self):
         """Overrides DVBobject.__repr_, which is noooiiisy"""
@@ -76,23 +78,27 @@ class Binding(DVBobject):
         mod = loc.moduleId
         key = loc.objectKey
         return repr((self.nameId,
-                 (mod, key),
-                 ))
+                     (mod, key),
+                     ))
 
 ######################################################################
+
+
 class ObjectFileBinding(Binding):
 
     bindingType = BINDING_TYPE_NOBJECT
     nameKind = CDR("fil")
-    
+
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
         Binding.__init__(*(self,), **kwargs)
 
-       	self.objectInfo = pack("!LL", 0, self.contentSize)
-        
+        self.objectInfo = pack("!LL", 0, self.contentSize)
+
 ######################################################################
+
+
 class ObjectStreamEventBinding(Binding):
 
     bindingType = BINDING_TYPE_NOBJECT
@@ -105,14 +111,15 @@ class ObjectStreamEventBinding(Binding):
         Binding.__init__(*(self,), **kwargs)
 
 ######################################################################
+
+
 class ContextBinding(Binding):
 
     bindingType = BINDING_TYPE_NCONTEXT
-    nameKind    = CDR("dir")            # MHP
-    objectInfo  = ""                    # MHP
+    nameKind = CDR("dir")            # MHP
+    objectInfo = ""                    # MHP
 
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
         Binding.__init__(*(self,), **kwargs)
-

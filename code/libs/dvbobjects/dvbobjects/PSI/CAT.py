@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2008, Lorenzo Pallara
 #
 # This program is free software; you can redistribute it and/or modify
@@ -23,14 +23,16 @@ from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 
 ######################################################################
+
+
 class conditional_access_section(Section):
 
     table_id = 0x01
-    
+
     section_max_size = 1024
 
     def pack_section_body(self):
-    
+
         # pack ca_descriptor_loop
         pl_bytes = b"".join(
             [x.pack() for x in self.ca_descriptor_loop])
@@ -39,6 +41,5 @@ class conditional_access_section(Section):
 
         fmt = "!%ds" % (len(pl_bytes))
         return pack(fmt,
-            pl_bytes
-            )
-
+                    pl_bytes
+                    )

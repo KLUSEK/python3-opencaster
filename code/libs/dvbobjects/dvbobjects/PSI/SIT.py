@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2011-2013 Lorenzo Pallara l.pallara@avalpa.com
 #
 # This program is free software; you can redistribute it and/or modify
@@ -24,10 +24,12 @@ from dvbobjects.utils import *
 from dvbobjects.DVB.Descriptors import *
 
 ######################################################################
+
+
 class selection_information_section(Section):
 
     table_id = 0x7F
-    
+
     section_max_size = 4092
 
     def pack_section_body(self):
@@ -36,7 +38,7 @@ class selection_information_section(Section):
         self.private_indicator = 1
         self.section_number = 0
         self.last_section_number = 0
-    
+
         ti_bytes = b"".join(
             [x.pack() for x in self.transmission_info_loop])
 
@@ -45,22 +47,24 @@ class selection_information_section(Section):
 
         fmt = "!H%ds%ds" % (len(ti_bytes), len(sl_bytes))
         return pack(fmt,
-	    0xF000 | len(ti_bytes),
-            ti_bytes,
-            sl_bytes
-            )
+                    0xF000 | len(ti_bytes),
+                    ti_bytes,
+                    sl_bytes
+                    )
 
 ######################################################################
+
+
 class service_loop_item(DVBobject):
 
     def pack(self):
-    
+
         sdl_bytes = b"".join(
             [x.pack() for x in self.service_descriptor_loop])
 
         fmt = "!HH%ds" % len(sdl_bytes)
         return pack(fmt,
                     self.service_ID,
-                    0x8000 | (self.running_status << 13) |  (len(sdl_bytes) & 0x0FFF),
+                    0x8000 | (self.running_status << 13) | (len(sdl_bytes) & 0x0FFF),
                     sdl_bytes,
                     )

@@ -1,7 +1,7 @@
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2000-2001, GMD, Sankt Augustin
-# -- German National Research Center for Information Technology 
+# -- German National Research Center for Information Technology
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,6 +23,8 @@ from dvbobjects.utils import *
 from dvbobjects.MHP.Descriptors import content_type_descriptor
 
 ######################################################################
+
+
 class Message(DVBobject):
 
     magic = b"BIOP"                     # ISO
@@ -35,8 +37,8 @@ class Message(DVBobject):
     def pack(self):
 
         # sanity check
-        assert self.byte_order      == 0x00 # DVB
-        assert len(self.objectKind) == 0x04, repr(self.objectKind) # DVB
+        assert self.byte_order == 0x00  # DVB
+        assert len(self.objectKind) == 0x04, repr(self.objectKind)  # DVB
 
         MessageSubHeader_FMT = (
             "!"
@@ -48,33 +50,33 @@ class Message(DVBobject):
             "%ds"                      # objectInfo
             "B"
             "%ds"                      # serviceContextList
-            ) % (
+        ) % (
             len(self.objectKind),
             len(self.objectInfo),
             len(self.serviceContextList),
-            )
-        
+        )
+
         MessageSubHeader = pack(
             MessageSubHeader_FMT,
             4,
             self.objectKey,
-            len(self.objectKind),         
+            len(self.objectKind),
             self.objectKind,
-            len(self.objectInfo),         
+            len(self.objectInfo),
             self.objectInfo,
             len(self.serviceContextList),
             self.serviceContextList,
-            )
-        
+        )
+
         messageBody = self.messageBody()
 
         message_size = (
-            len(MessageSubHeader)
-            + 4                         # messageBody_length field
-            + len(messageBody)
-            )
-        
-        MessageHeader = pack (
+            len(MessageSubHeader) +
+            4 +                         # messageBody_length field
+            len(messageBody)
+        )
+
+        MessageHeader = pack(
             "!"
             "4s"                        # magic
             "B"                         # biop_version_major
@@ -83,14 +85,14 @@ class Message(DVBobject):
             "B"                         # message_type
             "L"                         # message_size
             ,                           # end of FMT ;-)
-            self.magic, 
+            self.magic,
             self.biop_version_major,
             self.biop_version_minor,
             self.byte_order,
             self.message_type,
             message_size,               # computed
-            )
-        
+        )
+
         FMT = ("!"
                "%ds"                    # MessageHeader
                "%ds"                    # MessageSubHeader
@@ -100,17 +102,19 @@ class Message(DVBobject):
             len(MessageHeader),
             len(MessageSubHeader),
             len(messageBody)
-            )
-        
+        )
+
         return pack(
             FMT,                        # see above
             MessageHeader,
             MessageSubHeader,
             len(messageBody),           # messageBody
             messageBody,
-            )
+        )
 
 ######################################################################
+
+
 class FileMessage(Message):
 
     objectKind = CDR("fil")             # DVB
@@ -122,8 +126,8 @@ class FileMessage(Message):
 
         # Initialize standard attributes
         self.set(
-            objectInfo = pack("!LL", 0, self.contentSize),
-            )
+            objectInfo=pack("!LL", 0, self.contentSize),
+        )
 
         # Maybe we're playing MHP...
         try:
@@ -131,7 +135,6 @@ class FileMessage(Message):
         except AttributeError:
             content_type = None         # i.e: UNKNOWN
 
-            
         # if we know a content_type, add descriptor...
         if content_type:
             ctd = content_type_descriptor(content_type=content_type)
@@ -149,20 +152,22 @@ class FileMessage(Message):
                     )
 
 ######################################################################
+
+
 class StreamEventMessage(Message):
 
-    objectKind = CDR("ste")             # DVB    
+    objectKind = CDR("ste")             # DVB
     objectInfo = ""
 
     def __init__(self, **kwargs):
 
         # Initialize SuperClass
         Message.__init__(*(self,), **kwargs)
-        
+
         info_t = pack("!BLLBBB", 0, 0, 0, 0, 0, 1)
         # Hard coded DSM::Stream::Info_T.pack() for do it now
         event_names = open(self.PATH + "/.ename").read()
-        self.objectInfo =  info_t + event_names
+        self.objectInfo = info_t + event_names
 
     def messageBody(self):
 
@@ -188,36 +193,40 @@ class DirectoryMessage(Message):
         # Increasing this value shall give an ability to insert more files into DSMCC OC, eventually breaking compatibility with MHP
         # https://www.etsi.org/deliver/etsi_ts/102700_102799/102727/01.01.01_60/ts_102727v010101p.pdf p.257
         # Leaving the original value (512) untouched, but successfully tested internally increasing it to 1024 and pushing more than 600 files
-        assert self.bindings_count < 512 # MHP
+        assert self.bindings_count < 512  # MHP
 
     def messageBody(self):
         separator = ""                  # for debugging
         bindings = "%s%s%s" % (
             separator,
             b"".join([binding.pack() for binding in self.bindings],
-                        separator),
+                     separator),
             separator)
 
         FMT = (
             "!"
             "H"                         # bindings_count
             "%ds"                       # bindings
-            ) % (len(bindings))
+        ) % (len(bindings))
 
         messageBody = pack(
             FMT,
             len(self.bindings),
             bindings,
-            )
+        )
 
         return messageBody
 
 ######################################################################
+
+
 class ServiceGatewayMessage(DirectoryMessage):
 
-    objectKind = CDR("srg")            # DVB
+    objectKind = CDR("srg")             # DVB
 
 ######################################################################
+
+
 class ServiceGatewayInfo(DVBobject):
 
     userInfo = ""                       # MHP
@@ -231,8 +240,8 @@ class ServiceGatewayInfo(DVBobject):
                ) % (
             len(self.srg_ior),
             len(self.userInfo),
-            )
-        
+        )
+
         return pack(FMT,
                     self.srg_ior,       # IOP::IOR
                     0,                  # downloadTaps_count

@@ -1,7 +1,7 @@
 #! /usr/bin/env python
- 
+
 # Copyright © 2000-2001, GMD, Sankt Augustin
-# -- German National Research Center for Information Technology 
+# -- German National Research Center for Information Technology
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,6 +26,8 @@ from dvbobjects.DVB.DataCarousel import *
 from dvbobjects.DVB.Loops import *
 
 ######################################################################
+
+
 def BuildCarousel(INPUT_DIR, OUTPUT_DIR):
 
     spec = SuperGroupSpec()
@@ -33,62 +35,65 @@ def BuildCarousel(INPUT_DIR, OUTPUT_DIR):
 
     # DVB
     assert 0x0000 <= spec.transactionId & 0x0000FFFF <= 0x0001
-    
+
     dsi = SuperGroup(
         PATH=spec.PATH,
-        transactionId = spec.transactionId,
-	version = spec.version,
-        )
+        transactionId=spec.transactionId,
+        version=spec.version,
+    )
 
     for group in spec.groups:
 
         dii = Group(
-            PATH = group.PATH,
-            transactionId = group.transactionId,
-            downloadId = group.downloadId,
-            blockSize = group.blockSize,
-	    version = group.version,
-            )
-	    
+            PATH=group.PATH,
+            transactionId=group.transactionId,
+            downloadId=group.downloadId,
+            blockSize=group.blockSize,
+            version=group.version,
+        )
+
         # DVB
         assert 0x0001 <= group.transactionId & 0x0000FFFF <= 0xFFFF
-	
+
         for mod in group.modules:
             if os.path.exists("%s.size" % mod.INPUT):
-	        # print("Compressing %s") % mod.INPUT
+                # print("Compressing %s") % mod.INPUT
                 m = Module(INPUT="%s" % mod.INPUT,
-                           moduleVersion= mod.moduleVersion,
-                           moduleId = mod.moduleId,
-                           assocTag = group.assocTag,
-			   descriptors = [compressed_descriptor(name = mod.INPUT)],
-                )
+                           moduleVersion=mod.moduleVersion,
+                           moduleId=mod.moduleId,
+                           assocTag=group.assocTag,
+                           descriptors=[compressed_descriptor(name=mod.INPUT)],
+                           )
             else:
                 m = Module(INPUT="%s" % mod.INPUT,
-                           moduleVersion= mod.moduleVersion,
-                           moduleId = mod.moduleId,
-                           assocTag = group.assocTag,
-                )	    
+                           moduleVersion=mod.moduleVersion,
+                           moduleId=mod.moduleId,
+                           assocTag=group.assocTag,
+                           )
             dii.addModule(m)
 
     dsi.addGroup(dii)
-	    
+
     dsi.generate(OUTPUT_DIR, spec.srg_ior)
-    if spec.srg_ior == None:
+    if spec.srg_ior is None:
         print(dsi)
+
 
 ######################################################################
 OPTIONS = "h"
 LONG_OPTIONS = [
     "help",
-    ]
+]
 
-def Usage(return_code = 1):
+
+def Usage(return_code=1):
     print(("Usage: %s"
            " [option...]"
            " <InputModuleDirectory>"
            " <OutputSectionsDirectory>") % (
         sys.argv[0]))
     sys.exit(return_code)
+
 
 def CheckArgs():
 
@@ -106,8 +111,9 @@ def CheckArgs():
         Usage()
 
     INPUT_DIR, OUTPUT_DIR = args
-    
+
     BuildCarousel(INPUT_DIR, OUTPUT_DIR)
+
 
 ######################################################################
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2005-2013 Lorenzo Pallara l.pallara@avalpa.com
 #
 # This program is free software; you can redistribute it and/or modify
@@ -24,18 +24,20 @@ from dvbobjects.utils.DVBobject import *
 from dvbobjects.utils.MJD import *
 
 ######################################################################
+
+
 class time_date_section(DVBobject):
 
     def pack(self):
-    
+
         date = MJD_convert(self.year, self.month, self.day)
 
-        fmt = "!BHHBBB" 
+        fmt = "!BHHBBB"
         return pack(fmt,
-	    0x70,
-	    0x7005,
-	    date,
-	    self.hour,
-	    self.minute,
-	    self.second,
-            )
+                    0x70,
+                    0x7005,
+                    date,
+                    self.hour,
+                    self.minute,
+                    self.second,
+                    )

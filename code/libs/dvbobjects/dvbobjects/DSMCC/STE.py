@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2006-2013 Lorenzo Pallara
 #
 # This program is free software; you can redistribute it and/or modify
@@ -23,10 +23,12 @@ from dvbobjects.MPEG.Section import Section
 from dvbobjects.DSMCC.Descriptors import *
 
 ######################################################################
+
+
 class stream_event_section(Section):
-    
+
     table_id = 0x3d
-    
+
     section_max_size = 4096
 
     def pack_section_body(self):
@@ -34,7 +36,7 @@ class stream_event_section(Section):
         self.table_id_extension = self.event_id
         self.segment_last_section_number = self.last_section_number
         self.last_table_id = self.table_id
-    
+
         # pack event_loop
         stel_bytes = b"".join(
             [x.pack() for x in self.stream_event_descriptor_loop])
@@ -43,4 +45,3 @@ class stream_event_section(Section):
         return pack(fmt,
                     stel_bytes,
                     )
-

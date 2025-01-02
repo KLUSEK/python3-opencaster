@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2004-2013 Lorenzo Pallara l.pallara@avalpa.com
 #
 # This program is free software; you can redistribute it and/or modify
@@ -24,14 +24,16 @@ from dvbobjects.utils import *
 from dvbobjects.DVB.Descriptors import *
 
 ######################################################################
+
+
 class network_information_section(Section):
 
     table_id = 0x40
-    
+
     section_max_size = 1024
 
     def pack_section_body(self):
-    
+
         # pack network_descriptor_loop
         ndl_bytes = b"".join(
             [x.pack() for x in self.network_descriptor_loop])
@@ -45,17 +47,19 @@ class network_information_section(Section):
 
         fmt = "!H%dsH%ds" % (len(ndl_bytes), len(tsl_bytes))
         return pack(fmt,
-            0xF000 | (len(ndl_bytes) & 0x0FFF),
-            ndl_bytes,
-            0xF000 | (len(tsl_bytes) & 0x0FFF),
-            tsl_bytes,
-            )
+                    0xF000 | (len(ndl_bytes) & 0x0FFF),
+                    ndl_bytes,
+                    0xF000 | (len(tsl_bytes) & 0x0FFF),
+                    tsl_bytes,
+                    )
 
 ######################################################################
+
+
 class transport_stream_loop_item(DVBobject):
 
     def pack(self):
-    
+
         # pack transport_descriptor_loop
         tdl_bytes = b"".join(
             [x.pack() for x in self.transport_descriptor_loop])

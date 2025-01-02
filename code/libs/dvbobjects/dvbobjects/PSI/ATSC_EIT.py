@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2005-2013 Lorenzo Pallara l.pallara@avalpa.com
 #
 # This program is free software; you can redistribute it and/or modify
@@ -25,10 +25,12 @@ from dvbobjects.ATSC.Descriptors import *
 from dvbobjects.ATSC.Loops import *
 
 ######################################################################
+
+
 class event_information_section(Section):
-    
+
     table_id = 0xCB
-    
+
     section_max_size = 4093
 
     def pack_section_body(self):
@@ -50,10 +52,11 @@ class event_information_section(Section):
                     )
 
 ######################################################################
+
+
 class event_loop_item(DVBobject):
 
     def pack(self):
-    
 
         # pack event_descriptor_loop
         event_descriptors_bytes = b"".join(

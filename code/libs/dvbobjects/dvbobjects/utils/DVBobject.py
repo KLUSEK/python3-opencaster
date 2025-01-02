@@ -1,9 +1,9 @@
 #! /usr/bin/env python
 
 # This file is part of the dvbobjects library.
-# 
+#
 # Copyright © 2000-2001, GMD, Sankt Augustin
-# -- German National Research Center for Information Technology 
+# -- German National Research Center for Information Technology
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,9 @@ import string
 import pprint
 
 ######################################################################
-def CDR(s, alignment = 4, gap_byte = 0xFF):
+
+
+def CDR(s, alignment=4, gap_byte=0xFF):
     """If necessary, append to 's' a trailing NUL byte
     and fill with 'gap_byte' until properly aligned.
     """
@@ -34,9 +36,11 @@ def CDR(s, alignment = 4, gap_byte = 0xFF):
 
     while len(s) % alignment:
         s = s + chr(gap_byte)
-    return s					    
-					    
+    return s
+
 ######################################################################
+
+
 class DVBobject:
     """The base class for many protocol data units.
 
@@ -92,16 +96,16 @@ class DVBobject:
         i = 0
         for byte in bytes:
             if i % BYTES_PER_LINE == 0:
-                if i: print()             # start on a fresh line...
+                if i:
+                    print()             # start on a fresh line...
                 print("%04x " % i, end=' ')
             print("%02X" % ord(byte), end=' ')
-            i = i+1
+            i = i + 1
         print()                           # dump is done => NL
-        
+
     def test(self):
         """Used for debugging."""
         if not self.__dict__:
             self.sample()
         self.dump()
         print(self)
-
