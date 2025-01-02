@@ -60,7 +60,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header,const u_char *pac
     datagram_section_size = (header->len - size_ethernet) + SECTION_MPE_HEADER_SIZE; /* ip packet + mpe header */
     temp = htons (datagram_section_size + sizeof(crc32) - SECTION_HEADER_SIZE); /* add crc32 at section body, sub first section head bytes */ 
     memcpy(datagram_section + 1, &temp, 2);
-    datagram_section[1] |= 0xb0; /* datagram section lenght, reserved, syntax, no private */
+    datagram_section[1] |= 0xb0; /* datagram section length, reserved, syntax, no private */
 
     /* Set section header fixed bytes */
     datagram_section[0] = 0x3e; /* dsmcc section private data table id */  
