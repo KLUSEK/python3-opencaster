@@ -12,7 +12,7 @@ This package is a collection of softwares for Linux system to play out and multi
 Fork done by Konrad Dąbek for internal purposes. This is still a work in progress! Goals:
  - Merge own patches & cherry-picked patches created by the community
  - Enable possibility to build partially under Windows (Cygwin), with some limitations (e.g. no network stack), I've made that successfully back in 2020, but never authored this in the form of commit. Some tools are working fine under Windows through Cygwin, e.g. sec2ts, ts2sec, building DSM-CC OC/DC, DVB-SSU
- - Move to Python3
+ - Move to Python 3
 
 Please be aware that as of 2025, OpenCaster hasn't received any updates for more than 12 years, with last changes originating from 2013.  
 In the meantime a lot of things have changed in the DVB world...  
