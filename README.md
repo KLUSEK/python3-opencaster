@@ -17,7 +17,7 @@ Fork done by Konrad Dąbek for internal purposes. This is still a work in progre
 Please be aware that as of 2025, OpenCaster hasn't received any updates for more than 12 years, with last changes originating from 2013.  
 In the meantime a lot of things have changed in the DVB world...  
   
-My (Konrad Dąbek) personal beliefs are that in 2025 OpenCaster should be used only if there's no open source alternative is present (e.g. DSMCC, DVB-SSU, TTX, Subtitling, MHP/HbbTV), at least until original authors or their successors will take over the development.  
+My (Konrad Dąbek) personal beliefs are that in 2025 OpenCaster should be used only if there's no other open source alternative present (e.g. DSMCC, DVB-SSU, TTX, Subtitling, MHP/HbbTV), at least until original authors or their successors will take over the development.  
 For most of other purposes you should seek for modern alternatives.  
   
 For tables management, monitoring, debugging, lab and demo purposes please consider to check [TSDuck](https://tsduck.io/)  
