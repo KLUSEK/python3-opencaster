@@ -26,21 +26,21 @@ unsigned int sectioncrc( unsigned char*, unsigned int );
 
 static PyObject* do_sectioncrc( PyObject*, PyObject* );
 
+static PyMethodDef methods [] = {
+    { "sectioncrc", do_sectioncrc, METH_VARARGS },
+    {NULL, NULL}
+};
+
 static struct PyModuleDef _crc32 =
 {
     PyModuleDef_HEAD_INIT,
     "_crc32",    /* name of module */
     "",          /* module documentation, may be NULL */
     -1,          /* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. */
-    sectioncrc
+    methods
 };
 
-static PyMethodDef methods [] = {
-    { "sectioncrc", do_sectioncrc, METH_VARARGS },
-    {NULL, NULL}
-};
-
-void PyInit_crc32(void) {
+PyMODINIT_FUNC PyInit_crc32(void) {
     return PyModule_Create(&_crc32);
 }
 
@@ -53,7 +53,7 @@ static PyObject* do_sectioncrc( PyObject *self, PyObject *args ) {
     if( !PyArg_ParseTuple( args, "s#", &buf, &len ) ) 
 	return NULL;
 
-    c = sectioncrc( buf, len );
+    c = sectioncrc( (unsigned char *)buf, len );
 
     return Py_BuildValue( "I", c );
 }
