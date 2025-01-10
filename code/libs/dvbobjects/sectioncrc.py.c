@@ -23,17 +23,26 @@
 #include "../sectioncrc/sectioncrc.c"
 
 unsigned int sectioncrc( unsigned char*, unsigned int );
+
 static PyObject* do_sectioncrc( PyObject*, PyObject* );
+
+static struct PyModuleDef _crc32 =
+{
+    PyModuleDef_HEAD_INIT,
+    "_crc32",    /* name of module */
+    "",          /* module documentation, may be NULL */
+    -1,          /* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. */
+    sectioncrc
+};
+
 static PyMethodDef methods [] = {
     { "sectioncrc", do_sectioncrc, METH_VARARGS },
     {NULL, NULL}
 };
 
-
-void init_crc32(void) {
-    Py_InitModule( "_crc32", methods );
+void PyInit_crc32(void) {
+    return PyModule_Create(&_crc32);
 }
-
 
 static PyObject* do_sectioncrc( PyObject *self, PyObject *args ) {
     
