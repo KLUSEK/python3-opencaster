@@ -31,6 +31,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <time.h>
+#include "tsudpsend.h"
 
 #define TS_PACKET_SIZE 188
 
