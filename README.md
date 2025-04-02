@@ -1,14 +1,6 @@
 # OpenCaster 
 
 ### About this fork
- - Lorenzo Pallara
- - Andrea Venturi  
-(domain `avalpa.com` is down, so e-mail addresses have been removed)
-
-### Introduction
-This package is a collection of softwares for Linux system to play out and multiplex MPEG2 transport stream format.
-
-### About this fork
 Fork done basing on another fork by Konrad Dąbek for internal purposes. This is still a work in progress! Goals:
  - Merge available patches & cherry-picked patches created by the community
  - Make it compatible with Python 3.10+
