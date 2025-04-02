@@ -1,7 +1,7 @@
 # OpenCaster 
 
 ### About this fork
-Fork done basing on another fork by Konrad Dąbek. Goals are:
+Fork done in order to:
  - Merge available patches & cherry-picked patches created by the community
  - Make it compatible with Python 3.10+
 
