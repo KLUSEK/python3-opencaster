@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -24,9 +24,6 @@ from dvbobjects.utils import *
 from dvbobjects.utils.Hamming import *
 from dvbobjects.utils.ByteParity import *
 from dvbobjects.utils.ByteInvert import *
-
-######################################################################
-
 
 class EBUTeletext(DVBobject):
     """The class for EBU Teletext data units, NB. they are not sections
@@ -91,7 +88,7 @@ class EBUTeletext(DVBobject):
             b1 = (self.country_code >> 2) & 0x1
             b0 = self.magazine_serial & 0x1
             hamming10 = invert(hamming84((b3 << 3) | (b2 << 2) | (b1 << 1) | b0))
-# return pack("!BBBBBBBBBBBBBB",
+            # return pack("!BBBBBBBBBBBBBB",
             return pack("BBBBBBBBBBBBBB",
                         self.data_unit_id,  # 0x02 non-subtile or 0x03 for subtitles
                         0x2C,  # 44 bytes
@@ -150,8 +147,6 @@ class EBUTeletext(DVBobject):
                         hamming2,
                         ) + payload  # 40 characters of a line, a page is 24 lines
 
-
-######################################################################
 class EBUTeletextUnits(DVBobject):
     def pack(self):
 

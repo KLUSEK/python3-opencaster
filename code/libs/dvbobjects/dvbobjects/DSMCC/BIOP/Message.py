@@ -22,9 +22,6 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.MHP.Descriptors import content_type_descriptor
 
-######################################################################
-
-
 class Message(DVBobject):
 
     magic = b"BIOP"                     # ISO
@@ -112,9 +109,6 @@ class Message(DVBobject):
             messageBody,
         )
 
-######################################################################
-
-
 class FileMessage(Message):
 
     objectKind = CDR("fil")             # DVB
@@ -151,9 +145,6 @@ class FileMessage(Message):
                     content,
                     )
 
-######################################################################
-
-
 class StreamEventMessage(Message):
 
     objectKind = CDR("ste")             # DVB
@@ -176,8 +167,6 @@ class StreamEventMessage(Message):
         event_ids = open(self.PATH + "/.eid").read()
         return taps + event_ids
 
-
-######################################################################
 class DirectoryMessage(Message):
 
     objectKind = CDR("dir")             # DVB
@@ -217,15 +206,9 @@ class DirectoryMessage(Message):
 
         return messageBody
 
-######################################################################
-
-
 class ServiceGatewayMessage(DirectoryMessage):
 
     objectKind = CDR("srg")             # DVB
-
-######################################################################
-
 
 class ServiceGatewayInfo(DVBobject):
 

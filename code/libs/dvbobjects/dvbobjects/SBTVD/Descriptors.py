@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 #
 # Copyright © 2010 Robson Tovo <robson.tovo@gmail.com>,
 #                  Marco Casaroli <marco.casaroli@gmail.com>
@@ -22,8 +22,6 @@ from dvbobjects.utils import *
 from dvbobjects.utils.MJD import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-######################################################################
-
 
 class tds_frequency_item(DVBobject):
 
@@ -44,10 +42,7 @@ class terrestrial_delivery_system_descriptor(Descriptor):
         fmt = "!H%ds" % len(frequency_bytes)
         return pack(fmt, ((self.area_code & 0xFFF) << 4) | ((self.guard_interval & 0x3) << 2) | (self.transmission_mode & 0x3), frequency_bytes)
 
-######################################################################
 # As specified by ARIB
-
-
 class partial_reception_descriptor(Descriptor):
 
     descriptor_tag = 0xfb
@@ -58,10 +53,8 @@ class partial_reception_descriptor(Descriptor):
         fmt = "!%ds" % (len(sid_pack))
         return pack(fmt, sid_pack)
 
-######################################################################
+
 # As specified by ARIB
-
-
 class system_management_descriptor(Descriptor):
 
     descriptor_tag = 0xfe
@@ -79,8 +72,6 @@ class system_management_descriptor(Descriptor):
 
         return pack(fmt, sys_man_id, additional_id_info_pack)
 
-######################################################################
-
 
 class data_component_descriptor(Descriptor):
 
@@ -90,10 +81,8 @@ class data_component_descriptor(Descriptor):
         fmt = "!H%ds" % len(self.additional_data_component_info)
         return pack(fmt,
                     self.data_component_id,
-                    self.additional_data_component_info,
+                    self.additional_data_component_info.encode(),
                     )
-
-######################################################################
 
 
 class service_id_loop_item(DVBobject):
@@ -132,11 +121,9 @@ class transport_stream_information_descriptor(Descriptor):
         return pack(fmt,
                     self.remote_control_key_id,
                     (name_len << 2) | ts_type_count,
-                    self.ts_name,
-                    transmission_type_loop_cat
+                    self.ts_name.encode(),
+                    transmission_type_loop_cat.encode()
                     )
-
-######################################################################
 
 
 class video_decode_control_descriptor(Descriptor):
@@ -149,8 +136,6 @@ class video_decode_control_descriptor(Descriptor):
                     (self.video_encode_format << 2) |
                     0x03
                     )
-
-######################################################################
 
 
 class ts_loop_item(DVBobject):
@@ -173,4 +158,4 @@ class ts_info_descriptor(Descriptor):
         ts_loop_bytes = b"".join([x.pack() for x in self.ts_loop])
         fmt = "!BBBB%ds%ds" % (len(self.tsname), len(ts_loop_bytes))
         # print len(ts_loop_bytes)
-        return pack(fmt, self.descriptor_tag, len(self.tsname) + len(ts_loop_bytes) + 2, self.rc_key, len(self.tsname) << 2 | len(self.ts_loop) & 3, self.tsname, ts_loop_bytes)
+        return pack(fmt, self.descriptor_tag, len(self.tsname) + len(ts_loop_bytes) + 2, self.rc_key, len(self.tsname) << 2 | len(self.ts_loop) & 3, self.tsname.encode(), ts_loop_bytes)

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -22,9 +22,6 @@
 import string
 import pprint
 
-######################################################################
-
-
 def CDR(s, alignment=4, gap_byte=0xFF):
     """If necessary, append to 's' a trailing NUL byte
     and fill with 'gap_byte' until properly aligned.
@@ -37,9 +34,6 @@ def CDR(s, alignment=4, gap_byte=0xFF):
     while len(s) % alignment:
         s = s + chr(gap_byte)
     return s
-
-######################################################################
-
 
 class DVBobject:
     """The base class for many protocol data units.
@@ -67,7 +61,7 @@ class DVBobject:
     # Default attribute value.
     # Subclasses can do that, too!
     #
-    ISO_639_language_code = b"deu"
+    ISO_639_language_code = "deu"
 
     def __init__(self, **kwargs):
         """Initialize instance attributes from keyword arguments.
@@ -100,7 +94,7 @@ class DVBobject:
                     print()             # start on a fresh line...
                 print("%04x " % i, end=' ')
             print("%02X" % ord(byte), end=' ')
-            i = i + 1
+            i = i+1
         print()                           # dump is done => NL
 
     def test(self):

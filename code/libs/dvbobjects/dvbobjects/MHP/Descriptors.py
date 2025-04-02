@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -25,7 +25,6 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-######################################################################
 # Common constants.
 
 # application_type
@@ -37,9 +36,6 @@ DVB_J_AUTOSTART = 0x01
 
 # protocol_id
 MHP_OC_protocol_id = 0x0001
-
-######################################################################
-
 
 class application_descriptor(Descriptor):
 
@@ -69,9 +65,6 @@ class application_descriptor(Descriptor):
                     tp_labels,
                     )
 
-######################################################################
-
-
 class application_name_descriptor(Descriptor):
 
     descriptor_tag = 0x01
@@ -79,13 +72,10 @@ class application_name_descriptor(Descriptor):
     def bytes(self):
         fmt = "!3sB%ds" % len(self.application_name)
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     len(self.application_name),
-                    self.application_name,
+                    self.application_name.encode(),
                     )
-
-######################################################################
-
 
 class transport_protocol_descriptor(Descriptor):
 
@@ -99,9 +89,6 @@ class transport_protocol_descriptor(Descriptor):
                     0x7F | (self.remote_connection << 7),
                     self.component_tag,
                     )
-
-######################################################################
-
 
 class transport_ic_protocol_descriptor(Descriptor):
 
@@ -120,7 +107,7 @@ class transport_ic_protocol_descriptor(Descriptor):
                       self.protocol_id,
                       self.transport_protocol_label,
                       len(self.URL_base),
-                      self.URL_base,
+                      self.URL_base.encode(),
                       URL_extension_count
                       )
 
@@ -133,8 +120,6 @@ class transport_ic_protocol_descriptor(Descriptor):
 
         return result
 
-
-######################################################################
 class application_storage_descriptor(Descriptor):
 
     descriptor_tag = 0x10
@@ -150,9 +135,6 @@ class application_storage_descriptor(Descriptor):
                     self.priority,
                     )
 
-######################################################################
-
-
 class dvb_html_application_descriptor(Descriptor):
 
     descriptor_tag = 0x08
@@ -162,10 +144,8 @@ class dvb_html_application_descriptor(Descriptor):
         # TODO add applications_ids
 
         fmt = "!BH%ds" % len(self.parameter)
-        return pack(fmt, 1, 1, self.parameter)
+        return pack(fmt, 1, 1, self.parameter.encode())
 
-
-######################################################################
 class dvb_html_application_location_descriptor(Descriptor):
 
     descriptor_tag = 0x09
@@ -178,12 +158,10 @@ class dvb_html_application_location_descriptor(Descriptor):
 
         return pack(fmt,
                     len(self.physical_root),
-                    self.physical_root,
-                    self.initial_path,
+                    self.physical_root.encode(),
+                    self.initial_path.encode(),
                     )
 
-
-######################################################################
 class dvb_j_application_descriptor(Descriptor):
 
     descriptor_tag = 0x03
@@ -200,9 +178,6 @@ class dvb_j_application_descriptor(Descriptor):
 
         return result
 
-######################################################################
-
-
 class dvb_simple_application_location_descriptor(Descriptor):
 
     descriptor_tag = 0x15
@@ -210,11 +185,9 @@ class dvb_simple_application_location_descriptor(Descriptor):
     def bytes(self):
         fmt = "!%ds" % (len(self.path))
         return pack(fmt,
-                    self.path,
+                    self.path.encode(),
                     )
 
-
-######################################################################
 class dvb_j_application_location_descriptor(Descriptor):
 
     descriptor_tag = 0x04
@@ -228,33 +201,27 @@ class dvb_j_application_location_descriptor(Descriptor):
 
         return pack(fmt,
                     len(self.base_directory),
-                    self.base_directory,
+                    self.base_directory.encode(),
                     len(self.class_path_extension),
-                    self.class_path_extension,
-                    self.initial_class,
+                    self.class_path_extension.encode(),
+                    self.initial_class.encode(),
                     )
-
-######################################################################
-
 
 class ginga_ncl_application_descriptor(Descriptor):
 
     descriptor_tag = 0x06
 
     def bytes(self):
-        result = ""
+        result = "".encode()
 
         for param in self.parameters:
             result = result + pack(
                 "!B%ds" % len(param),
                 len(param),
-                param,
+                param.encode(),
             )
 
         return result
-
-######################################################################
-
 
 class ginga_ncl_application_location_descriptor(Descriptor):
 
@@ -269,14 +236,11 @@ class ginga_ncl_application_location_descriptor(Descriptor):
 
         return pack(fmt,
                     len(self.base_directory),
-                    self.base_directory,
+                    self.base_directory.encode(),
                     len(self.class_path_extension),
-                    self.class_path_extension,
-                    self.initial_class,
+                    self.class_path_extension.encode(),
+                    self.initial_class.encode(),
                     )
-
-######################################################################
-
 
 class content_type_descriptor(Descriptor):
 
@@ -290,9 +254,7 @@ class content_type_descriptor(Descriptor):
 
 ###
 # The following two should be somewhere else
-######################################################################
 #  INCOMPLETE
-
 
 class additional_ginga_j_info(DVBobject):
     def __init__(self, transmission_format, document_resolution, organization_id, application_id, carousel_id):
@@ -312,9 +274,6 @@ class additional_ginga_j_info(DVBobject):
             self.carousel_id,
             0x1F
         )
-
-######################################################################
-
 
 class ait_identifier_info(DVBobject):
     def __init__(self, application_type, ait_version):

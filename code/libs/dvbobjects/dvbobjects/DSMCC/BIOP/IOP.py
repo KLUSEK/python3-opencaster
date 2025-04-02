@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -21,9 +21,6 @@
 
 from dvbobjects.utils import *
 from dvbobjects.DSMCC.BIOP import Tap
-
-######################################################################
-
 
 class IOR(DVBobject):
 
@@ -79,9 +76,6 @@ class IOR(DVBobject):
 
         return ior_bytes
 
-######################################################################
-
-
 class BIOPProfileBody(DVBobject):
 
     profileId_tag = 0x49534F06
@@ -121,8 +115,6 @@ class BIOPProfileBody(DVBobject):
             profile_data,
         )
 
-
-######################################################################
 class BIOP_ObjectLocation(DVBobject):
 
     componentId_tag = 0x49534F50
@@ -154,9 +146,6 @@ class BIOP_ObjectLocation(DVBobject):
             4,
             self.objectKey,
         )
-
-######################################################################
-
 
 class DSM_ConnBinder(DVBobject):
 

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -22,9 +22,6 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils.DVBobject import *
-
-######################################################################
-
 
 class terrestrial_virtual_channel_section(Section):
 
@@ -51,9 +48,6 @@ class terrestrial_virtual_channel_section(Section):
                     adl_bytes
                     )
 
-######################################################################
-
-
 class channel_loop_item(DVBobject):
 
     def pack(self):
@@ -78,9 +72,6 @@ class channel_loop_item(DVBobject):
                     dl_bytes
                     )
 
-######################################################################
-
-
 class service_location_descriptor(DVBobject):
 
     def pack(self):
@@ -98,8 +89,6 @@ class service_location_descriptor(DVBobject):
                     sl_bytes                          # service_location_loop data
                     )
 
-
-######################################################################
 class service_location(DVBobject):
 
     def pack(self):

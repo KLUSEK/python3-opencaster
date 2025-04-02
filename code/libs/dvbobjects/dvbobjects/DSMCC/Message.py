@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -22,9 +22,6 @@
 from dvbobjects.utils import *
 from dvbobjects.MPEG.Section import Section
 
-######################################################################
-
-
 class TransactionId(DVBobject):
 
     originator = 0x02                   # DVB
@@ -44,9 +41,6 @@ class TransactionId(DVBobject):
             (self.identification << 1) |
             (self.updateFlag & 0x1)
         )
-
-######################################################################
-
 
 class DSMCCmessage(Section):
 
@@ -90,9 +84,6 @@ class DSMCCmessage(Section):
                     messageBody,
                     )
 
-######################################################################
-
-
 class DownloadServerInitiate(DSMCCmessage):  # DSI
 
     # MPEG Section attributes
@@ -127,15 +118,13 @@ class DownloadServerInitiate(DSMCCmessage):  # DSI
 
         return pack(
             FMT,
-            self.serverId,
+            self.serverId.encode(),
             len(self.compatibilityDescriptor),
-            self.compatibilityDescriptor,
+            self.compatibilityDescriptor.encode(),
             len(privateDataBytes),
             privateDataBytes,
         )
 
-
-######################################################################
 class DownloadInfoIndication(DSMCCmessage):  # DII
 
     # MPEG Section attributes
@@ -161,7 +150,7 @@ class DownloadInfoIndication(DSMCCmessage):  # DII
         self.table_id_extension = (0x0000FFFF & int(self.transactionId))
 
         if self.privateData is None:
-            privateDataBytes = ""
+            privateDataBytes = "".encode()
 
         miiBytes = self.moduleInfoIndication.pack()
 
@@ -189,14 +178,11 @@ class DownloadInfoIndication(DSMCCmessage):  # DII
                     self.tCDownloadWindow,
                     self.tCDownloadScenario,
                     len(self.compatibilityDescriptor),
-                    self.compatibilityDescriptor,
+                    self.compatibilityDescriptor.encode(),
                     miiBytes,
                     len(privateDataBytes),
                     privateDataBytes,
                     )
-
-######################################################################
-
 
 class DownloadDataBlock(DSMCCmessage):  # DDB
 
@@ -219,5 +205,5 @@ class DownloadDataBlock(DSMCCmessage):  # DDB
                     self.moduleVersion,
                     0xFF,
                     self.blockNumber,
-                    self.data_block
+                    self.data_block.encode()
                     )

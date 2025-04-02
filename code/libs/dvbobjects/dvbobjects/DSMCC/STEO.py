@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 #
 # Copyright © 2006-2013  Lorenzo Pallara, l.pallara@avalpa.com
@@ -23,8 +23,6 @@ import string
 from dvbobjects.DSMCC.BIOP.Tap import *
 from dvbobjects.utils import *
 
-
-###############################
 class Event_names(DVBobject):
 
     def pack(self):
@@ -35,12 +33,9 @@ class Event_names(DVBobject):
             result = result + pack(
                 "!B%ds" % len(name),
                 len(name),
-                name,
+                name.encode(),
             )
         return result
-
-###############################
-
 
 class Event_ids(DVBobject):
 
@@ -51,9 +46,6 @@ class Event_ids(DVBobject):
             result = result + pack("!H", id)
         return result
 
-###############################
-
-
 class Taps(DVBobject):
 
     def pack(self):
@@ -62,4 +54,3 @@ class Taps(DVBobject):
         for tap in self.tap_loop:
             result = result + tap.pack()
         return result
-###############################

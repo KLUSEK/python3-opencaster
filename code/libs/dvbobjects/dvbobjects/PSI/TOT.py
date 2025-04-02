@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -25,9 +25,6 @@ from dvbobjects.utils.MJD import *
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 from dvbobjects.DVB.Descriptors import *
-
-######################################################################
-
 
 class time_offset_section(DVBobject):
 

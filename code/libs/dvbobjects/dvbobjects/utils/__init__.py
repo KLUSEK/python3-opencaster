@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -20,5 +20,5 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 from struct import pack, unpack, calcsize
-from dvbobjects import DVBobject, CDR
+from .DVBobject import DVBobject, CDR
 from . import crc32

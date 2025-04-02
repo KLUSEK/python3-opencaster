@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -22,9 +22,6 @@ import string
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 
-######################################################################
-
-
 class entitlement_management_message_section(Section):
 
     table_id = 0x8F
@@ -43,9 +40,6 @@ class entitlement_management_message_section(Section):
         return pack(fmt,
                     pl_bytes
                     )
-
-######################################################################
-
 
 class emm_loop_item(DVBobject):
 

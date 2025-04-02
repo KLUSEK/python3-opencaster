@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -23,9 +23,6 @@ from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 from dvbobjects.DVB.Descriptors import *
 
-######################################################################
-
-
 class service_description_section(Section):
 
     table_id = 0x42
@@ -48,9 +45,6 @@ class service_description_section(Section):
                     sl_bytes,
                     )
 
-######################################################################
-
-
 class service_description_other_ts_section(Section):
 
     table_id = 0x46
@@ -72,9 +66,6 @@ class service_description_other_ts_section(Section):
                     0xFF,
                     sl_bytes,
                     )
-
-######################################################################
-
 
 class service_loop_item(DVBobject):
 

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -21,9 +21,6 @@
 import string
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
-
-######################################################################
-
 
 class master_guide_section(Section):
 
@@ -52,8 +49,6 @@ class master_guide_section(Section):
                     0xF000 | (len(dl_bytes) & 0x0FFF),
                     dl_bytes,
                     )
-
-######################################################################
 
 
 class table_loop_item(DVBobject):

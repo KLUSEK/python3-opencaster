@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -28,9 +28,6 @@ import dvbobjects.DSMCC.BIOP
 
 from .Loops import *
 
-######################################################################
-
-
 class SuperGroup(DownloadServerInitiate):
 
     def __init__(self, PATH, transactionId, version):
@@ -56,9 +53,6 @@ class SuperGroup(DownloadServerInitiate):
         sec_file = open("%s/DSI.sec" % output_dir, "wb")
         sec_file.write(self.pack())
         sec_file.close()
-
-######################################################################
-
 
 class Group(DownloadInfoIndication):
 
@@ -101,9 +95,6 @@ class Group(DownloadInfoIndication):
         sec_file = open("%s/%s.sec" % (output_dir, stem), "wb")
         sec_file.write(self.pack())
         sec_file.close()
-
-######################################################################
-
 
 class Module(DVBobject):
 

@@ -1,6 +1,5 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
-#
 # Copyright © 2000-2001, GMD, Sankt Augustin
 # -- German National Research Center for Information Technology
 #
@@ -41,13 +40,13 @@ class SuperGroupSpec(DVBobject):
 
         self.groups = []
 
-        while (1):
+        while True:
             line = file.readline()
             if not line:
                 break
 
             group = GroupSpec()
-            # print (repr(line))
+            # print(repr(line))
             group.read(line)
             self.groups.append(group)
 
@@ -73,16 +72,13 @@ class SuperGroupSpec(DVBobject):
         curr = self.groups[-1]
         GroupSpec.addModule(*(curr,), **kwargs)
 
-######################################################################
-
-
 class GroupSpec(DVBobject):
 
     def read(self, specline):
         items = string.split(specline)
 
         self.PATH = items[0]
-        # print (repr(items[0]))
+        # print(repr(items[0]))
         diiSpecFile = open(items[0])
         self.transactionId = eval(items[1])
         self.version = eval(items[2])
@@ -96,7 +92,7 @@ class GroupSpec(DVBobject):
 
         self.modules = []
 
-        while True:
+        while 1:
             line = diiSpecFile.readline()
             if not line:
                 break
@@ -123,18 +119,13 @@ class GroupSpec(DVBobject):
         except AttributeError:
             self.modules = [mod]
 
-######################################################################
-
-
 class ModuleSpec(DVBobject):
 
     def read(self, specline):
         items = string.split(specline)
-        # print (repr(items[0]))
-        # print (repr(items[1]))
+        # print(repr(items[0]))
+        # print(repr(items[1]))
         self.INPUT = items[0]
         self.tableid = eval(items[1])
         self.moduleId = eval(items[2])
         self.moduleVersion = eval(items[3])
-
-######################################################################

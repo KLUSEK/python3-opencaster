@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 #
 # Copyright © 2013  Lorenzo Pallara, l.pallara@avalpa.com
@@ -22,8 +22,6 @@ from dvbobjects.utils import *
 from dvbobjects.utils.MJD import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-######################################################################
-
 
 class rated_dimension_loop_item(DVBobject):
 
@@ -34,8 +32,6 @@ class rated_dimension_loop_item(DVBobject):
                     self.rating_dimension_j,
                     0xF0 | self.rating_value & 0xF
                     )
-
-######################################################################
 
 
 class rating_region_loop_item(DVBobject):
@@ -58,8 +54,6 @@ class rating_region_loop_item(DVBobject):
                     rating_description_bytes
                     )
 
-######################################################################
-
 
 class content_advisory_descriptor(Descriptor):
 
@@ -75,8 +69,6 @@ class content_advisory_descriptor(Descriptor):
                     (0x3 << 6) | (self.rating_region_count & 0x3F),
                     data_bytes,
                     )
-
-######################################################################
 
 
 class AC3_audio_stream_descriptor(Descriptor):

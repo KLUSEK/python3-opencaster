@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 #
 # Copyright © 2004  Andreas Berger, berger@ftw.at
@@ -31,7 +31,7 @@ class ip_mac_platform_name_descriptor(Descriptor):
         fmt = "!3s%ds" % len(self.text_char_bytes)
 
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     self.text_char_bytes
                     )
 
@@ -45,7 +45,7 @@ class ip_mac_platform_provider_name_descriptor(Descriptor):
         fmt = "!3s%ds" % len(self.text_char_bytes)
 
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     self.text_char_bytes
                     )
 
@@ -86,7 +86,7 @@ class target_MAC_address_descriptor(Descriptor):
         fmt = "!6s%ds" % len(self.mac_addr_bytes)
 
         return pack(fmt,
-                    self.mac_addr_mask,
+                    self.mac_addr_mask.encode(),
                     self.mac_addr_bytes
                     )
 
@@ -100,7 +100,7 @@ class target_MAC_address_range_descriptor(Descriptor):
         fmt = "!6s%ds" % len(self.mac_addr_bytes)
 
         return pack(fmt,
-                    self.mac_addr_mask,
+                    self.mac_addr_mask.encode(),
                     self.mac_addr_bytes
                     )
 
@@ -114,7 +114,7 @@ class target_IP_address_descriptor(Descriptor):
         fmt = "!I%ds" % len(self.IPv4_addr_bytes)
 
         return pack(fmt,
-                    self.IPv4_addr_mask,
+                    self.IPv4_addr_mask.encode(),
                     self.IPv4_addr_bytes
                     )
 
@@ -158,7 +158,7 @@ class target_IPv6_address_descriptor(Descriptor):
         fmt = "!7s%ds" % len(self.IPv6_address_bytes)
 
         return pack(fmt,
-                    self.IPv6_address_mask,
+                    self.IPv6_address_mask.encode(),
                     self.IPv6_address_bytes
                     )
 

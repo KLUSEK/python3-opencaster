@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -30,9 +30,6 @@ EIT_ANOTHER_TS = 0x60  # to 0x6F
 EIT_ACTUAL_TS_SCHEDULE14 = 0x50
 EIT_ACTUAL_TS_SCHEDULE58 = 0x51
 
-######################################################################
-
-
 class event_information_section(Section):
 
     section_max_size = 4096
@@ -54,9 +51,6 @@ class event_information_section(Section):
                     self.last_table_id,
                     el_bytes,
                     )
-
-######################################################################
-
 
 class event_loop_item(DVBobject):
 

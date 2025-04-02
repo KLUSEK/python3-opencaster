@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -22,9 +22,6 @@ import string
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.ATSC.Loops import *
 from dvbobjects.utils.MJD import *
-
-######################################################################
-
 
 class extended_text_table_section(Section):
 

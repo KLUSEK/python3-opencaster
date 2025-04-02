@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -25,9 +25,6 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-######################################################################
-
-
 class data_broadcast_descriptor(Descriptor):
 
     descriptor_tag = 0x64
@@ -49,10 +46,10 @@ class data_broadcast_descriptor(Descriptor):
             self.data_broadcast_id,
             self.component_tag,
             self.selector_length,
-            self.selector_bytes,
-            self.ISO_639_language_code,
+            self.selector_bytes.encode(),
+            self.ISO_639_language_code.encode(),
             self.text_length,
-            self.text_chars,
+            self.text_chars.encode(),
         )
 
     def sample(self):
@@ -62,8 +59,6 @@ class data_broadcast_descriptor(Descriptor):
             text_chars=b"abcde",
         )
 
-
-######################################################################
 class object_carousel_info(DVBobject):
 
     carousel_type_id = 0x02
@@ -74,14 +69,14 @@ class object_carousel_info(DVBobject):
 
     def pack(self):
 
-        obj_loop_bytes = ""
+        obj_loop_bytes = "".encode()
         for obj_name_chars in self.object_names:
             object_name_length = len(obj_name_chars)
             obj_bytes = pack(
                 "!3sB%ds" % object_name_length,
-                self.ISO_639_language_code,
+                self.ISO_639_language_code.encode(),
                 object_name_length,
-                obj_name_chars,
+                obj_name_chars.encode(),
             )
             obj_loop_bytes = obj_loop_bytes + obj_bytes
 
@@ -103,9 +98,6 @@ class object_carousel_info(DVBobject):
             object_names=[b"aaa", b"bbbbbb"]
         )
 
-######################################################################
-
-
 class stream_event_descriptor(Descriptor):
 
     descriptor_tag = 0x1a
@@ -122,17 +114,12 @@ class stream_event_descriptor(Descriptor):
             self.event_id,
             self.reserved | (self.eventNPT >> 32),  # 31 bits reserved, 1 bit NPT_reference
             self.eventNPT & 0xFFFFFFFF,     # 32 bits NPT_reference
-            self.private_data,
+            self.private_data.encode(),
         )
-
-######################################################################
-
 
 class stream_event_do_it_now_descriptor(stream_event_descriptor):
 
     eventNPT = 0x0
-######################################################################
-
 
 class stream_event_ginga_descriptor(stream_event_descriptor):
 
@@ -158,15 +145,12 @@ class stream_event_ginga_descriptor(stream_event_descriptor):
                                  3 + len(self.payload),
                                  self.command_tag,
                                  ((self.sequence_number & 0x7F) << 1) | (self.final_flag & 0x01),
-                                 self.payload,
+                                 self.payload.encode(),
                                  self.FCS
                                  )
 
         # call superclass implementation.
         return stream_event_descriptor.bytes(self)
-
-######################################################################
-
 
 class npt_reference_descriptor(Descriptor):
 
@@ -194,9 +178,6 @@ class npt_reference_descriptor(Descriptor):
             self.scale_numerator,
             self.scale_denominator
         )
-
-######################################################################
-
 
 class npt_endpoint_descriptor(Descriptor):
 

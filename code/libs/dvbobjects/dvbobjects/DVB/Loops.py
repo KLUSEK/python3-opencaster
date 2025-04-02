@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -23,11 +23,9 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-
-######################################################################
 class GroupInfoIndication(DVBobject):
 
-    privateData = ""
+    privateData = "".encode()
 
     def __init__(self, superGroup):
 
@@ -53,9 +51,6 @@ class GroupInfoIndication(DVBobject):
                     self.privateData,
                     )
 
-######################################################################
-
-
 class GroupInfo(DVBobject):
 
     def pack(self):
@@ -75,13 +70,10 @@ class GroupInfo(DVBobject):
                     self.groupId,
                     self.groupSize,
                     len(self.groupCompatibility),
-                    self.groupCompatibility,
+                    self.groupCompatibility.encode(),
                     len(self.groupInfo),
                     self.groupInfo,
                     )
-
-######################################################################
-
 
 class ModuleInfoIndication(DVBobject):
 
@@ -105,16 +97,13 @@ class ModuleInfoIndication(DVBobject):
                     infos,
                     )
 
-######################################################################
-
-
 class ModuleInfo(DVBobject):
 
     def pack(self):
         if self.moduleInfo:
             moduleInfoBytes = self.moduleInfo.pack()
         elif self.moduleInfo == "" and len(self.descriptors) == 0:
-            moduleInfoBytes = ""
+            moduleInfoBytes = "".encode()
         else:
             moduleInfoBytes = b"".join(
                 [d.pack() for d in self.descriptors])
@@ -136,9 +125,6 @@ class ModuleInfo(DVBobject):
                     moduleInfoBytes,
                     )
 
-###################################################################
-
-
 class name_descriptor(Descriptor):
 
     descriptor_tag = 0x02
@@ -147,11 +133,8 @@ class name_descriptor(Descriptor):
         self.name_length = len(self.name)
         fmt = "!%ds" % self.name_length
         return pack(fmt,
-                    self.name,
+                    self.name.encode(),
                     )
-
-###################################################################
-
 
 class compressed_descriptor(Descriptor):
 
@@ -170,8 +153,6 @@ class compressed_descriptor(Descriptor):
                     compression_method,
                     original_size,
                     )
-###################################################################
-
 
 class crc32_descriptor(Descriptor):
     descriptor_tag = 0x05
@@ -179,8 +160,6 @@ class crc32_descriptor(Descriptor):
     def bytes(self):
         fmt = "!L"
         return pack(fmt, self.calc_crc32)
-###################################################################
-
 
 class ssu_module_type_descriptor(Descriptor):
     descriptor_tag = 0x0A

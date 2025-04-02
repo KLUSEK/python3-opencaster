@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 #
 # Copyright © 2004-2013  Lorenzo Pallara, l.pallara@avalpa.com
@@ -22,8 +22,6 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-######################################################################
-
 
 class STD_descriptor(Descriptor):
 
@@ -34,8 +32,6 @@ class STD_descriptor(Descriptor):
         return pack(fmt,
                     0xFE | self.leal_valid_flag,
                     )
-
-######################################################################
 
 
 class video_stream_descriptor(Descriptor):
@@ -67,7 +63,6 @@ class video_stream_descriptor(Descriptor):
                         )
 
 
-######################################################################
 class audio_stream_descriptor(Descriptor):
 
     descriptor_tag = 0x3
@@ -80,8 +75,6 @@ class audio_stream_descriptor(Descriptor):
                     (self.layer & 0x3) << 4 |
                     (self.variable_rate_audio_indicator & 0x1) << 3,
                     )
-
-######################################################################
 
 
 class association_tag_descriptor(Descriptor):
@@ -97,19 +90,20 @@ class association_tag_descriptor(Descriptor):
                         self.selector_length,
                         self.transaction_id,
                         self.timeout,
-                        self.private_data,
+                        self.private_data.encode(),
                         )
         else:
-            fmt = "!HHB%ds%ds" % (len(self.selector_length), len(self.privatedata))
+            fmt = "!HHB%ds%ds" % (
+                len(self.selector_length),
+                len(self.privatedata)
+            )
             return pack(fmt,
                         self.association_tag,
                         self.use,
                         self.selector_length,
                         self.selector_bytes,
-                        self.privatedata,
+                        self.privatedata.encode(),
                         )
-
-######################################################################
 
 
 class graphics_constraints_descriptor(Descriptor):
@@ -129,8 +123,6 @@ class graphics_constraints_descriptor(Descriptor):
                     gc_bytes,
                     )
 
-######################################################################
-
 
 class DTS_registration_descriptor(Descriptor):
 
@@ -140,8 +132,6 @@ class DTS_registration_descriptor(Descriptor):
         fmt = "!%ds" % (len(self.format_identifier))
         return pack(fmt, self.format_identifier)
 
-######################################################################
-
 
 class carousel_identifier_descriptor(Descriptor):
 
@@ -149,7 +139,8 @@ class carousel_identifier_descriptor(Descriptor):
 
     def bytes(self):
         if self.format_ID:
-            fmt = "!LBBHHHBLBB%ds%ds" % (len(self.object_key_data), len(self.private_data))
+            fmt = "!LBBHHHBLBB%ds%ds" % (
+                len(self.object_key_data), len(self.private_data))
             return pack(fmt,
                         self.carousel_ID,
                         self.format_ID,
@@ -161,18 +152,16 @@ class carousel_identifier_descriptor(Descriptor):
                         self.original_size,
                         self.timeout,
                         len(self.object_key_data),
-                        self.object_key_data,
-                        self.private_data,
+                        self.object_key_data.encode(),
+                        self.private_data.encode(),
                         )
         else:
             fmt = "!LB%ds" % (len(self.private_data))
             return pack(fmt,
                         self.carousel_ID,
                         self.format_ID,
-                        self.private_data,
+                        self.private_data.encode(),
                         )
-
-######################################################################
 
 
 class ca_descriptor(Descriptor):

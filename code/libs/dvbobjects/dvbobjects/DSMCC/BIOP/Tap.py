@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -21,9 +21,6 @@
 
 from dvbobjects.utils import *
 
-######################################################################
-
-
 class _tap(DVBobject):
 
     BIOP_DELIVERY_PARA_USE = 0x0016
@@ -36,9 +33,6 @@ class _tap(DVBobject):
     STR_STATUS_USE = 0x000E
 
     id = 0x0000                        # MHP
-
-######################################################################
-
 
 class object_tap(_tap):
 
@@ -65,9 +59,6 @@ class object_tap(_tap):
             len(self.selector),
         )
 
-######################################################################
-
-
 class elementary_stream_tap(_tap):
 
     use = _tap.BIOP_ES_USE
@@ -92,9 +83,6 @@ class elementary_stream_tap(_tap):
             self.assocTag,
             len(self.selector),
         )
-
-######################################################################
-
 
 class program_use_tap(_tap):
 
@@ -121,9 +109,6 @@ class program_use_tap(_tap):
             len(self.selector),
         )
 
-######################################################################
-
-
 class str_event_use_tap(_tap):
 
     use = _tap.STR_EVENT_USE
@@ -148,9 +133,6 @@ class str_event_use_tap(_tap):
             self.assocTag,
             len(self.selector),
         )
-
-######################################################################
-
 
 class delivery_para_tap(_tap):
 

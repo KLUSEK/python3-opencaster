@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -24,9 +24,6 @@ from dvbobjects.utils.MJD import *
 from dvbobjects.ATSC.Descriptors import *
 from dvbobjects.ATSC.Loops import *
 
-######################################################################
-
-
 class event_information_section(Section):
 
     table_id = 0xCB
@@ -50,9 +47,6 @@ class event_information_section(Section):
                     self.num_events_in_section,
                     el_bytes,
                     )
-
-######################################################################
-
 
 class event_loop_item(DVBobject):
 

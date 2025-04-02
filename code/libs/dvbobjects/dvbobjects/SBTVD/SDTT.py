@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 #
 # Copyright © 2010, LIFIA - Facultad de Informatica - Univ. Nacional de La Plata
@@ -158,6 +158,6 @@ class download_content_descriptor(Descriptor):
             self.compatibility_descriptor_bytes,
             self.modules_info_bytes,
             len(self.privateData),
-            self.privateData,
+            self.privateData.encode(),
             text_data_bytes
         )

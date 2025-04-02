@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 #
 # Copyright © 2004-2013  Lorenzo Pallara, l.pallara@avalpa.com
@@ -22,9 +22,6 @@ from dvbobjects.utils import *
 from dvbobjects.utils.MJD import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-######################################################################
-
-
 class short_event_descriptor(Descriptor):
 
     descriptor_tag = 0x4D
@@ -37,15 +34,12 @@ class short_event_descriptor(Descriptor):
             len(self.text),
         )
         return pack(fmt,
-                    self.ISO639_language_code,
+                    self.ISO639_language_code.encode(),
                     len(self.event_name),
-                    self.event_name,
+                    self.event_name.encode(),
                     len(self.text),
-                    self.text,
+                    self.text.encode(),
                     )
-
-######################################################################
-
 
 class content_user_loop_item(DVBobject):
 
@@ -72,9 +66,6 @@ class content_descriptor(Descriptor):
                     data_bytes,
                     )
 
-######################################################################
-
-
 class parental_rating_descriptor(Descriptor):
 
     descriptor_tag = 0x55
@@ -85,12 +76,9 @@ class parental_rating_descriptor(Descriptor):
             len(self.country_code),
         )
         return pack(fmt,
-                    self.country_code,
+                    self.country_code.encode(),
                     self.rating,
                     )
-
-######################################################################
-
 
 class dts_registration_descriptor(Descriptor):
 
@@ -104,9 +92,6 @@ class dts_registration_descriptor(Descriptor):
 # DTS format_identifier is 0x44545331 ("DTS1") for frame size 512;
 # DTS format_identifier is 0x44545332 ("DTS2") for frame size 1 024;
 # DTS format_identifier is 0x44545333 ("DTS3") for frame size 2 048.
-
-######################################################################
-
 
 class teletext_descriptor(Descriptor):
 
@@ -128,14 +113,11 @@ class teletext_descriptor_loop_item(DVBobject):
         assert len(self.ISO639_language_code) == 3
         fmt = "!%dsBB" % len(self.ISO639_language_code)
         return pack(fmt,
-                    self.ISO639_language_code,
+                    self.ISO639_language_code.encode(),
                     (self.type << 3) |
                     (self.magazine_number & 0x07),
                     self.page_number,
                     )
-
-######################################################################
-
 
 class vbi_data_descriptor_loop_item(DVBobject):
 
@@ -146,7 +128,6 @@ class vbi_data_descriptor_loop_item(DVBobject):
                     ((self.field_parity & 0x01) >> 5) |
                     (self.line_offset & 0x1F),
                     )
-
 
 class vbi_data_descriptor(Descriptor):
 
@@ -163,9 +144,6 @@ class vbi_data_descriptor(Descriptor):
                     data_bytes,
                     )
 
-######################################################################
-
-
 class stream_identifier_descriptor(Descriptor):
 
     descriptor_tag = 0x52
@@ -176,9 +154,6 @@ class stream_identifier_descriptor(Descriptor):
                     self.component_tag,
                     )
 
-######################################################################
-
-
 class bouquet_name_descriptor(Descriptor):
 
     descriptor_tag = 0x71
@@ -186,10 +161,8 @@ class bouquet_name_descriptor(Descriptor):
     def bytes(self):
         fmt = "!%ds" % len(self.bouquet_name)
         return pack(fmt,
-                    self.bouquet_name)
+                    self.bouquet_name.encode())
 
-
-######################################################################
 class data_broadcast_id_descriptor(Descriptor):
 
     descriptor_tag = 0x66
@@ -217,16 +190,13 @@ class data_broadcast_id_descriptor(Descriptor):
                         self.ID_selector_bytes,
                         )
 
-######################################################################
-
-
 class local_time_offset_loop_item(DVBobject):
 
     def pack(self):
 
         FMT = "!%dsBBBHBBBBB" % len(self.ISO_639_language_code)
         return pack(FMT,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     ((self.country_region_id & 0x3F) << 2) | 0x2 | (self.local_time_offset_polarity & 0x1),
                     self.local_time_offset_hour,
                     self.local_time_offset_minute,
@@ -237,9 +207,6 @@ class local_time_offset_loop_item(DVBobject):
                     self.next_time_offset_hour,
                     self.next_time_offset_minute,
                     )
-
-
-######################################################################
 
 class local_time_offset_descriptor(Descriptor):
 
@@ -253,9 +220,6 @@ class local_time_offset_descriptor(Descriptor):
                     lt_bytes
                     )
 
-
-######################################################################
-
 class _broadcast_id_descriptor(Descriptor):
 
     descriptor_tag = 0x66
@@ -266,9 +230,6 @@ class _broadcast_id_descriptor(Descriptor):
                     self.data_broadcast_ID,
                     self.ID_selector_bytes,
                     )
-
-######################################################################
-
 
 class application_signalling_descriptor(Descriptor):
 
@@ -286,9 +247,6 @@ class application_signalling_descriptor(Descriptor):
                         0xE0 | (self.AIT_version & 0x1F),
                         )
 
-######################################################################
-
-
 class network_descriptor(Descriptor):
 
     descriptor_tag = 0x40
@@ -296,11 +254,8 @@ class network_descriptor(Descriptor):
     def bytes(self):
         fmt = "!%ds" % len(self.network_name)
         return pack(fmt,
-                    self.network_name,
+                    self.network_name.encode(),
                     )
-
-######################################################################
-
 
 class service_descriptor(Descriptor):
 
@@ -311,13 +266,11 @@ class service_descriptor(Descriptor):
         return pack(fmt,
                     self.service_type,
                     len(self.service_provider_name),
-                    self.service_provider_name,
+                    self.service_provider_name.encode(),
                     len(self.service_name),
-                    self.service_name,
+                    self.service_name.encode(),
                     )
 
-
-######################################################################
 class transport_stream_terrestrial_descriptor(Descriptor):
 
     descriptor_tag = 0x5a
@@ -332,9 +285,6 @@ class transport_stream_terrestrial_descriptor(Descriptor):
                     0xffffffff,
                     )
 
-######################################################################
-
-
 class transport_stream_sat_descriptor(Descriptor):
 
     descriptor_tag = 0x43
@@ -347,9 +297,6 @@ class transport_stream_sat_descriptor(Descriptor):
                     (self.west_east_flag << 7) | (self.polarization << 5) | self.modulation,
                     (self.symbol_rate << 4) | self.FEC_inner,
                     )
-
-#######################################################################
-
 
 class transport_stream_cable_descriptor(Descriptor):
 
@@ -364,9 +311,6 @@ class transport_stream_cable_descriptor(Descriptor):
                     (self.symbol_rate << 4) | (self.FEC_inner),
                     )
 
-######################################################################
-
-
 class service_descriptor_loop_item(DVBobject):
 
     def pack(self):
@@ -375,7 +319,6 @@ class service_descriptor_loop_item(DVBobject):
                     self.service_ID,
                     self.service_type,
                     )
-
 
 class service_list_descriptor(Descriptor):
 
@@ -390,9 +333,6 @@ class service_list_descriptor(Descriptor):
                     dvb_service_bytes,
                     )
 
-######################################################################
-
-
 class registration_descriptor(Descriptor):
 
     descriptor_tag = 0x05
@@ -403,9 +343,6 @@ class registration_descriptor(Descriptor):
                     self.format_identifier
                     )
 
-######################################################################
-
-
 class lcn_service_descriptor_loop_item(DVBobject):
 
     def pack(self):
@@ -414,7 +351,6 @@ class lcn_service_descriptor_loop_item(DVBobject):
                     self.service_ID,
                     ((self.visible_service_flag << 15) | 0x7C00 | self.logical_channel_number),
                     )
-
 
 class logical_channel_descriptor(Descriptor):
 
@@ -429,9 +365,6 @@ class logical_channel_descriptor(Descriptor):
                     lcn_service_bytes,
                     )
 
-####################################################################
-
-
 class logical_channel_descriptor_v2(Descriptor):
 
     descriptor_tag = 0x87
@@ -443,14 +376,11 @@ class logical_channel_descriptor_v2(Descriptor):
         return pack(FMT,
                     self.channel_list_id,
                     len(self.channel_list_name),
-                    self.channel_list_name,
-                    self.country_code,
+                    self.channel_list_name.encode(),
+                    self.country_code.encode(),
                     len(lcn_service_bytes),
                     lcn_service_bytes,
                     )
-
-######################################################################
-
 
 class component_descriptor(Descriptor):
 
@@ -465,12 +395,9 @@ class component_descriptor(Descriptor):
                     0xF0 | (self.stream_content),
                     self.component_type,
                     self.component_tag,
-                    self.ISO_639_language_code,
-                    self.text_char,
+                    self.ISO_639_language_code.encode(),
+                    self.text_char.encode(),
                     )
-
-######################################################################
-
 
 class PDC_descriptor(Descriptor):
 
@@ -483,8 +410,6 @@ class PDC_descriptor(Descriptor):
                     ((self.day & 0x01) << 15) | (self.month << 11) | (self.hour << 6) | (self.minute),
                     )
 
-
-#
 # Copyright © 2004  Andreas Berger, berger@ftw.at
 #
 # This program is free software; you can redistribute it and/or modify
@@ -511,10 +436,9 @@ class ip_mac_platform_name_descriptor(Descriptor):
         fmt = "!3s%ds" % len(self.text_char_bytes)
 
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     self.text_char_bytes
                     )
-
 
 class ip_mac_platform_provider_name_descriptor(Descriptor):
 
@@ -525,10 +449,9 @@ class ip_mac_platform_provider_name_descriptor(Descriptor):
         fmt = "!3s%ds" % len(self.text_char_bytes)
 
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     self.text_char_bytes
                     )
-
 
 class target_serial_number_descriptor(Descriptor):
 
@@ -541,7 +464,6 @@ class target_serial_number_descriptor(Descriptor):
         return pack(fmt,
                     self.serial_data_bytes
                     )
-
 
 class target_smartcard_descriptor(Descriptor):
 
@@ -556,19 +478,17 @@ class target_smartcard_descriptor(Descriptor):
                     self.private_data_bytes
                     )
 
-
 class subtitling_data_descriptor_loop_item(DVBobject):
 
     def pack(self):
 
         fmt = "!%dsBHH" % len(self.ISO_639_language_code)
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     self.subtitling_type,
                     self.composition_page_id,
                     self.ancillary_page_id,
                     )
-
 
 class subtitling_descriptor(Descriptor):
 
@@ -580,9 +500,8 @@ class subtitling_descriptor(Descriptor):
 
         fmt = "!%ds" % len(data_bytes)
         return pack(fmt,
-                    data_bytes,
+                    data_bytes
                     )
-
 
 class target_MAC_address_descriptor(Descriptor):
 
@@ -593,10 +512,9 @@ class target_MAC_address_descriptor(Descriptor):
         fmt = "!6s%ds" % len(self.mac_addr_bytes)
 
         return pack(fmt,
-                    self.mac_addr_mask,
+                    self.mac_addr_mask.encode(),
                     self.mac_addr_bytes
                     )
-
 
 class target_MAC_address_range_descriptor(Descriptor):
 
@@ -607,10 +525,9 @@ class target_MAC_address_range_descriptor(Descriptor):
         fmt = "!6s%ds" % len(self.mac_addr_bytes)
 
         return pack(fmt,
-                    self.mac_addr_mask,
+                    self.mac_addr_mask.encode(),
                     self.mac_addr_bytes
                     )
-
 
 class target_IP_address_descriptor(Descriptor):
 
@@ -624,7 +541,6 @@ class target_IP_address_descriptor(Descriptor):
                     self.IPv4_addr_mask,
                     self.IPv4_addr_bytes
                     )
-
 
 class target_IP_slash_descriptor(Descriptor):
 
@@ -642,7 +558,6 @@ class target_IP_slash_descriptor(Descriptor):
                     self.IPv4_slash_mask
                     )
 
-
 class target_IP_source_slash_descriptor(Descriptor):
 
     descriptor_tag = 0x10
@@ -655,7 +570,6 @@ class target_IP_source_slash_descriptor(Descriptor):
                     self.IPv4_source_dest_bytes
                     )
 
-
 class target_IPv6_address_descriptor(Descriptor):
 
     descriptor_tag = 0x0a
@@ -665,10 +579,9 @@ class target_IPv6_address_descriptor(Descriptor):
         fmt = "!7s%ds" % len(self.IPv6_address_bytes)
 
         return pack(fmt,
-                    self.IPv6_address_mask,
+                    self.IPv6_address_mask.encode(),
                     self.IPv6_address_bytes
                     )
-
 
 class target_IPv6_slash_descriptor(Descriptor):
 
@@ -682,7 +595,6 @@ class target_IPv6_slash_descriptor(Descriptor):
                     self.IPv6_bytes
                     )
 
-
 class target_IPv6_source_slash_descriptor(Descriptor):
 
     descriptor_tag = 0x12
@@ -694,7 +606,6 @@ class target_IPv6_source_slash_descriptor(Descriptor):
         return pack(fmt,
                     self.IPv6_source_dest_bytes
                     )
-
 
 class ip_mac_stream_location_descriptor(Descriptor):
 
@@ -712,7 +623,6 @@ class ip_mac_stream_location_descriptor(Descriptor):
                     self.component_tag
                     )
 
-
 class isp_access_mode_descriptor(Descriptor):
 
     descriptor_tag = 0x14
@@ -724,7 +634,6 @@ class isp_access_mode_descriptor(Descriptor):
         return pack(fmt,
                     self.access_mode
                     )
-
 
 class telephone_descriptor(Descriptor):
 
@@ -745,7 +654,6 @@ class telephone_descriptor(Descriptor):
                     core_number_bytes
                     )
 
-
 class private_data_specifier_descriptor(Descriptor):
 
     descriptor_tag = 0x5f
@@ -757,7 +665,6 @@ class private_data_specifier_descriptor(Descriptor):
         return pack(fmt,
                     self.private_data_specifier
                     )
-
 
 class time_slice_fec_identifier_descriptor(Descriptor):
 
@@ -777,7 +684,6 @@ class time_slice_fec_identifier_descriptor(Descriptor):
 
 # FIXME: move this class to another file, it's no descriptor
 
-
 class platform_id_data2(DVBobject):
 
     def pack(self):
@@ -790,7 +696,6 @@ class platform_id_data2(DVBobject):
                     self.action_type & 0xFF,
                     (0x03 << 6) & 0xC0 | (0x00 << 5) & 0x20 | 0x01 & 0x1F
                     )
-
 
 # FIXME: move this class to another file, it's no descriptor
 class ip_mac_notification_info(DVBobject):
@@ -813,7 +718,6 @@ class ip_mac_notification_info(DVBobject):
 
 # FIXME: move this class to another file, it's no descriptor
 
-
 class platform_name(DVBobject):
 
     def pack(self):
@@ -822,13 +726,12 @@ class platform_name(DVBobject):
         fmt = "!3sB%ds" % platform_name_length
 
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     platform_name_length,
                     self.text_char_bytes
                     )
 
 # FIXME: move these classes to another file, they are no exactly descriptors
-
 
 class platform_id_data(DVBobject):
 
@@ -849,7 +752,6 @@ class platform_id_data(DVBobject):
                     pn_bytes
                     )
 
-
 class OUI_data(DVBobject):
 
     def pack(self):
@@ -862,7 +764,6 @@ class OUI_data(DVBobject):
                     len(self.selector_bytes),
                     self.selector_bytes,
                     )
-
 
 class OUI_info_loop_item(DVBobject):
 
@@ -878,7 +779,6 @@ class OUI_info_loop_item(DVBobject):
                     len(self.selector_bytes),
                     self.selector_bytes,
                     )
-
 
 class compatibility_descriptor_loop_item(DVBobject):
 
@@ -904,7 +804,6 @@ class compatibility_descriptor_loop_item(DVBobject):
                     compatibility_descriptor_subloop_bytes,
                     )
 
-
 class compatibility_descriptor(DVBobject):
 
     def pack(self):
@@ -920,7 +819,6 @@ class compatibility_descriptor(DVBobject):
                     number_descriptors,
                     compatibility_descriptor_loop_bytes,
                     )
-
 
 class linkage_descriptor(Descriptor):
 
@@ -1007,7 +905,6 @@ class linkage_descriptor(Descriptor):
                         self.private_data_bytes
                         )
 
-
 class terrestrial_delivery_system_descriptor(Descriptor):
 
     descriptor_tag = 0x5a
@@ -1026,8 +923,6 @@ class terrestrial_delivery_system_descriptor(Descriptor):
                     0xffffffff,
                     )
 
-
-######################################################################
 class crid_descriptor_loop_item(DVBobject):
 
     def pack(self):
@@ -1039,7 +934,7 @@ class crid_descriptor_loop_item(DVBobject):
                         (self.type & 0x3F) << 2 |
                         (self.location),
                         len(self.crid),
-                        self.crid,
+                        self.crid.encode(),
                         )
         else:
             fmt = "!BH"
@@ -1048,7 +943,6 @@ class crid_descriptor_loop_item(DVBobject):
                         (self.location & 0x3),
                         self.crid_ref,
                         )
-
 
 class content_identifier_descriptor(Descriptor):
 
@@ -1062,7 +956,6 @@ class content_identifier_descriptor(Descriptor):
         return pack(FMT,
                     crid_bytes,
                     )
-
 
 class ssu_location_descriptor(Descriptor):
 
@@ -1085,7 +978,6 @@ class ssu_location_descriptor(Descriptor):
                         self.data_broadcast_id,
                         self.private_data_bytes,
                         )
-
 
 class scheduling_descriptor(Descriptor):
 
@@ -1110,9 +1002,6 @@ class scheduling_descriptor(Descriptor):
                     self.private_data_bytes,
                     )
 
-######################################################################
-
-
 class default_authority_descriptor(Descriptor):
 
     descriptor_tag = 0x73
@@ -1120,11 +1009,8 @@ class default_authority_descriptor(Descriptor):
     def bytes(self):
         fmt = "!%ds" % len(self.authority)
         return pack(fmt,
-                    self.authority,
+                    self.authority.encode(),
                     )
-
-######################################################################
-
 
 class extended_event_loop_item(DVBobject):
 
@@ -1133,11 +1019,10 @@ class extended_event_loop_item(DVBobject):
         fmt = "!B%dsB%ds" % (len(self.item_description), len(self.item))
         return pack(fmt,
                     len(self.item_description),
-                    self.item_description,
+                    self.item_description.encode(),
                     len(self.item),
-                    self.item,
+                    self.item.encode(),
                     )
-
 
 class extended_event_descriptor(Descriptor):
 
@@ -1151,15 +1036,12 @@ class extended_event_descriptor(Descriptor):
         return pack(FMT,
                     (self.descriptor_number & 0xF) << 4 |
                     (self.last_descriptor_number & 0xF),
-                    self.ISO639_language_code,
+                    self.ISO639_language_code.encode(),
                     len(item_bytes),
                     item_bytes,
                     len(self.text),
-                    self.text,
+                    self.text.encode(),
                     )
-
-######################################################################
-
 
 class ac3_descriptor(Descriptor):
 
@@ -1168,7 +1050,7 @@ class ac3_descriptor(Descriptor):
     def bytes(self):
         fmt = "!B"
         flags_flag = 0
-        flags = ""
+        flags = "".encode()
         if self.component_type_flag == 1:
             flags = pack("!B", self.component_type)
             flags_flag = 1
@@ -1188,7 +1070,7 @@ class ac3_descriptor(Descriptor):
                         (self.bsid_flag & 0x1) << 6 |
                         (self.mainid_flag & 0x1) << 5 |
                         (self.asvc_flag & 0x1) << 4,
-                        self.additional_info
+                        self.additional_info.encode()
                         )
         else:
             fmt = (fmt + "%ds%ds") % (len(flags), len(self.additional_info))
@@ -1198,11 +1080,8 @@ class ac3_descriptor(Descriptor):
                         (self.mainid_flag & 0x1) << 5 |
                         (self.asvc_flag & 0x1) << 4,
                         flags,
-                        self.additional_info
+                        self.additional_info.encode()
                         )
-
-######################################################################
-
 
 class dts_audio_stream_descriptor(Descriptor):
 
@@ -1216,11 +1095,8 @@ class dts_audio_stream_descriptor(Descriptor):
                     ((self.nblks & 0x1) << 7) | ((self.fsize >> 7) & 0x7F),
                     ((self.fsize & 0x7F) << 1) | ((self.surround_mode >> 5) & 0x1),
                     ((self.surround_mode & 0x1F) << 3) | ((self.lfe_flag & 0x1) << 2) | (self.extendend_surround_flag & 0x3),
-                    self.additional_info
+                    self.additional_info.encode()
                     )
-
-######################################################################
-
 
 class ISO_639_language_descriptor(Descriptor):
 
@@ -1231,12 +1107,9 @@ class ISO_639_language_descriptor(Descriptor):
             len(self.ISO_639_language_code),
         )
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     self.Audio_type,
                     )
-
-######################################################################
-
 
 class supplementary_audio_descriptor(Descriptor):
 
@@ -1251,12 +1124,9 @@ class supplementary_audio_descriptor(Descriptor):
         return pack(fmt,
                     descriptor_tag_extension,
                     (self.mix_type & 0x1) << 7 | (self.editorial_classification & 0x1F) << 2 | 0x3,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     self.private_data_bytes,
                     )
-
-######################################################################
-
 
 class private_data_descriptor(Descriptor):
 
@@ -1266,9 +1136,6 @@ class private_data_descriptor(Descriptor):
         fmt = "!"
         return pack(fmt)
 
-######################################################################
-
-
 class bouquet_descriptor(Descriptor):
 
     descriptor_tag = 0x47
@@ -1277,5 +1144,5 @@ class bouquet_descriptor(Descriptor):
         fmt = "!%ds" % len(self.bouquet_name)
         return pack(
             fmt,
-            self.bouquet_name,
+            self.bouquet_name.encode(),
         )

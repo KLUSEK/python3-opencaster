@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 #
 # Copyright © 2013  Lorenzo Pallara, l.pallara@avalpa.com
@@ -20,8 +20,6 @@
 import string
 from dvbobjects.utils import *
 
-######################################################################
-
 
 class segment_loop_item(DVBobject):
 
@@ -32,11 +30,9 @@ class segment_loop_item(DVBobject):
                     self.compression_type,
                     self.mode,
                     len(self.compressed_string),
-                    self.compressed_string,
+                    self.compressed_string.encode(),
                     )
 
-
-######################################################################
 
 class string_loop_item(DVBobject):
 
@@ -50,13 +46,11 @@ class string_loop_item(DVBobject):
 
         fmt = "!%dsB%ds" % (len(self.ISO639_language_code), len(data_bytes))
         return pack(fmt,
-                    self.ISO639_language_code,
+                    self.ISO639_language_code.encode(),
                     self.number_segments,
                     data_bytes
                     )
 
-
-######################################################################
 
 class multiple_string_structure(DVBobject):
 

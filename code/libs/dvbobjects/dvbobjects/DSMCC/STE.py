@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -21,9 +21,6 @@
 import string
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.DSMCC.Descriptors import *
-
-######################################################################
-
 
 class stream_event_section(Section):
 

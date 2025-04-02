@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -22,9 +22,6 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.utils.DVBobject import *
 from dvbobjects.utils.MJD import *
-
-######################################################################
-
 
 class time_date_section(DVBobject):
 

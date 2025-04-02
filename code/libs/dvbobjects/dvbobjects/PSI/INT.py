@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # Copyright © 2007 Andreas Berger
 #
@@ -20,9 +20,6 @@ import string
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 from dvbobjects.DVB.Descriptors import *
-
-######################################################################
-
 
 class ip_mac_notification_section(Section):
 

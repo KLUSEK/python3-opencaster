@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -23,9 +23,6 @@ from dvbobjects.utils import *
 
 BINDING_TYPE_NOBJECT = 0x01
 BINDING_TYPE_NCONTEXT = 0x02
-
-######################################################################
-
 
 class Binding(DVBobject):
 
@@ -81,9 +78,6 @@ class Binding(DVBobject):
                      (mod, key),
                      ))
 
-######################################################################
-
-
 class ObjectFileBinding(Binding):
 
     bindingType = BINDING_TYPE_NOBJECT
@@ -96,9 +90,6 @@ class ObjectFileBinding(Binding):
 
         self.objectInfo = pack("!LL", 0, self.contentSize)
 
-######################################################################
-
-
 class ObjectStreamEventBinding(Binding):
 
     bindingType = BINDING_TYPE_NOBJECT
@@ -109,9 +100,6 @@ class ObjectStreamEventBinding(Binding):
 
         # Initialize SuperClass
         Binding.__init__(*(self,), **kwargs)
-
-######################################################################
-
 
 class ContextBinding(Binding):
 

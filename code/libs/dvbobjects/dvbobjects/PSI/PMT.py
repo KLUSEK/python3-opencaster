@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -24,9 +24,6 @@ from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 from dvbobjects.DVB.Descriptors import *
 from dvbobjects.MPEG.Descriptors import *
-
-######################################################################
-
 
 class program_map_section(Section):
 
@@ -54,9 +51,6 @@ class program_map_section(Section):
                     pidl_bytes,
                     pl_bytes,
                     )
-
-######################################################################
-
 
 class stream_loop_item(DVBobject):
 

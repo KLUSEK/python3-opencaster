@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library and contains the main HbbTV descriptors (see the list below)
 #
@@ -37,9 +37,6 @@ import string
 from dvbobjects.utils import *
 from dvbobjects.MPEG.Descriptor import Descriptor
 
-######################################################################
-
-
 class application_descriptor(Descriptor):
 
     descriptor_tag = 0x00
@@ -67,8 +64,6 @@ class application_descriptor(Descriptor):
                     self.application_priority,
                     tp_labels,
                     )
-######################################################################
-
 
 class application_name_descriptor(Descriptor):
 
@@ -77,12 +72,10 @@ class application_name_descriptor(Descriptor):
     def bytes(self):
         fmt = "!3sB%ds" % len(self.application_name)
         return pack(fmt,
-                    self.ISO_639_language_code,
+                    self.ISO_639_language_code.encode(),
                     len(self.application_name),
-                    self.application_name,
+                    self.application_name.encode(),
                     )
-######################################################################
-
 
 class transport_protocol_descriptor(Descriptor):
 
@@ -107,18 +100,16 @@ class transport_protocol_descriptor(Descriptor):
                           self.protocol_id,
                           self.transport_protocol_label,
                           len(self.URL_base),
-                          self.URL_base,
+                          self.URL_base.encode(),
                           URL_extension_count
                           )
             for url in self.URL_extensions:
                 result = result + pack(
                     "!B%ds" % len(url),
                     len(url),
-                    url,
+                    url.encode(),
                 )
             return result
-######################################################################
-
 
 class simple_application_location_descriptor(Descriptor):
 
@@ -127,10 +118,8 @@ class simple_application_location_descriptor(Descriptor):
     def bytes(self):
         fmt = "!%ds" % len(self.initial_path_bytes)
         return pack(fmt,
-                    self.initial_path_bytes
+                    self.initial_path_bytes.encode()
                     )
-######################################################################
-
 
 class application_usage_descriptor(Descriptor):
 
@@ -141,9 +130,6 @@ class application_usage_descriptor(Descriptor):
         return pack(fmt,
                     self.usage_type
                     )
-
-######################################################################
-
 
 class simple_application_boundary_descriptor(Descriptor):
 
@@ -160,18 +146,16 @@ class simple_application_boundary_descriptor(Descriptor):
         for boundary_extension in self.boundary_extensions:
             result = result + pack("!B%ds" % len(boundary_extension),
                                    len(boundary_extension),
-                                   boundary_extension,
+                                   boundary_extension.encode(),
                                    )
         return result
-######################################################################
-
 
 class external_application_authorisation_descriptor(Descriptor):
 
     descriptor_tag = 0x05
 
     def bytes(self):
-        result = ""
+        result = "".encode()
         for y in range(len(self.application_identifiers)):
             i = 0
             fmt = "!LHB"

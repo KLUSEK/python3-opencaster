@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # This file is part of the dvbobjects library.
 #
@@ -22,9 +22,6 @@ import string
 from dvbobjects.MPEG.Section import Section
 from dvbobjects.utils import *
 
-######################################################################
-
-
 class program_association_section(Section):
 
     table_id = 0x00
@@ -44,9 +41,6 @@ class program_association_section(Section):
         return pack(fmt,
                     pl_bytes
                     )
-
-######################################################################
-
 
 class program_loop_item(DVBobject):
 
